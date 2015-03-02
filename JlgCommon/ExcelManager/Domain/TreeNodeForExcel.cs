@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExcelManager.Domain
+namespace JlgCommon.ExcelManager.Domain
 {
     public class TreeNodeForExcel
     {

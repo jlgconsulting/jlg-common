@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ExcelManager.Domain
+namespace JlgCommon.ExcelManager.Domain
 {
     public class PieChartForExcel
     {
