@@ -15,6 +15,7 @@ namespace JlgCommon.ExcelManager
     {       
         public const string FormatCodePercent = "General\"%\"";
         public const string FormatColon = "{0}: {1}";
+        public string ExcelFilePath { get; set; }
         private SLDocument _excelDocument;
         
         public ExcelWriter()
@@ -269,9 +270,9 @@ namespace JlgCommon.ExcelManager
             _excelDocument.DeleteWorksheet(worksheetName);
         }        
 
-        public void SaveAs(string excelFilePath)
+        public void SaveToDisk()
         {
-            _excelDocument.SaveAs(excelFilePath);
+            _excelDocument.SaveAs(ExcelFilePath);
         }       
         
     }

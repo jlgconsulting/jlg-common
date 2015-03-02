@@ -10,6 +10,7 @@ namespace JlgCommon.ExcelManager
     public class ExcelReader
     {
         public const int INVALID_COLUMN_INDEX = -1;
+        public string ExcelFilePath { get; set; }
         private SLDocument _excelDocument;
         
         public ExcelReader()
@@ -19,15 +20,15 @@ namespace JlgCommon.ExcelManager
 
         public ExcelReader(SLDocument excelDocument)
         {
-            _excelDocument = excelDocument;
+            _excelDocument = excelDocument;            
         }
 
-        public byte[] ReadExcelFileAsByteArray(string excelFilePath, bool deleteExcelFileAfterReading = false)
+        public byte[] ReadExcelFileAsByteArray(bool deleteExcelFileAfterReading = false)
         {
-            var excelFileByteArray = File.ReadAllBytes(excelFilePath);
+            var excelFileByteArray = File.ReadAllBytes(ExcelFilePath);
             if (deleteExcelFileAfterReading)
             {
-                File.Delete(excelFilePath);
+                File.Delete(ExcelFilePath);
             }
             return excelFileByteArray;
         }

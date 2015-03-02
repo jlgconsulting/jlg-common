@@ -13,7 +13,21 @@ namespace JlgCommon.ExcelManager
     {
         public ExcelReader Reader { get; set; }
         public ExcelWriter Writer { get; set; }
-        public string ExcelFilePath { get; set; }
+
+        public string _excelFilePath;
+        public string ExcelFilePath
+        {
+            get
+            {
+                return _excelFilePath;
+            }
+            set
+            {
+                _excelFilePath = value;
+                Reader.ExcelFilePath = _excelFilePath;
+                Writer.ExcelFilePath = _excelFilePath;
+            }
+        }
         private SLDocument _excelDocument;
 
 
@@ -27,9 +41,10 @@ namespace JlgCommon.ExcelManager
         public ExcelManager(string excelFilePath)
         {
             _excelDocument = new SLDocument(excelFilePath);
-            ExcelFilePath = excelFilePath;
             Reader = new ExcelReader(_excelDocument);
             Writer = new ExcelWriter(_excelDocument);
+
+            ExcelFilePath = excelFilePath;
         }
 
     }
