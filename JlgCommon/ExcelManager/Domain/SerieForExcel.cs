@@ -17,6 +17,7 @@ namespace JlgCommon.ExcelManager.Domain
         public int ColorTransparencyPercent { get; set; }
         public MarkerStyleType? MarkerStyle { get; set; }
         public bool HideFromTable { get; set; }
+        public string CellsFormatCode { get; set; }
 
         public SerieForExcel()
         {

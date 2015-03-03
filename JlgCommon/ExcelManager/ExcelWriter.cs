@@ -13,7 +13,6 @@ namespace JlgCommon.ExcelManager
 {
     public class ExcelWriter
     {       
-        public const string FormatCodePercent = "General\"%\"";
         public const string FormatColon = "{0}: {1}";
         public string ExcelFilePath { get; set; }
         private SLDocument _excelDocument;
@@ -66,7 +65,12 @@ namespace JlgCommon.ExcelManager
                 for (int j = 0; j < serie.Values.Count; j++)
                 {
                     _excelDocument.SetCellValue(row, j + startingColumn + 1, serie.Values[j].Value);
-                    if (!string.IsNullOrEmpty(lineChart.CellsFormatCode))
+
+                    if (!string.IsNullOrEmpty(serie.CellsFormatCode))
+                    {
+                        _excelDocument.SetCellFormatCode(row, j + startingColumn + 1, serie.CellsFormatCode);
+                    }
+                    else if (!string.IsNullOrEmpty(lineChart.CellsFormatCode))
                     {
                         _excelDocument.SetCellFormatCode(row, j + startingColumn + 1, lineChart.CellsFormatCode);
                     }

@@ -9,8 +9,13 @@ namespace JlgCommon.ExcelManager
 {
     //http://spreadsheetlight.com/sample-code/
     //https://erictummers.wordpress.com/2014/08/28/get-spreadsheetlight-working/
+        //Install-Package DocumentFormat.OpenXml -Version 1.0.0
+        //Remove the assemblyBinding from the app.config
     public class ExcelManager
     {
+        public const string FormatCodePercent = "General\"%\"";
+        public const string FormatCodeGeneral = "General";
+
         public ExcelReader Reader { get; set; }
         public ExcelWriter Writer { get; set; }
 
