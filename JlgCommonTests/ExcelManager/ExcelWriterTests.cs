@@ -12,7 +12,27 @@ namespace JlgCommonTests.Extensions
     [TestClass]
     public class ExcelWriterTests
     {
-        private string _newWorksheetName1 = "New Worksheet 1";
+        private string _author = "Dan Misailescu";
+
+        [TestMethod]
+        public void SetCellValue()
+        {
+            var excelManager = new ExcelManager();
+            excelManager.Writer.SetCellValue(1, 1, _author);
+            Assert.AreEqual(_author, excelManager.Reader.GetCellValueAsString(1, 1));
+
+            var date = new DateTime(2015, 3, 1);
+            excelManager.Writer.SetCellValue(2, 4, date);
+            Assert.AreEqual(date, excelManager.Reader.GetCellValueAsDateTime(2, 4));
+
+            double nr1 = 7.823;
+            excelManager.Writer.SetCellValue(3, 2, nr1);
+            Assert.AreEqual(nr1, excelManager.Reader.GetCellValueAsDouble(3, 2));
+
+            int nr2 = 3;
+            excelManager.Writer.SetCellValue(4, 1, nr2);
+            Assert.AreEqual(nr2, excelManager.Reader.GetCellValueAsDouble(4, 1));
+        }
 
         [TestMethod]
         public void AddLineOrColumnChart()
@@ -156,6 +176,25 @@ namespace JlgCommonTests.Extensions
             Assert.AreEqual("Level 1 - Child 3", excelManager.Reader.GetCellValueAsString(6, 2));
         }
 
+        [TestMethod]
+        public void SaveToDisk()
+        {
+            var excelManager1 = new ExcelManager();
+            excelManager1.ExcelFilePath = ExcelManagerTests.ExcelManagerTestsFolder + Guid.NewGuid().ToString("N") + ".xlsx";
+            excelManager1.Writer.SaveToDisk();
+            var byteArray1 = excelManager1.Reader.ReadExcelFileAsByteArray(true);
+
+            var excelManager2 = new ExcelManager();
+            excelManager2.ExcelFilePath = ExcelManagerTests.ExcelManagerTestsFolder + Guid.NewGuid().ToString("N") + ".xlsx";
+            excelManager2.Writer.SetCellValue(1, 1, _author);
+            excelManager2.Writer.SaveToDisk();
+            var byteArray2 = excelManager2.Reader.ReadExcelFileAsByteArray(true);
+
+            Assert.IsTrue(byteArray1.Length < byteArray2.Length);
+        }
+        
+
+        private string _newWorksheetName1 = "New Worksheet 1";
         [TestMethod]
         public void RenameWorksheet()
         {
