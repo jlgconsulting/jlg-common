@@ -60,6 +60,9 @@ namespace JlgCommon.ExcelManager
                                     .Select(coll => coll.Key.ColumnIndex)
                                     .Distinct()
                                     .ToList();
+
+            columnIndexes.Sort();
+
             return columnIndexes;
         }
         
@@ -83,16 +86,21 @@ namespace JlgCommon.ExcelManager
             return rowValues;
         }
 
-        public List<string> GetColumnDistinctValues(int columnIndex)
+        public List<string> GetColumnDistinctStringValues(int columnIndex, int startRowIndex)
         {
             var columnUniqueValues = new Dictionary<string, bool>();
 
             var numberOfRowsInSheet = GetNumberOfRows();
             //the first row is the column title
             var cells = _excelDocument.GetCells();
-            for (int i = 2; i <= numberOfRowsInSheet; i++)
-            {
+            for (int i = startRowIndex; i <= numberOfRowsInSheet; i++)
+            {   
                 var cellValue = _excelDocument.GetCellValueAsString(i, columnIndex);
+                if (string.IsNullOrEmpty(cellValue))
+                {
+                    continue;
+                }
+
                 if (!columnUniqueValues.ContainsKey(cellValue))
                 {
                     columnUniqueValues.Add(cellValue, true);
@@ -102,13 +110,12 @@ namespace JlgCommon.ExcelManager
             return columnUniqueValues.Keys.ToList();
         }
 
-        public List<DateTime> GetColumnUniqueDates(int dateColumnIndex)
+        public List<DateTime> GetColumnDistinctDates(int dateColumnIndex, int startRowIndex)
         {
             var columnUniqueValues = new Dictionary<DateTime, bool>();
 
             var numberOfRowsInSheet = GetNumberOfRows();
-            //the first row is the column title
-            for (int i = 2; i <= numberOfRowsInSheet; i++)
+            for (int i = startRowIndex; i <= numberOfRowsInSheet; i++)
             {
 
                 if (string.IsNullOrEmpty(_excelDocument.GetCellValueAsString(i, dateColumnIndex)))
@@ -125,15 +132,15 @@ namespace JlgCommon.ExcelManager
             return columnUniqueValues.Keys.ToList();
         }
 
-        public int GetIndexOfColumnByName(string columnName)
+        public int GetIndexOfColumnByCellContentString(string cellContent, int rowIndex=1)
         {
             var columnIndexes = GetColumnOrderedIndexes();
 
             int cellIndex = INVALID_COLUMN_INDEX;
             foreach (var columnIndex in columnIndexes)
             {
-                var cellValue = _excelDocument.GetCellValueAsString(1, columnIndex);
-                if (cellValue.LowerCaseAndIgnoreSpaces() == columnName.LowerCaseAndIgnoreSpaces())
+                var cellValue = _excelDocument.GetCellValueAsString(rowIndex, columnIndex);
+                if (cellValue.LowerCaseAndIgnoreSpaces() == cellContent.LowerCaseAndIgnoreSpaces())
                 {
                     cellIndex = columnIndex;
                     break;
@@ -142,7 +149,7 @@ namespace JlgCommon.ExcelManager
 
             if (cellIndex == INVALID_COLUMN_INDEX)
             {
-                throw new Exception(string.Format("Could not find a columnName index for columnName {0}", columnName));
+                throw new Exception(string.Format("Could not find a columnName index for columnName {0}", cellContent));
             }
             return cellIndex;
         }
