@@ -1,0 +1,7 @@
+﻿<div class="row-fluid">
+    <p ng-bind-html="textDescription"></p>
+    <input type="file" ng-file-select="onFilesSelect($files)" />
+    <br />
+    <progressbar value="uploadProgress" type="success" ng-show="uploadProgress" class="progress-striped"><b>{{uploadProgress}}%</b></progressbar>
+    <div ng-show="uploadedFileName">{{uploadedFileName}}&nbsp;&nbsp;<i class="fa fa-check-square-o"></i></div>
+</div>

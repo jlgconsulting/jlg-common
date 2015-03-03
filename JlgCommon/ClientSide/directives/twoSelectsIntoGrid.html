@@ -1,0 +1,34 @@
+﻿<div class="row-fluid">
+    <b>{{textDescription}}</b>
+    <div>
+        <table class="row-fluid">
+            <tr>
+                <td ng-show="textSelectName1">{{textSelectName1}} ({{selectOptions1.length}})</td>
+                <td ng-show="textSelectName2">{{textSelectName2}} ({{selectOptions2.length}})</td>
+            </tr>
+            <tr>
+                <td>
+                    <select ng-model="selectedValue1" ng-disabled="selectOptions1.length==0 || selectOptions2.length==0" ng-options="o as o[selectDisplayPropertyName1] for o in selectOptions1 | orderBy: '{{selectDisplayPropertyName1}}'">
+                        <option value="">-- {{translatedText.select}} --</option>
+                    </select>
+                </td>
+                <td>
+                    <select ng-model="selectedValue2" ng-disabled="selectOptions2.length==0 || selectOptions1.length==0" ng-options="o as o[selectDisplayPropertyName2] for o in selectOptions2 | orderBy: '{{selectDisplayPropertyName2}}'">
+                        <option value="">-- {{translatedText.select}} --</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+        
+    <div ng-show="selectedCombinedValues.length == 0">
+        <i class="fa fa-ellipsis-h"></i>
+    </div>
+    <div ng-show="selectedCombinedValues.length > 0">
+        <grid-dm rows="selectedCombinedValues"
+                 options="gridDmOptions">
+        </grid-dm>
+    </div>
+
+
+</div>

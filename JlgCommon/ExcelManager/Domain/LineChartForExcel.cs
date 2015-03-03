@@ -6,6 +6,7 @@ namespace JlgCommon.ExcelManager.Domain
 {
     public class LineOrColumnChartForExcel
     {
+        public string ChartName { get; set; }
         public List<SerieForExcel> Series { get; set; }
         //Dictionary<seriesIndex, Dictionary<dataPointIndex, label>>
         public Dictionary<int, Dictionary<int, string>> LabelsForSeriesAndDataPoints { get; set; }

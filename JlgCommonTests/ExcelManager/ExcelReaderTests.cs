@@ -11,9 +11,8 @@ namespace JlgCommonTests.Extensions
     [TestClass]
     public class ExcelReaderTests
     {
-        public static string ExcelManagerTestsFolder = AppDomain.CurrentDomain.BaseDirectory + @"\ExcelManager\";
-        private ExcelManager _excelManager = new ExcelManager(ExcelManagerTestsFolder + "ExcelReaderTestsFile.xlsx");
-
+        private ExcelManager _excelManager = new ExcelManager(ExcelManagerTests.ExcelReaderTestsFilePath);
+        
         [TestMethod]
         public void GetCellValue()
         {

@@ -28,12 +28,20 @@ namespace JlgCommon.ExcelManager
             _excelDocument = excelDocument;
         }
 
-        public int InsertLineOrColumnChart(LineOrColumnChartForExcel lineChart, int startingRow, double width, double height, bool isMixt = false, int startingColumn = 1)
+        public int AddLineOrColumnChart(LineOrColumnChartForExcel lineChart, int startingRow, double width, double height, bool isMixt = false, int startingColumn = 1)
         {
             if (lineChart.Series == null
                 || lineChart.Series.Count == 0)
             {
                 return startingRow + 1;
+            }
+
+            if (!string.IsNullOrEmpty(lineChart.ChartName))
+            {
+                _excelDocument.SetCellValue(startingRow, startingColumn, lineChart.ChartName);
+                _excelDocument.SetCellBold(startingRow, startingColumn);
+                _excelDocument.SetCellItalic(startingRow, startingColumn);
+                startingRow++;
             }
 
             var xAxis = lineChart.Series[0].Values;
@@ -156,7 +164,7 @@ namespace JlgCommon.ExcelManager
             return startingRow + 1 + lineChart.Series.Count + Convert.ToInt32(height);
         }
 
-        public int InsertPieChart(PieChartForExcel pieChart, int startingRow, double width, double height, bool? sortDescending = true, int startingColumn = 1)
+        public int AddPieChart(PieChartForExcel pieChart, int startingRow, double width, double height, bool? sortDescending = true, int startingColumn = 1)
         {
             if (sortDescending.HasValue)
             {
@@ -175,6 +183,14 @@ namespace JlgCommon.ExcelManager
             {
                 pieChart.Values.Remove(forcedLastElement);
                 pieChart.Values.Add(forcedLastElement);
+            }
+
+            if (!string.IsNullOrEmpty(pieChart.ChartName))
+            {
+                _excelDocument.SetCellValue(startingRow, startingColumn, pieChart.ChartName);
+                _excelDocument.SetCellBold(startingRow, startingColumn);
+                _excelDocument.SetCellItalic(startingRow, startingColumn);
+                startingRow++;
             }
 
             _excelDocument.SetCellValue(startingRow, startingColumn, pieChart.ColumnName);
@@ -204,9 +220,8 @@ namespace JlgCommon.ExcelManager
             return startingRow + max + 1;
         }
 
-        public int InsertTree(TreeNodeForExcel rootTreeNode, int startingRow, int startingColumn = 1)
-        {
-
+        public int AddTree(TreeNodeForExcel rootTreeNode, int startingRow, int startingColumn = 1)
+        {            
             if (rootTreeNode.Color.HasValue)
             {
                 _excelDocument.SetCellBackgroundColor(startingRow, startingColumn, rootTreeNode.Color.Value);
@@ -223,13 +238,12 @@ namespace JlgCommon.ExcelManager
 
             foreach (var childNode in rootTreeNode.Children)
             {
-                startingRow = InsertTree(childNode, startingRow, startingColumn);
+                startingRow = AddTree(childNode, startingRow, startingColumn);
             }
 
             return startingRow;
         }
         
-
         public void SetCellValue(int rowIndex, int columnIndex, dynamic value)
         {
             _excelDocument.SetCellValue(rowIndex, columnIndex, value);
@@ -262,8 +276,13 @@ namespace JlgCommon.ExcelManager
 
         public void AddWorksheet(string worksheetName)
         {
-            _excelDocument.AddWorksheet(worksheetName);
-        }              
+            _excelDocument.AddWorksheet(worksheetName);            
+        }
+
+        public void RenameWorksheet(string oldWorksheetName, string newWorksheetName)
+        {
+            _excelDocument.RenameWorksheet(oldWorksheetName, newWorksheetName);  
+        }       
 
         public void DeleteWorksheet(string worksheetName)
         {
