@@ -43,20 +43,20 @@ namespace JlgCommonTests.Extensions
         }
         
         [TestMethod]
-        public void GetPercentValue()
+        public void PercentValue()
         {
             double nr1 = 10;
-            Assert.AreEqual(5, nr1.GetPercentValue(50));
+            Assert.AreEqual(5, nr1.PercentValue(50));
             double nr3 = 50;
-            Assert.AreEqual(5, nr3.GetPercentValue(10));
+            Assert.AreEqual(5, nr3.PercentValue(10));
             double nr4 = 70;
-            Assert.AreEqual(3.64, nr4.GetPercentValue(5.2));
+            Assert.AreEqual(3.64, nr4.PercentValue(5.2));
             double nr5 = 100;
-            Assert.AreEqual(-20, nr5.GetPercentValue(-20));
+            Assert.AreEqual(-20, nr5.PercentValue(-20));
             double nr6 = 30;
-            Assert.AreEqual(-0.6, nr6.GetPercentValue(-2));
+            Assert.AreEqual(-0.6, nr6.PercentValue(-2));
             double nr7 = 25.3;
-            Assert.AreEqual(-1.8722, nr7.GetPercentValue(-7.4), 0.0001);
+            Assert.AreEqual(-1.8722, nr7.PercentValue(-7.4), 0.0001);
         }    
 
         [TestMethod]
