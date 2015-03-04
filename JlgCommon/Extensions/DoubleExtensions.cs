@@ -38,9 +38,15 @@ namespace JlgCommon.Extensions
         }
 
         public static double IncreaseByPercent(this double nr, double percent)
+        {           
+            return nr + nr.GetPercentValue(percent);
+        }
+
+        public static double GetPercentValue(this double nr, double percent)
         {
             var percentValueFromNr = (percent / 100) * nr;
-            return nr + percentValueFromNr;
+            return percentValueFromNr;
         }
+
     }
 }
