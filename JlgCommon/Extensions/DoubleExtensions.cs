@@ -46,7 +46,7 @@ namespace JlgCommon.Extensions
         {
             var percentValueFromNr = (percent / 100) * nr;
             return percentValueFromNr;
-        }
+        }      
 
     }
 }

@@ -1,5 +1,5 @@
 ﻿'use strict';
-describe('directives/gridDm tests:', function () {
+describe('_directives/shared/gridDm tests:', function () {
     var scope,
     directiveElement,
     directiveIsolatedScope;
@@ -76,10 +76,7 @@ describe('directives/gridDm tests:', function () {
                         return "<i class='fa fa-info'></i> Age is hidden for id<=4!";
                     }
                 }
-            }],
-            creates: true,
-            updates: true,
-            deletes: true,
+            }],            
             createCallback: createUpdateUser,
             updateCallback: createUpdateUser,
             deleteCallback: deleteUser,

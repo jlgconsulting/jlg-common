@@ -30,7 +30,7 @@ directivesModule.directive("datePicker", function () {
             };
 
             $scope.$watch("selected", function (newValue, oldValue) {
-                 $scope.selectedLocal = newValue;                              
+                $scope.selectedLocal = newValue;
             });
 
             $scope.$watch("selectedLocal", function (newValue, oldValue) {
@@ -59,8 +59,8 @@ directivesModule.directive("datePicker", function () {
                     $scope.selectedMonth = dateYearMonth.month;
                     $scope.selectedYear = dateYearMonth.year;
 
-                    if ($scope.selected != newValue) {
-                        $scope.selected = newValue;
+                    if ($scope.selected != selectedDateString) {
+                        $scope.selected = selectedDateString;
                     }
                 }
             });

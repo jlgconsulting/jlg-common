@@ -1,5 +1,5 @@
 ﻿<div class="row-fluid">
-    <button ng-show="options.creates"
+    <button ng-show="options.createCallback"
             ng-click="options.createCallback()"
             ng-disabled="options.createDisabledCallback && options.createDisabledCallback()"
             title="{{options.textCreate}}"
@@ -46,14 +46,14 @@
                             </div>
 
                             <div ng-show="!options.customButtons" class="btn-group">
-                                <button ng-show="options.updates"
+                                <button ng-show="options.updateCallback"
                                         ng-click="options.updateCallback(row)"
                                         ng-disabled="options.updateDisabledCallback && options.updateDisabledCallback(row)"
                                         title="{{options.textUpdate}}"
                                         class="btn btn-info">
                                     <i class="fa fa-edit"></i>
                                 </button>
-                                <button ng-show="options.deletes"
+                                <button ng-show="options.deleteCallback"
                                         ng-click="options.deleteCallback(row)"
                                         ng-disabled="options.deleteDisabledCallback && options.deleteDisabledCallback(row)"
                                         title="{{options.textDelete}}"
@@ -66,6 +66,13 @@
                 </tr>
             </tbody>
         </table>
+        <button ng-show="options.deleteAllCallback"
+                ng-click="options.deleteAllCallback()"
+                ng-disabled="options.deleteAllDisabledCallback && options.deleteAllDisabledCallback()"
+                title="{{options.textDeleteAll}}"
+                class="btn btn-danger">
+            {{options.textDeleteAll}}&nbsp;<i class="fa fa-trash-o"></i>
+        </button>        
     </div>
     <div ng-show="!rows" class="error-text">
         Error: The ROWS object for the "Dan Misailescu Grid" was not provided!

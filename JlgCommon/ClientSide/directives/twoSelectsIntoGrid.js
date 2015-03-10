@@ -26,10 +26,11 @@ directivesModule.directive("twoSelectsIntoGrid", function () {
                     $scope.translatedText = newValue.translatedText;
                     
                     $scope.gridDmOptions = {
-                        columns: [],
-                        deletes: true,
+                        columns: [],                        
                         deleteCallback: deleteSelectedCombinedValue,
-                        textDelete: $scope.translatedText.delete
+                        deleteAllCallback: deleteAllSelectedCombinedValues,
+                        textDelete: $scope.translatedText.delete,
+                        textDeleteAll: $scope.translatedText.deleteAll
                     };
                 }
             });
@@ -76,6 +77,13 @@ directivesModule.directive("twoSelectsIntoGrid", function () {
                 if ($scope.uniqueSelection2=="true") {
                     $scope.selectOptions2.push(deletedCombinedValue.optionFromSelect2);
                 }
+            };
+
+            var deleteAllSelectedCombinedValues = function () {
+
+                while ($scope.selectedCombinedValues.length > 0) {
+                    deleteSelectedCombinedValue($scope.selectedCombinedValues[0])
+                }                
             };
             
             var setUpgridDmColumns = function () {

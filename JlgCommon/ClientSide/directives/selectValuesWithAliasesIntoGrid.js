@@ -20,10 +20,11 @@ directivesModule.directive("selectValuesWithAliasesIntoGrid", function ($filter)
                     $scope.translatedText = newValue.translatedText;
 
                     $scope.gridDmOptions = {
-                        columns: [],
-                        deletes: true,
+                        columns: [],                        
                         deleteCallback: $scope.deleteSelectedValue,
-                        textDelete: $scope.translatedText.delete
+                        deleteAllCallback: $scope.deleteAllSelectedValues,
+                        textDelete: $scope.translatedText.delete,
+                        textDeleteAll: $scope.translatedText.deleteAll
                     };
 
                     if ($scope.gridDisplayPropertyName) {
@@ -60,6 +61,12 @@ directivesModule.directive("selectValuesWithAliasesIntoGrid", function ($filter)
                 }
 
                 $scope.selectOptions.push(deletedValue);
+            };
+
+            $scope.deleteAllSelectedValues = function () {
+                while ($scope.selectedValues.length>0) {
+                    $scope.deleteSelectedValue($scope.selectedValues[0])
+                }
             };
            
             $scope.addSelectedValue = function() {

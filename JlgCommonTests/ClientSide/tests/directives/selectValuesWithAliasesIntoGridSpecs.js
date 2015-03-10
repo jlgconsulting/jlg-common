@@ -1,5 +1,5 @@
 ﻿'use strict';
-describe('directives/selectValuesWithAliasesIntoGrid - simle without grid-display-property-name tests:', function () {
+describe('_directives/shared/selectValuesWithAliasesIntoGrid - simle without grid-display-property-name tests:', function () {
     var scope,
     directiveElement,
     directiveIsolatedScope;
@@ -122,6 +122,58 @@ describe('directives/selectValuesWithAliasesIntoGrid - simle without grid-displa
             age: 20
         }]);
         expect(directiveIsolatedScope.selectOptions).toEqual([]);
+    });
+
+    it("deleteAll function", function () {
+        expect(directiveIsolatedScope.selectOptions).toEqual(students);
+        expect(scope.selectedStudentsInClass).toEqual([]);
+        directiveIsolatedScope.addAll();
+        expect(directiveIsolatedScope.selectedValues).toEqual([{
+            id: 1,
+            name: "Ion",
+            age: 23
+        }, {
+            id: 7,
+            age: 18,
+            name: "Andra"
+        }, {
+            id: 3,
+            name: "Raluca",
+            age: 20
+        }]);
+        expect(scope.selectedStudentsInClass).toEqual([{
+            id: 1,
+            name: "Ion",
+            age: 23
+        }, {
+            id: 7,
+            age: 18,
+            name: "Andra"
+        }, {
+            id: 3,
+            name: "Raluca",
+            age: 20
+        }]);
+        expect(directiveIsolatedScope.selectOptions).toEqual([]);
+
+        directiveIsolatedScope.deleteAll();
+        expect(directiveIsolatedScope.selectedValues).toEqual([]);
+        expect(scope.selectedStudentsInClass).toEqual([]);
+        
+        expect(directiveIsolatedScope.selectOptions).toEqual([{
+            id: 1,
+            name: "Ion",
+            age: 23
+        }, {
+            id: 7,
+            age: 18,
+            name: "Andra"
+        }, {
+            id: 3,
+            name: "Raluca",
+            age: 20
+        }]);
+
     });
 });
 
