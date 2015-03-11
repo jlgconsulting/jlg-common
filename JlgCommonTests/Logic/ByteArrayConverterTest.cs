@@ -39,8 +39,5 @@ namespace JlgCommonTests.Logic
             Assert.AreEqual(author.LastName, authorDeserialized.LastName);
             Assert.AreEqual(author.Age, authorDeserialized.Age);
         }
-
-        
-
     }
 }
