@@ -13,7 +13,9 @@ Jlg.Common/
 This will make Jlg.Common a distinct repository within your own project repository, so that each time you add functionality to Jlg.Common, 
 the changes will be committed separately to Jlg.Common repository and not to your project repository. 
 <br/>
-3) Inside Visual Studio, right click on Solution -> Add -> Existing Project -> choose "Solution Files (*.sln)" -> \Jlg.Common\JlgCommon.sln
+3)Open JlgCommon.sln, restore Nuget packages and build solution
+<br/>
+4) Inside Visual Studio, right click on Solution -> Add -> Existing Project -> choose "Solution Files (*.sln)" -> \Jlg.Common\JlgCommon.sln
 <br/>
 <br/>
 This will include both JlgCommon and JlgCommonTests projects into your solution.
