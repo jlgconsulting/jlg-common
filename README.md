@@ -9,8 +9,8 @@ In order to use these common libraries:
 <b>Jlg.Common/</b>
 <br/>
 <br/>
-This will make Jlg.Common a distinct repository within your own project repository, so that each time you add functionality to Jlg.Common, 
-the changes will be committed separately to Jlg.Common repository and not to your project repository. 
+<i>This will make Jlg.Common a distinct repository within your own project repository, so that each time you add functionality to Jlg.Common, 
+the changes will be committed separately to Jlg.Common repository and not to your project repository. </i>
 <br/>
 <br/>
 <b>3)</b>Open JlgCommon.sln, restore Nuget packages and build solution
