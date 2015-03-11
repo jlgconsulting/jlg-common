@@ -13,7 +13,7 @@ In order to use these common libraries:
 the changes will be committed separately to Jlg.Common repository and not to your project repository. </i>
 <br/>
 <br/>
-<b>3)</b>Open JlgCommon.sln, restore Nuget packages and build solution
+<b>3)</b> Open JlgCommon.sln, restore Nuget packages and build solution
 <br/>
 <b>4)</b> Inside Visual Studio, right click on Solution -> Add -> Existing Project -> choose "Solution Files (*.sln)" -> \Jlg.Common\JlgCommon.sln
 <br/>
