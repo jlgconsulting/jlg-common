@@ -12,6 +12,15 @@ namespace JlgCommonTests.Logic
     [TestClass]
     public class ByteArrayConverterTest
     {
+
+        [Serializable]
+        class Author
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public int Age { get; set; }
+        }
+
         private ByteArrayConverter _byteArrayConverter = new ByteArrayConverter();
 
         [TestMethod]
@@ -25,10 +34,10 @@ namespace JlgCommonTests.Logic
             var authorByteArray = _byteArrayConverter.ObjectToByteArray(author);
             var authorDeserialized = (Author)_byteArrayConverter.ByteArrayToObject(authorByteArray);
 
-            Assert.AreEqual("Dan", authorDeserialized.FirstName);
-            Assert.AreEqual("Misailescu", authorDeserialized.LastName);
-            Assert.AreEqual(29, authorDeserialized.Age);
-
+            Assert.AreNotEqual(author, authorDeserialized);
+            Assert.AreEqual(author.FirstName, authorDeserialized.FirstName);
+            Assert.AreEqual(author.LastName, authorDeserialized.LastName);
+            Assert.AreEqual(author.Age, authorDeserialized.Age);
         }
 
         
