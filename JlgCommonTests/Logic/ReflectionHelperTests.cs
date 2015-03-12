@@ -11,7 +11,7 @@ namespace JlgCommonTests.Logic
     [TestClass]
     public class ReflectionHelperTests
     {
-        private ReflectionHelper _reflectionHelper = new ReflectionHelper();
+        private ReflectionHelp _reflectionHelper = new ReflectionHelp();
 
         [TestMethod]
         public void BuildPropertyGetter()
