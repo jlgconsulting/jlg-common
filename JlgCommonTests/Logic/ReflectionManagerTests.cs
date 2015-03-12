@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace JlgCommonTests.Logic
 {
     [TestClass]
-    public class ReflectionHelperTests
+    public class ReflectionManagerTests
     {
-        private ReflectionHelp _reflectionHelper = new ReflectionHelp();
+        private ReflectionManager _reflectionHelper = new ReflectionManager();
 
         [TestMethod]
         public void BuildPropertyGetter()

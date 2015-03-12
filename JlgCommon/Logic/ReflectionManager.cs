@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JlgCommon.Logic
 {
-    public class ReflectionHelp
+    public class ReflectionManager
     {
 
         public Func<object, object> BuildPropertyGetter(Type runtimeType, string propertyName)
