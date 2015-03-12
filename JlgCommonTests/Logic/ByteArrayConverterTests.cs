@@ -9,18 +9,17 @@ using JlgCommon.Logic;
 
 namespace JlgCommonTests.Logic
 {
-    [TestClass]
-    public class ByteArrayConverterTest
+    [Serializable]
+    public class Author
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+    }
 
-        [Serializable]
-        class Author
-        {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public int Age { get; set; }
-        }
-
+    [TestClass]
+    public class ByteArrayConverterTests
+    {
         private ByteArrayConverter _byteArrayConverter = new ByteArrayConverter();
 
         [TestMethod]

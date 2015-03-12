@@ -64,6 +64,7 @@
     <Compile Include="ExcelManager\SLDocumentExtensions.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Logic\ByteArrayConverter.cs" />
+    <Compile Include="Logic\ReflectionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
   </ItemGroup>
