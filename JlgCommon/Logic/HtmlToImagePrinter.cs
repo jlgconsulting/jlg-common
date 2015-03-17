@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace JlgCommon.Logic
 {
-    public class HtmlToImagePinter
+    public class HtmlToImagePrinter
     {
         public string CssFilePath { get; set; }
         public string ScriptFilePath { get; set; }

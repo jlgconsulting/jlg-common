@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 namespace JlgCommonTests.Logic
 {
     [TestClass]
-    public class HtmlToImagePinterTests
+    public class HtmlToImagePrinterTests
     {
         [TestMethod]
         public void GetJpegImage()
         {
-            var htmlToImagePinter = new HtmlToImagePinter();
+            var htmlToImagePrinter = new HtmlToImagePrinter();
             var htmlText = "<div><b>Dan Misailescu</b></div>";
 
-            var byteArray = htmlToImagePinter.GetJpegImage(htmlText, 800, 600);
+            var byteArray = htmlToImagePrinter.GetJpegImage(htmlText, 800, 600);
 
             Assert.IsTrue(byteArray.Length > 0);
         }
