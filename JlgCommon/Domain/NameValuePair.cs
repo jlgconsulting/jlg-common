@@ -2,18 +2,18 @@
 
 namespace JlgCommon.Domain
 {
-    public class NameValuePair<T>
+    public class NameValuePair<TName, TValue> 
     {
         public virtual Guid Id { get; set; }
-        public virtual string Name { get; set; }
-        public virtual T Value { get; set; }
+        public virtual TName Name { get; set; }
+        public virtual TValue Value { get; set; }
 
         public NameValuePair()
         {
             Id = Guid.NewGuid();
         }
 
-        public NameValuePair(string name, T value)
+        public NameValuePair(TName name, TValue value)
         {
             Id = Guid.NewGuid();
             Name = name;
