@@ -1,6 +1,7 @@
 ﻿using SpreadsheetLight;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,9 +46,20 @@ namespace JlgCommon.ExcelManager
 
         public ExcelManager(string excelFilePath)
         {
-            _excelDocument = new SLDocument(excelFilePath);
-            Reader = new ExcelReader(_excelDocument);
-            Writer = new ExcelWriter(_excelDocument);
+
+            if (File.Exists(excelFilePath))
+            {
+                _excelDocument = new SLDocument(excelFilePath);
+                Reader = new ExcelReader(_excelDocument);
+                Writer = new ExcelWriter(_excelDocument);
+            }
+            else
+            {
+                _excelDocument = new SLDocument();
+                Reader = new ExcelReader(_excelDocument);
+                Writer = new ExcelWriter(_excelDocument);
+            }
+            
 
             ExcelFilePath = excelFilePath;
         }
