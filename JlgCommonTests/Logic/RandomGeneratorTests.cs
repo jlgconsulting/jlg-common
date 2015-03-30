@@ -49,6 +49,54 @@ namespace JlgCommonTests.Logic
         }
         
         [TestMethod]
+        public void GetRandomNullableIntList()
+        {
+            for (int i = 0; i < 90; i++)
+            {
+                var randIntList = _randomGenerator.GetRandomNullableIntList(47, -1000, 900);
+                Assert.IsTrue(randIntList.Count == 47);
+                foreach (var randIntNullable in randIntList)
+                {
+                    if (randIntNullable.HasValue)
+                    {
+                        Assert.IsTrue(randIntNullable >= -1000 && randIntNullable < 900);
+                    }                    
+                }
+            }
+        }        
+
+        [TestMethod]
+        public void GetRandomDoubleList()
+        {
+            for (int i = 0; i < 70; i++)
+            {
+                var randDoubleList = _randomGenerator.GetRandomDoubleList(17, -3, 9);
+                Assert.IsTrue(randDoubleList.Count == 17);
+                foreach (var randInt in randDoubleList)
+                {
+                    Assert.IsTrue(randInt >= -3 && randInt < 9);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void GetRandomNullableDoubleList()
+        {
+            for (int i = 0; i < 60; i++)
+            {
+                var randDoubleList = _randomGenerator.GetRandomNullableDoubleList(50, 56, 134);
+                Assert.IsTrue(randDoubleList.Count == 50);
+                foreach (var randIntNullable in randDoubleList)
+                {
+                    if (randIntNullable.HasValue)
+                    {
+                        Assert.IsTrue(randIntNullable >= 56 && randIntNullable < 134);
+                    }                    
+                }
+            }
+        }        
+
+        [TestMethod]
         public void GetRandomGuidList()
         {
             for (int i = 0; i < 100; i++)

@@ -1,8 +1,8 @@
 ﻿var directivesModule = angular.module("directives");
-directivesModule.directive("uploadFiles", function () {
+directivesModule.directive("filesUpload", function () {
     return {        
         restrict: "E",
-        templateUrl: window.urlGetter("scripts/app/_directives/shared/uploadFiles.html"),
+        templateUrl: window.urlGetter("scripts/app/_directives/shared/filesUpload.html"),
         scope: {
             textDescription: "=",
             urlDestination: "=",

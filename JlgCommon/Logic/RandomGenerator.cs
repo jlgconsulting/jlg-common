@@ -26,15 +26,68 @@ namespace JlgCommon.Logic
             return randomString.ToString();
         }
 
-        public List<int> GetRandomIntList(int length, int minIntInclusive = 0, int maxIntExclusive = 100)
+        public List<int> GetRandomIntList(int length, int minInclusive = 0, int maxExclusive = 100)
         {
             var randList = new List<int>();
             for (int i = 0; i < length; i++)
             {
-                randList.Add(GetRandomIntBetween(minIntInclusive, maxIntExclusive));
+                randList.Add(GetRandomIntBetween(minInclusive, maxExclusive));
             }
             return randList;
         }
+
+        public List<int?> GetRandomNullableIntList(int length, int minInclusive = 0, int maxExclusive = 100)
+        {
+            var randList = new List<int?>();
+            for (int i = 0; i < length; i++)
+            {
+                var randomNr=GetRandomIntBetween(1, 70);
+                if (randomNr % 3 == 0)
+                {
+                    randList.Add(null);
+                }
+                else
+                {
+                    var randomInt = GetRandomIntBetween(minInclusive, maxExclusive);
+                    randList.Add(randomInt);
+                }
+            }
+            return randList;
+        }
+
+        public List<double> GetRandomDoubleList(int length, int minInclusive = 0, int maxExclusive = 100)
+        {
+            var randList = new List<double>();
+            double one = 1;
+            for (int i = 0; i < length; i++)
+            {
+                double randomDouble = GetRandomIntBetween(minInclusive, maxExclusive) + (one / GetRandomIntBetween(2, 50));
+                randList.Add(randomDouble);
+            }
+            return randList;
+        }
+
+        public List<double?> GetRandomNullableDoubleList(int length, int minInclusive = 0, int maxExclusive = 100)
+        {
+            var randList = new List<double?>();
+            double one = 1;
+            for (int i = 0; i < length; i++)
+            {                
+                var randomNr=GetRandomIntBetween(1, 70);
+                if (randomNr % 3 == 0)
+                {
+                    randList.Add(null);
+                }
+                else
+                {
+                    double randomDouble = GetRandomIntBetween(minInclusive, maxExclusive) + (one / GetRandomIntBetween(2, 50));
+                    randList.Add(randomDouble);
+                }
+                
+            }
+            return randList;
+        }
+
 
         public List<Guid> GetRandomGuidList(int length)
         {

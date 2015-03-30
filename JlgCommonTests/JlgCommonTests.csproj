@@ -56,6 +56,7 @@
     <Compile Include="Extensions\DateTimeExtensionsTests.cs" />
     <Compile Include="Extensions\DoubleExtensionsTests.cs" />
     <Compile Include="Logic\ByteArrayConverterTests.cs" />
+    <Compile Include="Logic\NormalizatorTests.cs" />
     <Compile Include="Logic\RandomGeneratorTests.cs" />
     <Compile Include="Logic\FileManagerTests.cs" />
     <Compile Include="Logic\HtmlToImagePrinterTests.cs" />
