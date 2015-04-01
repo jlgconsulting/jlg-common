@@ -17,12 +17,12 @@ namespace JlgCommon.ExcelManager
         public string ExcelFilePath { get; set; }
         private SLDocument _excelDocument;
         
-        public ExcelWriter()
+        internal ExcelWriter()
         {
             _excelDocument = new SLDocument();
         }
 
-        public ExcelWriter(SLDocument excelDocument)
+        internal ExcelWriter(SLDocument excelDocument)
         {
             _excelDocument = excelDocument;
         }

@@ -14,12 +14,12 @@ namespace JlgCommon.ExcelManager
         public string ExcelFilePath { get; set; }
         private SLDocument _excelDocument;
         
-        public ExcelReader()
+        internal ExcelReader()
         {
             _excelDocument = new SLDocument();
         }
 
-        public ExcelReader(SLDocument excelDocument)
+        internal ExcelReader(SLDocument excelDocument)
         {
             _excelDocument = excelDocument;            
         }
