@@ -4,6 +4,7 @@ using System.Linq;
 using SpreadsheetLight;
 using JlgCommon.Extensions;
 using System.IO;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace JlgCommon.ExcelManager
 {   
@@ -65,7 +66,19 @@ namespace JlgCommon.ExcelManager
 
             return columnIndexes;
         }
-        
+
+        public int GetFirstRowContainingValuesIndex()
+        {
+            int rowIndex = 1;
+            List<string> rowValues = GetRowNotEmptyValues(rowIndex);
+            while (!rowValues.Any())
+            {
+                rowIndex++;
+                rowValues = GetRowNotEmptyValues(rowIndex);
+            }
+            return rowIndex;
+        }
+
         public int GetNumberOfRows()
         {
             var rowsIndexes = _excelDocument.GetCells()
@@ -75,9 +88,37 @@ namespace JlgCommon.ExcelManager
             return rowsIndexes.Count;
         }
 
-        public List<string> GetRowValues(int rowIndex)
+        public List<string> GetRowNotEmptyValues(int rowIndex)
         {
             var rowValues = new List<string>();
+            foreach (var columnIndex in GetColumnOrderedIndexes())
+            {
+                var cellValue = _excelDocument.GetCellValueAsString(rowIndex, columnIndex);
+                if (!cellValue.Equals(""))
+                {
+                    rowValues.Add(cellValue);
+                }
+            }
+            return rowValues;
+        }
+
+        public Dictionary<String, int> GetRowNotEmptyValuesWithColumnIndexes(int rowIndex)
+        {
+            var rowValues = new Dictionary<String, int>();
+            foreach (var columnIndex in GetColumnOrderedIndexes())
+            {
+                var cellValue = _excelDocument.GetCellValueAsString(rowIndex, columnIndex);
+                if (!cellValue.Equals(""))
+                {
+                    rowValues.Add(cellValue, columnIndex);
+                }
+            }
+            return rowValues;
+        }
+
+        public List<String> GetRowValues(int rowIndex)
+        {
+            var rowValues = new List<String>();
             foreach (var columnIndex in GetColumnOrderedIndexes())
             {
                 var cellValue = _excelDocument.GetCellValueAsString(rowIndex, columnIndex);
@@ -162,7 +203,29 @@ namespace JlgCommon.ExcelManager
         public List<string> GetWorksheetNames()
         {
             return _excelDocument.GetWorksheetNames();
-        } 
+        }
 
+        public List<KeyValuePair<SLCellPoint, SLCell>> GetRowCells(int rowIndex)
+        {
+            var cells = _excelDocument.GetCells()
+                                    .Where(coll => coll.Key.RowIndex == rowIndex)
+                                    .ToList();
+            return cells;
+        }
+
+        public List<SLMergeCell> GetMergedCells()
+        {
+            return _excelDocument.GetWorksheetMergeCells();
+        }
+
+        public int GetMergedCellsStartingRow()
+        {
+            return _excelDocument.GetWorksheetMergeCells().Min(t => t.StartRowIndex);
+        }
+
+        public int GetMergedCellsEndingRow()
+        {
+            return _excelDocument.GetWorksheetMergeCells().Max(t => t.EndRowIndex);
+        }
     }
 }

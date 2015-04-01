@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,24 @@ namespace JlgCommonTests.Extensions
         }
 
         [TestMethod]
+        public void GetRowValues()
+        {
+            //42065 is the string for "02/03/2015"
+            CollectionAssert.AreEquivalent(
+                new List<string>{"", "dan", "misailescu", "excel", "42065", "", "9"}, 
+                _excelManager.Reader.GetRowValues(2));
+        }
+
+        [TestMethod]
+        public void GetNotEmptyRowValues()
+        {
+            //42065 is the string for "02/03/2015"
+            CollectionAssert.AreEquivalent(
+                new List<string> { "dan", "misailescu", "excel", "42065", "9" },
+                _excelManager.Reader.GetRowNotEmptyValues(2));
+        }
+
+        [TestMethod]
         public void GetColumnDistinctStringValues()
         {
             CollectionAssert.AreEquivalent(new List<string>() { "Library", "excel", "manager", "tests" },
@@ -67,7 +86,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void GetWorksheetNames()
         {
-            CollectionAssert.AreEquivalent(new List<string>() { "Page1", "Page2" },
+            CollectionAssert.AreEquivalent(new List<string>() { "Page1", "Page2", "Page3" },
                   _excelManager.Reader.GetWorksheetNames());         
         }
 
@@ -80,5 +99,20 @@ namespace JlgCommonTests.Extensions
             Assert.AreEqual(14, _excelManager.Reader.GetCellValueAsInt(4, 1));
             Assert.AreEqual(7, _excelManager.Reader.GetCellValueAsInt(7, 1));
         }
+
+        [TestMethod]
+        public void GetFirstRowContainingValuesIndex()
+        {
+            _excelManager.Reader.SelectWorksheet("Page2");
+            Assert.AreEqual(2, _excelManager.Reader.GetFirstRowContainingValuesIndex());
+        }
+
+        //[TestMethod]
+        //public void GetRowCells()
+        //{
+        //    _excelManager.Reader.SelectWorksheet("Page3");
+        //    var cells = _excelManager.Reader.GetRowCells(1);
+        //    //Assert.AreEqual(2, _excelManager.Reader.GetFirstRowContainingValuesIndex());
+        //}
     }
 }
