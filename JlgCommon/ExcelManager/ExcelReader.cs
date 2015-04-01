@@ -227,5 +227,15 @@ namespace JlgCommon.ExcelManager
         {
             return _excelDocument.GetWorksheetMergeCells().Max(t => t.EndRowIndex);
         }
+
+        public SLStyle GetCellStyle(int rowIndex, int columnIndex)
+        {
+           return _excelDocument.GetCellStyle(rowIndex, columnIndex);
+        }
+
+        public double GetCellWidth(int columnIndex)
+        {
+            return _excelDocument.GetColumnWidth(columnIndex);
+        }
     }
 }

@@ -296,7 +296,17 @@ namespace JlgCommon.ExcelManager
         public void SaveToDisk()
         {
             _excelDocument.SaveAs(ExcelFilePath);
-        }       
+        }
+
+        public void SetCellStyle(int rowIndex, int columnIndex, SLStyle style)
+        {
+            _excelDocument.SetCellStyle(rowIndex, columnIndex, style);
+        }
+
+        public bool SetCellWidth(int columnIndex, double width)
+        {
+            return _excelDocument.SetColumnWidth(columnIndex, width);
+        }
         
     }
 }
