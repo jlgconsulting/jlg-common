@@ -102,15 +102,15 @@ namespace JlgCommon.ExcelManager
             return rowValues;
         }
 
-        public Dictionary<String, int> GetRowNotEmptyValuesWithColumnIndexes(int rowIndex)
+        public Dictionary<int, String> GetRowNotEmptyValuesWithColumnIndexes(int rowIndex)
         {
-            var rowValues = new Dictionary<String, int>();
+            var rowValues = new Dictionary<int, String>();
             foreach (var columnIndex in GetColumnOrderedIndexes())
             {
                 var cellValue = _excelDocument.GetCellValueAsString(rowIndex, columnIndex);
                 if (!cellValue.Equals(""))
                 {
-                    rowValues.Add(cellValue, columnIndex);
+                    rowValues.Add(columnIndex, cellValue);
                 }
             }
             return rowValues;
@@ -236,6 +236,20 @@ namespace JlgCommon.ExcelManager
         public double GetCellWidth(int columnIndex)
         {
             return _excelDocument.GetColumnWidth(columnIndex);
+        }
+
+        public List<int> GetColumnIndexesForSpecificStringValue(int rowIndex, string value)
+        {
+            var columnIndexes = new List<int>();
+            foreach (var columnIndex in GetColumnOrderedIndexes())
+            {
+                var cellValue = _excelDocument.GetCellValueAsString(rowIndex, columnIndex);
+                if (cellValue.Equals(value))
+                {
+                    columnIndexes.Add(columnIndex);
+                }
+            }
+            return columnIndexes;
         }
     }
 }

@@ -303,9 +303,19 @@ namespace JlgCommon.ExcelManager
             _excelDocument.SetCellStyle(rowIndex, columnIndex, style);
         }
 
-        public bool SetCellWidth(int columnIndex, double width)
+        public void SetCellWidth(int columnIndex, double width)
         {
-            return _excelDocument.SetColumnWidth(columnIndex, width);
+            _excelDocument.SetColumnWidth(columnIndex, width);
+        }
+
+        public void AutoFitColumn(int columnIndex)
+        {
+            _excelDocument.AutoFitColumn(columnIndex);
+        }
+
+        public void AutoFitRow(int rowIndex)
+        {
+            _excelDocument.AutoFitRow(rowIndex);
         }
         
     }
