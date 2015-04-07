@@ -196,9 +196,9 @@ namespace JlgCommon.ExcelManager
             return cellIndex;
         }
 
-        public void SelectWorksheet(string worksheetName)
+        public bool SelectWorksheet(string worksheetName)
         {
-            _excelDocument.SelectWorksheet(worksheetName);
+            return _excelDocument.SelectWorksheet(worksheetName);
         }
 
         public List<string> GetWorksheetNames()
@@ -251,6 +251,23 @@ namespace JlgCommon.ExcelManager
                 }
             }
             return columnIndexes;
+        }
+
+        public List<List<String>> GetValuesForWorksheet(String worksheetName)
+        {
+            var values = new List<List<String>>();
+
+            var worksheetFound = _excelDocument.SelectWorksheet(worksheetName);
+            if (!worksheetFound)
+                throw new Exception("Could not found worksheet" + worksheetName);
+            int rowCount = GetNumberOfRows();
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                values.Add(GetRowValues(i + 1));
+            }
+
+            return values;
         }
 
         public Tuple<int, int> GetRowAndColumnForSpecificStringValue(string field)
