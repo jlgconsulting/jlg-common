@@ -4,6 +4,7 @@ using System.Linq;
 using SpreadsheetLight;
 using JlgCommon.Extensions;
 using System.IO;
+using DocumentFormat.OpenXml.Bibliography;
 using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace JlgCommon.ExcelManager
@@ -251,5 +252,34 @@ namespace JlgCommon.ExcelManager
             }
             return columnIndexes;
         }
+
+        public Tuple<int, int> GetRowAndColumnForSpecificStringValue(string field)
+        {
+            int firstRow = 1;
+            int nRows = GetNumberOfRows();
+
+            for (int i = firstRow; i <= nRows; ++i)
+            {
+                var columnIndexList = GetColumnIndexesForSpecificStringValue(i, field);
+                if (!columnIndexList.Any())
+                {
+                    continue;
+                }
+                
+                int j = columnIndexList.First();
+                string cellValue = GetCellValueAsString(i, j);
+
+                if (field.Equals(cellValue))
+                {
+                    return new Tuple<int, int>(i, j);
+                }
+
+            }
+            //throw new Exception("999999999999999999999");
+            return null;
+
+        } 
+
+
     }
 }
