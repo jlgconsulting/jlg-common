@@ -82,11 +82,11 @@ namespace JlgCommon.ExcelManager
 
         public int GetNumberOfRows()
         {
-            var nrRows = _excelDocument.GetCells()
+            var rowsIndexes = _excelDocument.GetCells()
                                     .Select(coll => coll.Key.RowIndex)
                                     .Distinct()
-                                    .Count();
-            return nrRows;
+                                    .ToList();
+            return rowsIndexes.Count;
         }
 
         public List<string> GetRowNotEmptyValues(int rowIndex)
@@ -253,23 +253,7 @@ namespace JlgCommon.ExcelManager
             return columnIndexes;
         }
 
-        public List<List<String>> GetValuesForWorksheet(String worksheetName)
-        {
-            var values = new List<List<String>>();
-
-            var worksheetFound = _excelDocument.SelectWorksheet(worksheetName);
-            if (!worksheetFound)
-                throw new Exception("Could not found worksheet" + worksheetName);
-            int rowCount = GetNumberOfRows();
-
-            for (int i = 0; i < rowCount; i++)
-            {
-                values.Add(GetRowValues(i + 1));
-            }
-
-            return values;
-        }
-
+<<<<<<< HEAD
         public Tuple<int, int> GetRowAndColumnForSpecificStringValue(string field)
         {
             int firstRow = 1;
@@ -298,5 +282,23 @@ namespace JlgCommon.ExcelManager
         } 
 
 
+=======
+        public List<List<String>> GetValuesForWorksheet(String worksheetName)
+        {
+            var values = new List<List<String>>();
+
+            var worksheetFound = _excelDocument.SelectWorksheet(worksheetName);
+            if (!worksheetFound)
+                throw new Exception("Could not found worksheet" + worksheetName);
+            int rowCount = GetNumberOfRows();
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                values.Add(GetRowValues(i + 1));
+            }
+
+            return values;
+        }
+>>>>>>> Added GetValuesForWorksheet function to Excel Reader
     }
 }
