@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JlgCommon.ExcelManager;
+using SpreadsheetLight;
 
 namespace JlgCommonTests.Extensions
 {
@@ -13,10 +14,11 @@ namespace JlgCommonTests.Extensions
     public class ExcelReaderTests
     {
         private ExcelManager _excelManager = new ExcelManager(ExcelManagerTests.ExcelReaderTestsFilePath);
-        
+
         [TestMethod]
         public void GetCellValue()
         {
+            _excelManager.Reader.SelectWorksheet("Page1");
             Assert.AreEqual("dan", _excelManager.Reader.GetCellValueAsString(2, 2), false);
             Assert.AreEqual("misailescu", _excelManager.Reader.GetCellValueAsString(2, 3), false);
             Assert.AreEqual(new DateTime(2015, 4, 7), _excelManager.Reader.GetCellValueAsDateTime(3, 5));
@@ -27,13 +29,15 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void GetColumnOrderedIndexes()
         {
+            _excelManager.Reader.SelectWorksheet("Page1");
             CollectionAssert.AreEquivalent(new List<int>() { 1, 2, 3, 4, 5, 6, 7 },
-                _excelManager.Reader.GetColumnOrderedIndexes());         
+                _excelManager.Reader.GetColumnOrderedIndexes());
         }
 
         [TestMethod]
         public void GetNumberOfRows()
         {
+            _excelManager.Reader.SelectWorksheet("Page1");
             Assert.AreEqual(6, _excelManager.Reader.GetNumberOfRows());
         }
 
@@ -41,43 +45,61 @@ namespace JlgCommonTests.Extensions
         public void GetRowValues()
         {
             //42065 is the string for "02/03/2015"
+            _excelManager.Reader.SelectWorksheet("Page1");
             CollectionAssert.AreEquivalent(
-                new List<string>{"", "dan", "misailescu", "excel", "42065", "", "9"}, 
+                new List<string> { "", "dan", "misailescu", "excel", "42065", "", "9" },
                 _excelManager.Reader.GetRowValues(2));
         }
 
         [TestMethod]
-        public void GetNotEmptyRowValues()
+        public void GetRowNotEmptyValues()
         {
             //42065 is the string for "02/03/2015"
+            _excelManager.Reader.SelectWorksheet("Page1");
             CollectionAssert.AreEquivalent(
                 new List<string> { "dan", "misailescu", "excel", "42065", "9" },
                 _excelManager.Reader.GetRowNotEmptyValues(2));
         }
 
         [TestMethod]
+        public void GetRowNotEmptyValuesWithColumnIndexes()
+        {
+            _excelManager.Reader.SelectWorksheet("Page3");
+            var valuesDictionary = _excelManager.Reader.GetRowNotEmptyValuesWithColumnIndexes(3);
+            CollectionAssert.AreEquivalent(valuesDictionary,
+                new Dictionary<int, string>
+                {
+                    {2, "searchedString"},
+                    {6, "searchedString"}
+                });
+        }
+
+        [TestMethod]
         public void GetColumnDistinctStringValues()
         {
+            _excelManager.Reader.SelectWorksheet("Page1");
             CollectionAssert.AreEquivalent(new List<string>() { "Library", "excel", "manager", "tests" },
                 _excelManager.Reader.GetColumnDistinctStringValues(4, 1));
 
             CollectionAssert.AreEquivalent(new List<string>() { "excel", "manager", "tests" },
-                  _excelManager.Reader.GetColumnDistinctStringValues(4, 2));            
+                  _excelManager.Reader.GetColumnDistinctStringValues(4, 2));
         }
 
         [TestMethod]
         public void GetColumnDistinctDates()
         {
+            _excelManager.Reader.SelectWorksheet("Page1");
             CollectionAssert.AreEquivalent(new List<DateTime>() { new DateTime(2015, 3, 2), new DateTime(2015, 4, 7), new DateTime(2015, 5, 25) },
                 _excelManager.Reader.GetColumnDistinctDates(5, 2));
 
             CollectionAssert.AreEquivalent(new List<DateTime>() { new DateTime(2015, 4, 7), new DateTime(2015, 3, 2) },
-               _excelManager.Reader.GetColumnDistinctDates(5, 5));               
+               _excelManager.Reader.GetColumnDistinctDates(5, 5));
         }
 
         [TestMethod]
         public void GetIndexOfColumnByCellContentString()
         {
+            _excelManager.Reader.SelectWorksheet("Page1");
             Assert.AreEqual(5, _excelManager.Reader.GetIndexOfColumnByCellContentString("Dates"));
             Assert.AreEqual(4, _excelManager.Reader.GetIndexOfColumnByCellContentString("excel", 2));
             Assert.AreEqual(4, _excelManager.Reader.GetIndexOfColumnByCellContentString("manager", 3));
@@ -87,7 +109,7 @@ namespace JlgCommonTests.Extensions
         public void GetWorksheetNames()
         {
             CollectionAssert.AreEquivalent(new List<string>() { "Page1", "Page2", "Page3" },
-                  _excelManager.Reader.GetWorksheetNames());         
+                  _excelManager.Reader.GetWorksheetNames());
         }
 
         [TestMethod]
@@ -114,5 +136,76 @@ namespace JlgCommonTests.Extensions
         //    var cells = _excelManager.Reader.GetRowCells(1);
         //    //Assert.AreEqual(2, _excelManager.Reader.GetFirstRowContainingValuesIndex());
         //}
+
+        [TestMethod]
+        public void GetMergedCells()
+        {
+            _excelManager.Reader.SelectWorksheet("Page3");
+            var mergedCells = _excelManager.Reader.GetMergedCells();
+            Assert.AreEqual(mergedCells.Count, 1);
+
+            var firstMergedCells = mergedCells.First();
+            Assert.AreEqual(firstMergedCells.IsValid, true);
+            Assert.AreEqual(firstMergedCells.StartRowIndex, 1);
+            Assert.AreEqual(firstMergedCells.EndRowIndex, 2);
+            Assert.AreEqual(firstMergedCells.StartColumnIndex, 1);
+            Assert.AreEqual(firstMergedCells.EndColumnIndex, 3);
+        }
+
+        [TestMethod]
+        public void GetMergedCellsStartingRow()
+        {
+            _excelManager.Reader.SelectWorksheet("Page3");
+            Assert.AreEqual(_excelManager.Reader.GetMergedCellsStartingRow(), 1);
+        }
+
+        [TestMethod]
+        public void GetMergedCellsEndingRow()
+        {
+            _excelManager.Reader.SelectWorksheet("Page3");
+            Assert.AreEqual(_excelManager.Reader.GetMergedCellsEndingRow(), 2);
+        }
+
+        [TestMethod]
+        public void GetCellStyle()
+        {
+            _excelManager.Reader.SelectWorksheet("Page3");
+            var style = _excelManager.Reader.GetCellStyle(1, 1);
+            Assert.AreEqual(style.Font.FontName, "Arial");
+            Assert.AreEqual(style.Font.FontSize, 10);
+            Assert.AreEqual(style.Font.Bold, true);
+            Assert.AreEqual(style.Alignment.Horizontal.ToString(), "Center");
+            Assert.AreEqual(style.Alignment.Vertical.ToString(), "Bottom");
+        }
+
+        [TestMethod]
+        public void GetColumnIndexesForSpecificStringValue()
+        {
+            _excelManager.Reader.SelectWorksheet("Page3");
+            var columnIndexes = _excelManager.Reader.GetColumnIndexesForSpecificStringValue(3, "searchedString");
+            CollectionAssert.AreEquivalent(columnIndexes, new List<int>() {2, 6});
+        }
+
+        [TestMethod]
+        public void GetValuesForWorksheet()
+        {
+            List<List<string>> values = _excelManager.Reader.GetNonEmptyValuesForWorksheet("Page3");
+            CollectionAssert.AreEquivalent(values.ElementAt(0),
+                new List<string> { "Merged cells" });
+            CollectionAssert.AreEquivalent(values.ElementAt(1),
+                new List<string>());
+            CollectionAssert.AreEquivalent(values.ElementAt(2),
+                new List<string> { "searchedString", "searchedString" });
+        }
+
+        [TestMethod]
+        public void GetRowAndColumnForSpecificStringValue()
+        {
+            _excelManager.Reader.SelectWorksheet("Page3");
+            var indexes = _excelManager.Reader.GetRowAndColumnForSpecificStringValue("searchedString");
+            Assert.AreEqual(indexes.Item1, 3);
+            Assert.AreEqual(indexes.Item2, 2);
+        }
+
     }
 }

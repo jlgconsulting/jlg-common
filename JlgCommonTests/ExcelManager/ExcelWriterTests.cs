@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DocumentFormat.OpenXml.Spreadsheet;
 using JlgCommon.ExcelManager;
 using JlgCommon.ExcelManager.Domain;
+using SpreadsheetLight;
 
 namespace JlgCommonTests.Extensions
 {
@@ -236,6 +238,47 @@ namespace JlgCommonTests.Extensions
             excelManager.Reader.SelectWorksheet(excelManager.Reader.GetWorksheetNames()[0]);
             excelManager.Writer.DeleteWorksheet(_newWorksheetName1);
             Assert.AreEqual(1, excelManager.Reader.GetWorksheetNames().Count);
+        }
+
+        [TestMethod]
+        public void SetCellStyle()
+        {
+            var excelManager = new ExcelManager();
+            var style = new SLStyle();
+            style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
+            style.Alignment.Vertical = VerticalAlignmentValues.Bottom;
+            style.Font.FontName = "Arial";
+            style.Font.FontSize = 10;
+            excelManager.Writer.SetCellStyle(1, 1,
+                style);
+            var newStyle = excelManager.Reader.GetCellStyle(1, 1);
+            Assert.AreEqual(style.Alignment.Horizontal, newStyle.Alignment.Horizontal);
+            Assert.AreEqual(style.Alignment.Vertical, newStyle.Alignment.Vertical);
+            Assert.AreEqual(style.Font.FontName, newStyle.Font.FontName);
+            Assert.AreEqual(style.Font.FontSize, newStyle.Font.FontSize);
+        }
+
+        [TestMethod]
+        public void SetCellWidth()
+        {
+            var excelManager = new ExcelManager();
+            excelManager.Writer.SetCellWidth(1,10.0);
+            Assert.AreEqual(excelManager.Reader.GetCellWidth(1), 10.0);
+        }
+
+        [TestMethod]
+        public void AutoFitColumn()
+        {
+            var excelManager = new ExcelManager();
+            const string text = "test for autofit method";
+            excelManager.Writer.SetCellValue(1,1, text);
+            excelManager.Writer.AutoFitColumn(1);
+            var width = excelManager.Reader.GetCellWidth(1);
+            
+            //8.43 chars equals to a width of 9.14
+            var conversionFactor = 8.43/9.14;
+            
+            Assert.IsTrue(width - text.Length * conversionFactor < 0.1);
         }
 
     }

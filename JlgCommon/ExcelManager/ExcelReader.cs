@@ -103,9 +103,9 @@ namespace JlgCommon.ExcelManager
             return rowValues;
         }
 
-        public Dictionary<int, String> GetRowNotEmptyValuesWithColumnIndexes(int rowIndex)
+        public Dictionary<int, string> GetRowNotEmptyValuesWithColumnIndexes(int rowIndex)
         {
-            var rowValues = new Dictionary<int, String>();
+            var rowValues = new Dictionary<int, string>();
             foreach (var columnIndex in GetColumnOrderedIndexes())
             {
                 var cellValue = _excelDocument.GetCellValueAsString(rowIndex, columnIndex);
@@ -117,9 +117,9 @@ namespace JlgCommon.ExcelManager
             return rowValues;
         }
 
-        public List<String> GetRowValues(int rowIndex)
+        public List<string> GetRowValues(int rowIndex)
         {
-            var rowValues = new List<String>();
+            var rowValues = new List<string>();
             foreach (var columnIndex in GetColumnOrderedIndexes())
             {
                 var cellValue = _excelDocument.GetCellValueAsString(rowIndex, columnIndex);
@@ -253,9 +253,9 @@ namespace JlgCommon.ExcelManager
             return columnIndexes;
         }
 
-        public List<List<String>> GetValuesForWorksheet(String worksheetName)
+        public List<List<string>> GetNonEmptyValuesForWorksheet(string worksheetName)
         {
-            var values = new List<List<String>>();
+            var values = new List<List<string>>();
 
             var worksheetFound = _excelDocument.SelectWorksheet(worksheetName);
             if (!worksheetFound)
@@ -264,7 +264,8 @@ namespace JlgCommon.ExcelManager
 
             for (int i = 0; i < rowCount; i++)
             {
-                values.Add(GetRowValues(i + 1));
+                var rowValues = GetRowNotEmptyValues(i + 1);
+                values.Add(rowValues);
             }
 
             return values;
@@ -290,9 +291,7 @@ namespace JlgCommon.ExcelManager
                 {
                     return new Tuple<int, int>(i, j);
                 }
-
             }
-            //throw new Exception("999999999999999999999");
             return null;
 
         } 
