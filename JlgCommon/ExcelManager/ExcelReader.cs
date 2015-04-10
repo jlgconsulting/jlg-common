@@ -253,7 +253,7 @@ namespace JlgCommon.ExcelManager
             return columnIndexes;
         }
 
-        public List<List<string>> GetNonEmptyValuesForWorksheet(string worksheetName)
+        public List<List<string>> GetValuesForWorksheet(string worksheetName)
         {
             var values = new List<List<string>>();
 
@@ -264,7 +264,7 @@ namespace JlgCommon.ExcelManager
 
             for (int i = 0; i < rowCount; i++)
             {
-                var rowValues = GetRowNotEmptyValues(i + 1);
+                var rowValues = GetRowValues(i + 1);
                 values.Add(rowValues);
             }
 
