@@ -253,6 +253,11 @@ namespace JlgCommon.ExcelManager
             _excelDocument.SetCellValue(rowIndex, columnIndex, value);
         }
 
+        public void MergeCells(int startingRow, int startingColumn, int endingRow, int endingColumn)
+        {
+            _excelDocument.MergeWorksheetCells(startingRow, startingColumn, endingRow, endingColumn);
+        }
+
         public void SetCellBold(int rowIndex, int columnIndex)
         {
             _excelDocument.SetCellBold(rowIndex, columnIndex);
