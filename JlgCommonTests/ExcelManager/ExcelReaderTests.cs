@@ -189,7 +189,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void GetValuesForWorksheet()
         {
-            List<List<string>> values = _excelManager.Reader.GetNonEmptyValuesForWorksheet("Page3");
+            List<List<string>> values = _excelManager.Reader.GetValuesForWorksheet("Page3");
             CollectionAssert.AreEquivalent(values.ElementAt(0),
                 new List<string> { "Merged cells" });
             CollectionAssert.AreEquivalent(values.ElementAt(1),
