@@ -41,7 +41,7 @@
       <HintPath>..\..\e-ASTC\packages\DocumentFormat.OpenXmlSDK.2.0\lib\Net35\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
     <Reference Include="SpreadsheetLight">
-      <HintPath>..\packages\SpreadsheetLight.3.4.4\lib\SpreadsheetLight.dll</HintPath>
+      <HintPath>..\..\e-ASTC\packages\SpreadsheetLight.3.4.4\lib\SpreadsheetLight.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>

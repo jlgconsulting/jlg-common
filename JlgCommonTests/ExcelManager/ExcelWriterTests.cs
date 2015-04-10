@@ -281,5 +281,27 @@ namespace JlgCommonTests.Extensions
             Assert.IsTrue(width - text.Length * conversionFactor < 0.1);
         }
 
+        [TestMethod]
+        public void MergeCells()
+        {
+            var excelManager = new ExcelManager();
+
+            excelManager.Writer.MergeCells(2, 2, 3, 5);
+            var mergedCellsList = excelManager.Reader.GetMergedCells();
+
+            bool assertion = false;
+
+            foreach (SLMergeCell mergedCell in mergedCellsList)
+            {
+                if ((mergedCell.StartRowIndex == 2) && (mergedCell.StartColumnIndex == 2) && (mergedCell.EndRowIndex == 3) && (mergedCell.EndColumnIndex == 5))
+                {
+                    assertion = true;
+                    break;
+                }
+            }
+
+            Assert.IsTrue(assertion);
+
+        }
     }
 }
