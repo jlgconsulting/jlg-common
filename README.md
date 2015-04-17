@@ -17,7 +17,9 @@ the changes will be committed separately to Jlg.Common repository and not to you
 <br/>
 <br/>
 Because now Nuget packages restore doesn't work anymore, in both projects JlgCommon and JlgCommonTests, you must install manually from Package Manager Console:
+<br/>
 <i>Install-Package SpreadsheetLight</i>
+<br/>
 <i>Install-Package DocumentFormat.OpenXml -Version 1.0.0</i>
 <br/>
 <br/>
