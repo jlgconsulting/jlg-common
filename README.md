@@ -15,6 +15,12 @@ the changes will be committed separately to Jlg.Common repository and not to you
 <br/>
 <b>3)</b> Open JlgCommon.sln, restore Nuget packages and build solution
 <br/>
+<br/>
+Because now Nuget packages restore doesn't work anymore, in both projects JlgCommon and JlgCommonTests, you must install manually from Package Manager Console:
+<i>Install-Package SpreadsheetLight</i>
+<i>Install-Package DocumentFormat.OpenXml -Version 1.0.0</i>
+<br/>
+<br/>
 <b>4)</b> Inside Visual Studio, right click on Solution -> Add -> Existing Project -> choose "Solution Files (*.sln)" -> \Jlg.Common\JlgCommon.sln
 <br/>
 <br/>
