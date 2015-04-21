@@ -231,9 +231,12 @@ namespace JlgCommon.ExcelManager
 
         public SLStyle GetCellStyle(int rowIndex, int columnIndex)
         {
-            //SLStyle slStyle = _excelDocument.GetCellStyle(rowIndex, columnIndex);
-            //return slStyle;
             return _excelDocument.GetCellStyle(rowIndex, columnIndex);
+        }
+
+        public SLStyle GetRowStyle(int rowIndex)
+        {
+            return _excelDocument.GetRowStyle(rowIndex);
         }
 
         public double GetCellWidth(int columnIndex)

@@ -298,9 +298,9 @@ namespace JlgCommon.ExcelManager
             _excelDocument.DeleteWorksheet(worksheetName);
         }
 
-        public void SelectWorksheet(string worksheetName)
+        public bool SelectWorksheet(string worksheetName)
         {
-            _excelDocument.SelectWorksheet(worksheetName);
+            return _excelDocument.SelectWorksheet(worksheetName);
         }
 
         public void SaveToDisk()
@@ -326,6 +326,27 @@ namespace JlgCommon.ExcelManager
         public void AutoFitRow(int rowIndex)
         {
             _excelDocument.AutoFitRow(rowIndex);
+        }
+
+        public void SurroundRowsWithBorder(int firstRowIndex, int firstColumnIndex, int lastRowIndex, int lastColumnIndex)
+        {
+            SLStyle upperStyle = new SLStyle();
+            upperStyle.Border.TopBorder.BorderStyle = BorderStyleValues.Thin;
+            upperStyle.Border.TopBorder.Color = Color.Black;
+
+            for (int columnIndex = 1; columnIndex <= lastColumnIndex; columnIndex++)
+            {
+                _excelDocument.SetCellStyle(firstRowIndex, columnIndex, upperStyle);
+            }
+
+            SLStyle lowerStyle = new SLStyle();
+            lowerStyle.Border.BottomBorder.BorderStyle = BorderStyleValues.Thin;
+            lowerStyle.Border.BottomBorder.Color = Color.Black;
+
+            for (int columnIndex = 1; columnIndex <= lastColumnIndex; columnIndex++)
+            {
+                _excelDocument.SetCellStyle(lastRowIndex, columnIndex, lowerStyle);
+            }
         }
         
     }

@@ -301,7 +301,23 @@ namespace JlgCommonTests.Extensions
             }
 
             Assert.IsTrue(assertion);
+        }
 
+        [TestMethod]
+        public void SurroundRowsWithBorder()
+        {
+            var excelManager = new ExcelManager();
+            excelManager.Writer.SelectWorksheet("Page2");
+            
+            excelManager.Writer.SurroundRowsWithBorder(2, 1, 7, 1);
+
+            SLStyle upperStyle = excelManager.Reader.GetCellStyle(2, 1);
+            Assert.AreEqual(upperStyle.Border.TopBorder.BorderStyle, BorderStyleValues.Thin);
+            Assert.AreEqual(upperStyle.Border.TopBorder.Color.ToArgb(), System.Drawing.Color.Black.ToArgb());
+
+            SLStyle lowerStyle = excelManager.Reader.GetCellStyle(7, 1);
+            Assert.AreEqual(lowerStyle.Border.BottomBorder.BorderStyle, BorderStyleValues.Thin);
+            Assert.AreEqual(lowerStyle.Border.BottomBorder.Color.ToArgb(), System.Drawing.Color.Black.ToArgb());
         }
     }
 }
