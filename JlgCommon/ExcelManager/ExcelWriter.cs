@@ -250,7 +250,7 @@ namespace JlgCommon.ExcelManager
         
         public void SetCellValue(int rowIndex, int columnIndex, dynamic value)
         {
-            _excelDocument.SetCellValue(rowIndex, columnIndex, value);
+             _excelDocument.SetCellValue(rowIndex, columnIndex, value);
         }
 
         public void MergeCells(int startingRow, int startingColumn, int endingRow, int endingColumn)
@@ -296,7 +296,12 @@ namespace JlgCommon.ExcelManager
         public void DeleteWorksheet(string worksheetName)
         {
             _excelDocument.DeleteWorksheet(worksheetName);
-        }        
+        }
+
+        public void SelectWorksheet(string worksheetName)
+        {
+            _excelDocument.SelectWorksheet(worksheetName);
+        }
 
         public void SaveToDisk()
         {

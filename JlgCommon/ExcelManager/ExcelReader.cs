@@ -298,6 +298,41 @@ namespace JlgCommon.ExcelManager
 
         } 
 
+        /*
+         * creates a dictionary with the values of the first row as Keys and values of the second row as Values
+         */
 
+        public Dictionary<string, string> GetTwoRowValuesDictionary(int firstRowIndex, int secondRowIndex)
+        {
+            var dictionary = new Dictionary<string, string>();
+            foreach (var columnIndex in GetColumnOrderedIndexes())
+            {
+                var firstValue = _excelDocument.GetCellValueAsString(firstRowIndex, columnIndex);
+                var secondValue = _excelDocument.GetCellValueAsString(secondRowIndex, columnIndex);
+                if (firstValue != "")
+                {
+                    dictionary.Add(firstValue, secondValue);
+                }
+            }
+
+            return dictionary;
+        }
+
+        /*
+         * receives a tuple of the value to search for and the rowIndex where to search that value
+         * returns the columnIndexes of the values
+         */
+
+        public List<int> GetColumnIndexesForStringTuple(List<Tuple<string, int>> tuples)
+        {
+            var columnIndexes = new List<int>();
+            foreach (var tuple in tuples)
+            {
+                var value = tuple.Item1;
+                var rowIndex = tuple.Item2;
+                columnIndexes.Add(GetColumnIndexesForSpecificStringValue(rowIndex, value).First());
+            }
+            return columnIndexes;
+        }
     }
 }
