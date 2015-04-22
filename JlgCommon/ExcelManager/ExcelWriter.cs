@@ -162,9 +162,7 @@ namespace JlgCommon.ExcelManager
             }
 
             _excelDocument.InsertChart(chart);
-
-            _excelDocument.SetSheetColumnsWidths(xAxis.Count + 1);
-
+                  
             return startingRow + 1 + lineChart.Series.Count + Convert.ToInt32(height);
         }
 
@@ -276,12 +274,7 @@ namespace JlgCommon.ExcelManager
         public void SetCellFontColor(int rowIndex, int columnIndex, Color color)
         {
             _excelDocument.SetCellFontColor(rowIndex, columnIndex, color);
-        }
-
-        public void SetSheetColumnsWidths(int nrColumns, double columnWidth = 17, bool firstColumnIsBigger = true, int startingColumn = 1)
-        {
-            _excelDocument.SetSheetColumnsWidths(nrColumns, columnWidth, firstColumnIsBigger, startingColumn);
-        }
+        }       
 
         public void AddWorksheet(string worksheetName)
         {

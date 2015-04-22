@@ -76,29 +76,7 @@ namespace JlgCommon.ExcelManager
        
             excelDocument.SetCellStyle(rowIndex, columnIndex, cellStyle);
         }
-
-        public static void SetSheetColumnsWidths(this SLDocument excelDocument, int nrColumns, double columnWidth = 17, bool firstColumnIsBigger = true, int startingColumn = 1)
-        {
-            if (nrColumns <= 0)
-            {
-                return;
-            }
-
-            if (firstColumnIsBigger)
-            {
-                excelDocument.SetColumnWidth(startingColumn, columnWidth + 10);
-            }
-            else
-            {
-                excelDocument.SetColumnWidth(startingColumn, columnWidth);
-            }
-
-            for (int i = startingColumn + 1; i <= nrColumns; i++)
-            {
-                excelDocument.SetColumnWidth(i, columnWidth);
-            }
-        }
-
+       
         public static void HideRowButLetChartsSeeIt(this SLDocument excelDocument, int rowIndex)
         {
             excelDocument.SetRowHeight(rowIndex, 0.001);
