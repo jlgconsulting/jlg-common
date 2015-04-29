@@ -103,6 +103,12 @@ namespace JlgCommon.ExcelManager
             return rowValues;
         }
 
+        public Dictionary<int, string> GetRowValuesWithColumnIndexes(int rowIndex)
+        {
+            return GetColumnOrderedIndexes().
+                ToDictionary(columnIndex => columnIndex, columnIndex => _excelDocument.GetCellValueAsString(rowIndex, columnIndex));
+        }
+
         public Dictionary<int, string> GetRowNotEmptyValuesWithColumnIndexes(int rowIndex)
         {
             var rowValues = new Dictionary<int, string>();
@@ -134,7 +140,6 @@ namespace JlgCommon.ExcelManager
 
             var numberOfRowsInSheet = GetNumberOfRows();
             //the first row is the column title
-            var cells = _excelDocument.GetCells();
             for (int i = startRowIndex; i <= numberOfRowsInSheet; i++)
             {   
                 var cellValue = _excelDocument.GetCellValueAsString(i, columnIndex);
@@ -264,7 +269,7 @@ namespace JlgCommon.ExcelManager
 
             var worksheetFound = _excelDocument.SelectWorksheet(worksheetName);
             if (!worksheetFound)
-                throw new Exception("Could not found worksheet" + worksheetName);
+                throw new Exception("Could not find worksheet" + worksheetName);
             int rowCount = GetNumberOfRows();
 
             for (int i = 0; i < rowCount; i++)
