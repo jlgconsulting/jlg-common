@@ -248,7 +248,15 @@ namespace JlgCommon.ExcelManager
         
         public void SetCellValue(int rowIndex, int columnIndex, dynamic value)
         {
-             _excelDocument.SetCellValue(rowIndex, columnIndex, value);
+            try
+            {
+                _excelDocument.SetCellValue(rowIndex, columnIndex, value);
+            }
+            catch
+            {
+                _excelDocument.SetCellValue(rowIndex, columnIndex, (string)value);
+            }            
+            
         }
 
         public void MergeCells(int startingRow, int startingColumn, int endingRow, int endingColumn)
