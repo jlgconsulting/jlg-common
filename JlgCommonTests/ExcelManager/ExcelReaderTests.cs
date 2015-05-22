@@ -208,5 +208,14 @@ namespace JlgCommonTests.Extensions
             Assert.AreEqual(indexes.Item2, 2);
         }
 
+        [TestMethod]
+        public void CellIsValidDateAfter1900()
+        {
+            _excelManager.Reader.SelectWorksheet("Page1");
+            Assert.IsFalse(_excelManager.Reader.CellIsValidDateAfter1900(2, 3));
+            Assert.IsTrue(_excelManager.Reader.CellIsValidDateAfter1900(4, 5));
+        }
+
+
     }
 }

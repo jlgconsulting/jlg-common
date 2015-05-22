@@ -35,6 +35,11 @@ namespace JlgCommon.ExcelManager
             return excelFileByteArray;
         }
 
+        public bool CellIsValidDateAfter1900(int rowIndex, int columnIndex)
+        {
+            return _excelDocument.GetCellValueAsDateTime(rowIndex, columnIndex) != new DateTime(1900, 1, 1);
+        }
+
         public string GetCellValueAsString(int rowIndex, int columnIndex)
         {
             return _excelDocument.GetCellValueAsString(rowIndex, columnIndex);
@@ -164,12 +169,13 @@ namespace JlgCommon.ExcelManager
             var numberOfRowsInSheet = GetNumberOfRows();
             for (int i = startRowIndex; i <= numberOfRowsInSheet; i++)
             {
-
-                if (string.IsNullOrEmpty(_excelDocument.GetCellValueAsString(i, dateColumnIndex)))
+                if (!CellIsValidDateAfter1900(i, dateColumnIndex))
                 {
                     continue;
                 }
+
                 var cellValue = _excelDocument.GetCellValueAsDateTime(i, dateColumnIndex);
+                                
                 if (!columnUniqueValues.ContainsKey(cellValue))
                 {
                     columnUniqueValues.Add(cellValue, true);
