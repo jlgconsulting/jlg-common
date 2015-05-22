@@ -34,7 +34,8 @@ namespace JlgCommon.Extensions
 
         public static string Capitalize(this string str)
         {
-            if (string.IsNullOrEmpty(str))
+            if (string.IsNullOrEmpty(str)
+                || string.IsNullOrEmpty(str.Trim()))
             {
                 return str;
             }
