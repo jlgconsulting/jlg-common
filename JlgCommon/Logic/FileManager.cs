@@ -73,6 +73,15 @@ namespace JlgCommon.Logic
                     file.Delete();
                 }
             }
+
+            if (includeAllChildDirectories)
+            {
+                foreach (var dir in directoryRes.GetDirectories())
+                {
+                    dir.Delete(true);
+                }
+            }
+
         }
 
         public List<FileInfo> GetAllFilesFromDirectory(string directoryName, List<string> extensions = null, bool includeAllChildDirectories=false)
@@ -110,6 +119,34 @@ namespace JlgCommon.Logic
                 
             }
             return filePaths;
-        }        
+        }
+        
+        public void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs = true)
+        {            
+            var dir = new DirectoryInfo(sourceDirName);
+            var dirs = dir.GetDirectories();
+                       
+            if (!Directory.Exists(destDirName))
+            {
+                Directory.CreateDirectory(destDirName);
+            }
+            
+            FileInfo[] files = dir.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                string temppath = Path.Combine(destDirName, file.Name);
+                file.CopyTo(temppath, false);
+            }
+           
+            if (copySubDirs)
+            {
+                foreach (DirectoryInfo subdir in dirs)
+                {
+                    string temppath = Path.Combine(destDirName, subdir.Name);
+                    DirectoryCopy(subdir.FullName, temppath, copySubDirs);
+                }
+            }
+        }
+    
     }
 }
