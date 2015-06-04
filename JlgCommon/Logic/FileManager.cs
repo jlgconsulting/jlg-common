@@ -120,8 +120,8 @@ namespace JlgCommon.Logic
             }
             return filePaths;
         }
-        
-        public void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs = true)
+
+        public void CopyDirectory(string sourceDirName, string destDirName, bool copySubDirs = true)
         {            
             var dir = new DirectoryInfo(sourceDirName);
             var dirs = dir.GetDirectories();
@@ -143,7 +143,7 @@ namespace JlgCommon.Logic
                 foreach (DirectoryInfo subdir in dirs)
                 {
                     string temppath = Path.Combine(destDirName, subdir.Name);
-                    DirectoryCopy(subdir.FullName, temppath, copySubDirs);
+                    CopyDirectory(subdir.FullName, temppath, copySubDirs);
                 }
             }
         }
