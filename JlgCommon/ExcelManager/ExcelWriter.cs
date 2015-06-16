@@ -234,6 +234,13 @@ namespace JlgCommon.ExcelManager
             else
             {
                 _excelDocument.SetCellValue(startingRow, startingColumn, rootTreeNode.Name);
+            }    
+        
+            if (!string.IsNullOrEmpty(rootTreeNode.ExtraInfo))
+            {
+                startingRow++;
+                _excelDocument.SetCellValue(startingRow, startingColumn, rootTreeNode.ExtraInfo);
+                _excelDocument.SetCellItalic(startingRow, startingColumn);
             }
             startingRow++;
             startingColumn++;

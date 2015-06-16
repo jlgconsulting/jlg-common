@@ -84,34 +84,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="ClientSide\directives\comparingArrow.html" />
-    <Content Include="ClientSide\directives\comparingArrow.js" />
-    <Content Include="ClientSide\directives\confirmPopup.html" />
-    <Content Include="ClientSide\directives\confirmPopup.js" />
-    <Content Include="ClientSide\directives\datePicker.html" />
-    <Content Include="ClientSide\directives\datePicker.js" />
-    <Content Include="ClientSide\directives\gridDm.html" />
-    <Content Include="ClientSide\directives\gridDm.js" />
-    <Content Include="ClientSide\directives\loadingPopup.html" />
-    <Content Include="ClientSide\directives\loadingPopup.js" />
-    <Content Include="ClientSide\directives\sectionTitle.html" />
-    <Content Include="ClientSide\directives\sectionTitle.js" />
-    <Content Include="ClientSide\directives\selectValuesWithAliasesIntoGrid.html" />
-    <Content Include="ClientSide\directives\selectValuesWithAliasesIntoGrid.js" />
-    <Content Include="ClientSide\directives\shortcutsPopup.html" />
-    <Content Include="ClientSide\directives\shortcutsPopup.js" />
-    <Content Include="ClientSide\directives\treeDm.html" />
-    <Content Include="ClientSide\directives\treeDm.js" />
-    <Content Include="ClientSide\directives\twoSelectsIntoGrid.html" />
-    <Content Include="ClientSide\directives\twoSelectsIntoGrid.js" />
-    <Content Include="ClientSide\directives\uploadFiles.html" />
-    <Content Include="ClientSide\directives\uploadFiles.js" />
-    <Content Include="ClientSide\services\angularFileUploadHelperSrv.js" />
-    <Content Include="ClientSide\services\arrayHelperSrv.js" />
-    <Content Include="ClientSide\services\dateHelperSrv.js" />
-    <Content Include="ClientSide\services\stepsHelperSrv.js" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
