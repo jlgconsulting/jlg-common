@@ -61,5 +61,28 @@ namespace JlgCommonTests.Extensions
             Assert.AreEqual(new DateTime(2014, 3, 1), date.ToMonthYear());
         }
 
+        [TestMethod]
+        public void DifferenceInMonths()
+        {
+            var start = new DateTime(2014, 3, 12);
+            var end = new DateTime(2014, 3, 2);
+            Assert.AreEqual(end.DifferenceInMonths(start), 0);
+            Assert.AreEqual(start, new DateTime(2014, 3, 12));
+            Assert.AreEqual(end, new DateTime(2014, 3, 2));
+
+            start = new DateTime(2014, 3, 12);
+            end = new DateTime(2014, 4, 2);
+            Assert.AreEqual(end.DifferenceInMonths(start), 1);
+            Assert.AreEqual(start.DifferenceInMonths(end), -1);
+
+            start = new DateTime(2014, 11, 12);
+            end = new DateTime(2015, 2, 10);
+            Assert.AreEqual(end.DifferenceInMonths(start), 3);
+            Assert.AreEqual(start.DifferenceInMonths(end), -3);
+
+        }
+
+        
+
     }
 }

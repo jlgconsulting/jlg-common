@@ -31,5 +31,46 @@ namespace JlgCommon.Extensions
             return new DateTime(dateTime.Year, dateTime.Month, 1);
         }
 
+        public static int DifferenceInMonths(this DateTime currentDateTime, DateTime otherDateTime)
+        {
+            currentDateTime = currentDateTime.ToMonthYear();
+            otherDateTime = otherDateTime.ToMonthYear();
+            
+            bool otherIsGreater = false;
+            if (currentDateTime < otherDateTime)
+            {
+                otherIsGreater = true;
+            }
+
+            DateTime start;
+            DateTime end;
+
+            if (otherIsGreater)
+            {
+                start = currentDateTime;
+                end = otherDateTime;
+            }
+            else
+            {
+                start = otherDateTime;
+                end = currentDateTime;
+            }
+
+            int difference = 0;
+            while (start < end)
+            {
+                start = start.AddMonths(1);
+                difference++;
+            }
+
+            if (otherIsGreater)
+            {
+                return -difference;
+            }
+            else
+            {
+                return difference;
+            }
+        }
     }
 }
