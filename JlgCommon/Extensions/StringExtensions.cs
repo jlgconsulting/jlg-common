@@ -10,9 +10,19 @@ namespace JlgCommon.Extensions
 {
     public static class StringExtensions
     {
-        public static string RemoveSqlInvalidCharactersAndTrim(this string str)
+        public static string ToValidSqlTableOrColumnName(this string str)
         {
-            return Regex.Replace(str.Trim().Substring(0,110), "[^a-zA-Z0-9_. ]+", "_", RegexOptions.Compiled);
+            while (str.IndexOf("  ") >= 0)
+            {
+                str = str.Replace("  ", " ");
+            }
+            
+            var modifiedStr = Regex.Replace(str.Trim(), "[^a-zA-Z0-9_.-]+", "_", RegexOptions.Compiled);
+            if (modifiedStr.Length > 110)
+            {
+                modifiedStr = modifiedStr.Substring(0, 110);
+            }
+            return modifiedStr;
         }
 
         public static bool IsEmail(this string value)
