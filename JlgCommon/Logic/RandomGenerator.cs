@@ -87,8 +87,7 @@ namespace JlgCommon.Logic
             }
             return randList;
         }
-
-
+        
         public List<Guid> GetRandomGuidList(int length)
         {
             var randList = new List<Guid>();
@@ -98,17 +97,15 @@ namespace JlgCommon.Logic
             }
             return randList;
         }
-
-
+        
         public DateTime GetRandomDateTime(int startYearInclusive, int endYearExclusive)
         {
-
             var year = GetRandomIntBetween(startYearInclusive, endYearExclusive);
             var month = GetRandomIntBetween(1, 13);
             var day = GetRandomIntBetween(1, 29);
             return new DateTime(year, month, day);
         }
-
+                
         public TimeSpan GetRandomTimeSpan()
         {
 
