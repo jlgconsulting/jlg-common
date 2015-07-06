@@ -22,6 +22,8 @@ Because now Nuget packages restore doesn't work anymore, in both projects JlgCom
 <br/>
 <i>Install-Package DocumentFormat.OpenXml -Version 1.0.0</i>
 <br/>
+<i>Install-Package AjaxMin</i>
+<br/>
 <br/>
 <b>4)</b> Inside Visual Studio, right click on Solution -> Add -> Existing Project -> choose "Solution Files (*.sln)" -> \Jlg.Common\JlgCommon.sln
 <br/>
