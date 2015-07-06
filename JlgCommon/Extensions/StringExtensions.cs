@@ -12,7 +12,7 @@ namespace JlgCommon.Extensions
     {
         public static string RemoveSqlInvalidCharactersAndTrim(this string str)
         {
-            return Regex.Replace(str.Trim(), "[^a-zA-Z0-9_. ]+", "_", RegexOptions.Compiled);
+            return Regex.Replace(str.Trim().Substring(0,110), "[^a-zA-Z0-9_. ]+", "_", RegexOptions.Compiled);
         }
 
         public static bool IsEmail(this string value)
