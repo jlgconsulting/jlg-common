@@ -7,6 +7,7 @@ namespace JlgCommon.Domain
         public virtual Guid Id { get; set; }
         public virtual TName Name { get; set; }
         public virtual TValue Value { get; set; }
+        public virtual Guid? OwnerId { get; set; }
 
         public NameValuePair()
         {
@@ -18,6 +19,14 @@ namespace JlgCommon.Domain
             Id = Guid.NewGuid();
             Name = name;
             Value = value;
+        }
+
+        public NameValuePair(TName name, TValue value, Guid ownerId)
+        {
+            Id = Guid.NewGuid();
+            Name = name;
+            Value = value;
+            OwnerId = ownerId;
         }
     }
 }
