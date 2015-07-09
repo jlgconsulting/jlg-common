@@ -42,10 +42,10 @@ namespace JlgCommonTests.Extensions
         public void ToValidSqlTableOrColumnName()
         {
             Assert.AreEqual("Dan_Misailescu",
-                            "Dan Misailescu".ToValidSqlTableOrColumnName(), false);
+                            "Dan Misailescu".ToSqlValidTableOrColumnName(), false);
 
             Assert.AreEqual("name_-_And_1_surename",
-                            " name - And   1 $& surename ".ToValidSqlTableOrColumnName(), false);            
+                            " name - And   1 $& surename ".ToSqlValidTableOrColumnName(), false);            
         }   
 
     }

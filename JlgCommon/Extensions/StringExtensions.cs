@@ -10,7 +10,7 @@ namespace JlgCommon.Extensions
 {
     public static class StringExtensions
     {
-        public static string ToValidSqlTableOrColumnName(this string str)
+        public static string ToSqlValidTableOrColumnName(this string str)
         {
             while (str.IndexOf("  ") >= 0)
             {
