@@ -1,0 +1,17 @@
+﻿<button ng-click="showPrevious()" ng-disabled="currentStartIndex == 0" class="sliderButton-left">
+    <i class="fa fa-chevron-left fa-2x"></i>
+</button>
+<div class="history-container-inline">
+    <span id="historySlider" ng-repeat="item in items">
+        <span ng-show="!item.hide" class="history-inline-badge badge badge-info">
+            <a ng-click="selectCurrentItem(item)" title="{{item.name}}" class="history-inline-elem">
+                {{item.name | limitTo: MAX_HISTORY_STEP_DISPLAY_LENGTH}}
+                <span ng-show="item.name.length > MAX_HISTORY_STEP_DISPLAY_LENGTH">...</span>
+            </a>
+        </span>
+    </span>
+</div>
+
+<button ng-click="showNext()" ng-disabled="currentStartIndex == items.length-1" class="sliderButton-right">
+    <i class="fa fa-chevron-right  fa-2x"></i>
+</button>

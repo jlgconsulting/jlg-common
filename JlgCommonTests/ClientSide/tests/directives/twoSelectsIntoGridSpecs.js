@@ -1,5 +1,5 @@
 ﻿'use strict';
-describe('directives/twoSelectsIntoGrid tests:', function () {
+describe('jlg.common.directives/twoSelectsIntoGrid tests:', function () {
     var scope,
     directiveElement,
     directiveIsolatedScope;
@@ -27,14 +27,15 @@ describe('directives/twoSelectsIntoGrid tests:', function () {
     }];
 
     beforeEach(function () {
-        module("shared");
+       
+        module("jlg.common.services");
         module("alltemplates");
-        module("directives");
+        module("jlg.common.directives");
 
-        inject(["$rootScope", "$compile", "apfSharedDataAndPopupSrv", "arrayHelperSrv",
-            function ($rootScope, $compile, apfSharedDataAndPopupSrv, arrayHelperSrv) {
+        inject(["$rootScope", "$compile", "sharedDataAndPopupSrv", "arrayHelperSrv",
+            function ($rootScope, $compile, sharedDataAndPopupSrv, arrayHelperSrv) {
             scope = $rootScope.$new();
-            scope.apfSharedData = apfSharedDataAndPopupSrv.sharedData;
+            scope.apfSharedData = sharedDataAndPopupSrv.sharedData;
             scope.apfSharedData.loggedInContext = {};
             scope.apfSharedData.loggedInContext.translatedText = {};
             scope.customTextColumnDisplayTitle1 = "<b>User</b>";

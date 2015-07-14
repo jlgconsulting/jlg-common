@@ -1,0 +1,83 @@
+﻿<div class="row-fluid">
+    <button ng-show="options.createCallback"
+            ng-click="options.createCallback()"
+            ng-disabled="options.createDisabledCallback && options.createDisabledCallback()"
+            title="{{options.textCreate}}"
+            class="btn btn-primary mrg-down3">
+        <i class="fa fa-plus"></i>&nbsp;{{options.textCreate}}
+    </button>    
+
+    <div ng-show="rows.length == 0">
+        <i class="fa fa-ellipsis-h"></i>
+    </div>
+    <div ng-show="rows.length > 0" class="table-responsive">
+        <table class="{{tableClass}}">
+            <thead>
+                <tr>
+                    <th ng-show="!options.hideRowsNumbers" style="width: 25px"></th>
+                    <th ng-repeat="column in options.columns" ng-style="column.style">
+                        <a ng-click="toggleSort(column)" class="pointer">
+                            <span ng-bind-html="trustAsHtml(column.header)"></span>
+                            <i class="fa fa-caret-down" ng-show="column.isAscending===false"></i>
+                            <i class="fa fa-caret-up" ng-show="column.isAscending===true"></i>
+                        </a>
+                    </th>
+                    <th ng-show="options.customButtons || options.updateCallback || options.deleteCallback"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in rows track by $index">
+                    <td ng-show="!options.hideRowsNumbers">{{$index + 1}}.&nbsp;</td>
+
+                    <td ng-repeat="column in options.columns" style="word-wrap: break-word;">
+                        <div ng-show="column.cellTemplate" ng-html-compile="getHtml(column.cellTemplate(row))"></div>                    
+                        <div ng-show="!column.cellTemplate">{{getDeepPropertyValueFromStringPath(row, column.propertyName)}}</div>
+                    </td>
+
+                    <td ng-show="options.customButtons || options.updateCallback || options.deleteCallback">
+                        <div>
+                            <div ng-show="options.customButtons">
+                                <button ng-repeat="button in options.customButtons"
+                                        ng-click="button.clickCallback(row)"
+                                        ng-disabled="button.disabledCallback && button.disabledCallback(row)"
+                                        title="{{button.name}}"
+                                        ng-bind-html="trustAsHtml(button.template)"
+                                        class="{{button.customClass}}"></button>
+                            </div>
+
+                            <div ng-show="!options.customButtons">
+                                <button ng-show="options.updateCallback"
+                                        ng-click="options.updateCallback(row)"
+                                        ng-disabled="options.updateDisabledCallback && options.updateDisabledCallback(row)"
+                                        title="{{options.textUpdate}}"
+                                        class="btn btn-info btn-pad-sm">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button ng-show="options.deleteCallback"
+                                        ng-click="options.deleteCallback(row)"
+                                        ng-disabled="options.deleteDisabledCallback && options.deleteDisabledCallback(row)"
+                                        title="{{options.textDelete}}"
+                                        class="btn btn-danger btn-pad-sm">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button ng-show="options.deleteAllCallback"
+                ng-click="options.deleteAllCallback()"
+                ng-disabled="options.deleteAllDisabledCallback && options.deleteAllDisabledCallback()"
+                title="{{options.textDeleteAll}}"
+                class="btn btn-danger">
+            {{options.textDeleteAll}}&nbsp;<i class="fa fa-trash-o"></i>
+        </button>
+    </div>
+    <div ng-show="!rows" class="error-text">
+        Error: The ROWS object for the "Dan Misailescu Grid" was not provided!
+    </div>
+    <div ng-show="!options" class="error-text">
+        Error: The OPTIONS object for the "Dan Misailescu Grid" was not provided!
+    </div>
+</div>

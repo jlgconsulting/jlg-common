@@ -1,17 +1,17 @@
 ﻿'use strict';
-describe('directives/sectionTitle tests:', function () {
+describe('jlg.common.directives/sectionTitle tests:', function () {
     var scope,
     directiveElement,
     directiveIsolatedScope;
 
-    beforeEach(function () {
-        module("shared");
+    beforeEach(function () {     
+        module("jlg.common.services");
         module("alltemplates");
-        module("directives");
+        module("jlg.common.directives");
 
-        inject(["$rootScope", "$compile", "apfSharedDataAndPopupSrv", function ($rootScope, $compile, apfSharedDataAndPopupSrv) {
+        inject(["$rootScope", "$compile", "sharedDataAndPopupSrv", function ($rootScope, $compile, sharedDataAndPopupSrv) {
             scope = $rootScope.$new();
-            scope.apfSharedData = apfSharedDataAndPopupSrv.sharedData;
+            scope.apfSharedData = sharedDataAndPopupSrv.sharedData;
             directiveElement = angular.element(
                 "<section-title></section-title>");
             $compile(directiveElement)(scope);

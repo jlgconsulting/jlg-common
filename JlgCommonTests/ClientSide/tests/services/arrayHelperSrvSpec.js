@@ -1,12 +1,12 @@
 ﻿"use strict";
-describe("arrayHelperSrv tests", function () {
+describe("jlg.common.services/arrayHelperSrv tests", function () {
     var arrayHelperSrv4Test;
 
     //excuted before each "it" is run.
     beforeEach(function () {
 
         //load the module.
-        module("shared");
+        module("jlg.common.services");
 
         //inject your dateHelperSrv for testing.
         inject(["arrayHelperSrv", function (arrayHelperSrv) {

@@ -1,5 +1,5 @@
 ﻿'use strict';
-describe('_directives/shared/gridDm tests:', function () {
+describe('jlg.common.directives/gridDm tests:', function () {
     var scope,
     directiveElement,
     directiveIsolatedScope;
@@ -27,11 +27,12 @@ describe('_directives/shared/gridDm tests:', function () {
     }];
     
     beforeEach(function () {
-        module("shared");
+        
+        module("jlg.common.services");
         module("alltemplates");
-        module("directives");
+        module("jlg.common.directives");
 
-        inject(["$rootScope", "$compile", function ($rootScope, $compile) {
+        inject(["$rootScope", "$compile", "arrayHelperSrv", function ($rootScope, $compile, arrayHelperSrv) {
             scope = $rootScope.$new();
             directiveElement = angular.element(
                  "<grid-dm rows='gridDmRows'" +
@@ -214,14 +215,14 @@ describe('_directives/shared/gridDm tests:', function () {
 
         expect(directiveIsolatedScope.rows).toEqual(scope.gridDmRows);
         expect(directiveIsolatedScope.options).toEqual(scope.gridDmOptions);
-
-        expect(directiveIsolatedScope.options.customButtons[0].disabledCallback(users[0])).toBe(true);
-        expect(directiveIsolatedScope.options.customButtons[0].disabledCallback(users[1])).toBe(false);
+        
+        expect(directiveIsolatedScope.options.customButtons[0].disabledCallback({ id: 1 })).toBe(true);
+        expect(directiveIsolatedScope.options.customButtons[0].disabledCallback({ id: 300 })).toBe(false);
 
         expect(directiveIsolatedScope.options.customButtons[1].disabledCallback).toBe(undefined);
 
-        expect(directiveIsolatedScope.options.customButtons[2].disabledCallback(users[2])).toBe(true);
-        expect(directiveIsolatedScope.options.customButtons[2].disabledCallback(users[0])).toBe(false);
+        expect(directiveIsolatedScope.options.customButtons[2].disabledCallback({ id: 7 })).toBe(true);
+        expect(directiveIsolatedScope.options.customButtons[2].disabledCallback({ id: 1 })).toBe(false);
         
 
         directiveIsolatedScope.options.customButtons[0].clickCallback(users[1]);

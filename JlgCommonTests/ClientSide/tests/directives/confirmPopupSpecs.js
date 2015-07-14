@@ -1,21 +1,23 @@
 ﻿'use strict';
 //It is shared throughout the entire application and currently used when deleting something
-describe('directives/confirmPopup tests:', function () {
+describe('jlg.common.directives/confirmPopup tests:', function () {
     var scope,
         directiveElement,
         directiveIsolatedScope,
-        apfSharedDataAndPopupSrv4Test;
+        sharedDataAndPopupSrv4Test;
       
     beforeEach(function () {
-        module("shared");
-        module("directives");
+        
+        module("jlg.common.services");        
+        module("jlg.common.directives");
         module("alltemplates");
         
-        inject(["$rootScope", "$compile", "apfSharedDataAndPopupSrv", function ($rootScope, $compile, apfSharedDataAndPopupSrv) {
+        inject(["$rootScope", "$compile", "sharedDataAndPopupSrv", function ($rootScope, $compile, sharedDataAndPopupSrv) {
             scope = $rootScope.$new();
-            scope.apfSharedData = apfSharedDataAndPopupSrv.sharedData;
-            apfSharedDataAndPopupSrv4Test = apfSharedDataAndPopupSrv;
+            scope.apfSharedData = sharedDataAndPopupSrv.sharedData;
+            sharedDataAndPopupSrv4Test = sharedDataAndPopupSrv;            
             scope.apfSharedData.confirmPopup.isOpen = true;
+            
             directiveElement = angular.element(
                 "<confirm-popup ng-show='apfSharedData.confirmPopup.isOpen'"+
                        "custom-class='apfSharedData.confirmPopup.className'"+
@@ -49,7 +51,7 @@ describe('directives/confirmPopup tests:', function () {
 
             //actions to do if confirmed...
 
-            apfSharedDataAndPopupSrv4Test.resetConfirmPopup();
+            sharedDataAndPopupSrv4Test.resetConfirmPopup();
 
             expect(scope.apfSharedData.confirmPopup.originUniqueToken).toBe(null);
             expect(scope.apfSharedData.confirmPopup.objectForConfirmation).toBe(null);

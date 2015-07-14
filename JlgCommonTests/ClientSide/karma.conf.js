@@ -3,27 +3,24 @@ module.exports = function(config) {
         basePath: "../../",
 
         files: [
-            "Web/scripts/dependencies/angular.js",
-            "Web/scripts/dependencies/**/*.js",                        
-            "Web/scripts/apfModules.js",
-            "Web/scripts/localRoutesTexts.js",
-            "Web/scripts/apfRoutes.js",
-            "Web/scripts/app/**/*.js",
-            "Tests/Client/dependencies/angular/angular-mocks.js",
-            "Tests/Client/tests/**/*.js",
+            
+            "JlgCommonTests/ClientSide/dependencies/angular/angular.js",
+            "JlgCommonTests/ClientSide/dependencies/angular/angular-mocks.js",
+            "JlgCommonTests/ClientSide/tests/jlgCommonModules.js",
+            "JlgCommonTests/ClientSide/tests/**/*.js",
 
-            //Templates
-            "Web/scripts/app/**/*.html"
+            "JlgCommon/ClientSide/**/*.js",            
+            "JlgCommon/ClientSide/**/*.html"
         ],
 
         exclude: [
-            "Tests/Client/tests/karma.conf.js"
+            "JlgCommonTests/ClientSide/karma.conf.js"
         ],
         preprocessors: {
-            "Web/scripts/app/**/*.html": ["ng-html2js"]
+            "JlgCommon/ClientSide/**/*.html": ["ng-html2js"]
         },
         ngHtml2JsPreprocessor: {
-            stripPrefix: 'Web/',
+            stripPrefix: 'JlgCommon/',
             moduleName: 'alltemplates'
         },
 

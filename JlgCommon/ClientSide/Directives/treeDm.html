@@ -1,0 +1,28 @@
+﻿<div class="mindmap" style="margin-left:-15px; margin-right:-15px">
+    <ul>
+        <li ng-class="(node.level == 0)? 'pad-left1i' :''" ng-repeat="node in rootNodesArray" ng-include="'node_template_treeDm.html'"></li>
+    </ul>
+</div>
+
+<!-- Nested node template -->
+<script type="text/ng-template" id="node_template_treeDm.html">
+    <div>
+        <a ng-click="node.$isCollapsedNode = !node.$isCollapsedNode" ng-if="node[childrenProperty] && node[childrenProperty].length > 0" class="w10 pointer">
+            <i class="text-muted fa" ng-class="{'fa-caret-right': node.$isCollapsedNode, 'fa-caret-down': !node.$isCollapsedNode}"></i>
+        </a>
+
+        <a ng-click="node.$isCollapsedNode = !node.$isCollapsedNode" ng-if="node[childrenProperty] && node[childrenProperty].length == 0">
+            <div class="w5 D-inline-block"></div><!-- small indentation for last level nodes-->
+        </a>
+
+        <span ng-click="setSelectedNode(node)">
+            <span class="nodeColor" ng-style="{background: node.colorInTree}"></span>
+
+            <span class="D-inline-block pad-left1 pad-right1 pointer" ng-class="(node.name == $parent.selectedNode.name)? 'labelSelected' :''">{{node.name}}</span>
+        </span>
+    </div>
+    <ul ng-show="!node.$isCollapsedNode" style="list-style: none;">
+        <li ng-repeat=" node in node[childrenProperty]" ng-include="'node_template_treeDm.html'">
+        </li>
+    </ul>
+</script>

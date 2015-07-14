@@ -1,13 +1,14 @@
 ﻿'use strict';
-describe('directives/treeDmSpecs tests:', function () {
+describe('jlg.common.directives/treeDmSpecs tests:', function () {
     var scope,
     directiveElement,
     directiveIsolatedScope;
 
     beforeEach(function () {
-        module("shared");
+        
+        module("jlg.common.services");
         module("alltemplates");
-        module("directives");
+        module("jlg.common.directives");
 
         inject(["$rootScope", "$compile", function ($rootScope, $compile) {
             scope = $rootScope.$new();

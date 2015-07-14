@@ -1,5 +1,5 @@
 ﻿'use strict';
-describe('_directives/shared/selectValuesWithAliasesIntoGrid - simle without grid-display-property-name tests:', function () {
+describe('jlg.common.directives/selectValuesWithAliasesIntoGrid - simle without grid-display-property-name tests:', function () {
     var scope,
     directiveElement,
     directiveIsolatedScope;
@@ -19,14 +19,15 @@ describe('_directives/shared/selectValuesWithAliasesIntoGrid - simle without gri
     }];
     
     beforeEach(function () {
-        module("shared");
+        
+        module("jlg.common.services");
         module("alltemplates");
-        module("directives");
+        module("jlg.common.directives");
 
-        inject(["$rootScope", "$compile", "apfSharedDataAndPopupSrv", "arrayHelperSrv",
-            function ($rootScope, $compile, apfSharedDataAndPopupSrv, arrayHelperSrv) {
+        inject(["$rootScope", "$compile", "sharedDataAndPopupSrv", "arrayHelperSrv",
+            function ($rootScope, $compile, sharedDataAndPopupSrv, arrayHelperSrv) {
             scope = $rootScope.$new();
-            scope.apfSharedData = apfSharedDataAndPopupSrv.sharedData;
+            scope.apfSharedData = sharedDataAndPopupSrv.sharedData;
             scope.apfSharedData.loggedInContext = {};
             scope.apfSharedData.loggedInContext.translatedText = {};
 
@@ -124,60 +125,24 @@ describe('_directives/shared/selectValuesWithAliasesIntoGrid - simle without gri
         expect(directiveIsolatedScope.selectOptions).toEqual([]);
     });
 
-    it("deleteAll function", function () {
+    it("deleteAllSelectedValues function", function () {
         expect(directiveIsolatedScope.selectOptions).toEqual(students);
         expect(scope.selectedStudentsInClass).toEqual([]);
         directiveIsolatedScope.addAll();
-        expect(directiveIsolatedScope.selectedValues).toEqual([{
-            id: 1,
-            name: "Ion",
-            age: 23
-        }, {
-            id: 7,
-            age: 18,
-            name: "Andra"
-        }, {
-            id: 3,
-            name: "Raluca",
-            age: 20
-        }]);
-        expect(scope.selectedStudentsInClass).toEqual([{
-            id: 1,
-            name: "Ion",
-            age: 23
-        }, {
-            id: 7,
-            age: 18,
-            name: "Andra"
-        }, {
-            id: 3,
-            name: "Raluca",
-            age: 20
-        }]);
+        expect(directiveIsolatedScope.selectedValues).toEqual(students);
+        expect(scope.selectedStudentsInClass).toEqual(students);
         expect(directiveIsolatedScope.selectOptions).toEqual([]);
 
-        directiveIsolatedScope.deleteAll();
+        directiveIsolatedScope.deleteAllSelectedValues();
         expect(directiveIsolatedScope.selectedValues).toEqual([]);
         expect(scope.selectedStudentsInClass).toEqual([]);
         
-        expect(directiveIsolatedScope.selectOptions).toEqual([{
-            id: 1,
-            name: "Ion",
-            age: 23
-        }, {
-            id: 7,
-            age: 18,
-            name: "Andra"
-        }, {
-            id: 3,
-            name: "Raluca",
-            age: 20
-        }]);
+        expect(directiveIsolatedScope.selectOptions).toEqual(students);
 
     });
 });
 
-describe('_directives/shared/selectValuesWithAliasesIntoGrid with grid-display-property-name tests:', function () {
+describe('_directives/jlg.common/selectValuesWithAliasesIntoGrid with grid-display-property-name tests:', function () {
     var scope,
     directiveElement,
     directiveIsolatedScope;
@@ -197,13 +162,14 @@ describe('_directives/shared/selectValuesWithAliasesIntoGrid with grid-display-p
     }];
 
     beforeEach(function () {
-        module("shared");
+       
+        module("jlg.common.services");
         module("alltemplates");
-        module("directives");
+        module("jlg.common.directives");
 
-        inject(function ($rootScope, $compile, apfSharedDataAndPopupSrv) {
+        inject(function ($rootScope, $compile, sharedDataAndPopupSrv) {
             scope = $rootScope.$new();
-            scope.apfSharedData = apfSharedDataAndPopupSrv.sharedData;
+            scope.apfSharedData = sharedDataAndPopupSrv.sharedData;
             scope.apfSharedData.loggedInContext = {};
             scope.apfSharedData.loggedInContext.translatedText = {};
             

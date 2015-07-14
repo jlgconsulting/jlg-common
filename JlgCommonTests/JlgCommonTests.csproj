@@ -83,29 +83,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientSide\dependencies\angular\angular-mocks.js" />
-    <Content Include="ClientSide\dependencies\angular\angular-scenario.js" />
-    <Content Include="ClientSide\dependencies\angular\version.txt" />
-    <Content Include="ClientSide\dependencies\jasmine\jasmine-html.js" />
-    <Content Include="ClientSide\dependencies\jasmine\jasmine.css" />
-    <Content Include="ClientSide\dependencies\jasmine\jasmine.js" />
-    <Content Include="ClientSide\karma.conf.js" />
-    <Content Include="ClientSide\run\web-server.js" />
-    <Content Include="ClientSide\tests\directives\gridDmSpecs.js" />
-    <Content Include="ClientSide\tests\directives\selectValuesWithAliasesIntoGridSpecs.js" />
-    <Content Include="ClientSide\tests\services\arrayHelperSrvSpec.js" />
-    <Content Include="ClientSide\tests\services\dateHelperSrvSpec.js" />
-    <Content Include="ClientSide\tests\services\stepsHelperSrvSpec.js" />
-    <Content Include="ClientSide\tests\directives\comparingArrowSpecs.js" />
-    <Content Include="ClientSide\tests\directives\confirmPopupSpecs.js" />
-    <Content Include="ClientSide\tests\directives\datePickerSpecs.js" />
-    <Content Include="ClientSide\tests\directives\loadingPopupSpecs.js" />
-    <Content Include="ClientSide\tests\directives\sectionTitleSpecs.js" />
-    <Content Include="ClientSide\tests\directives\shortcutsPopupSpecs.js" />
-    <Content Include="ClientSide\tests\directives\treeDmSpecs.js" />
-    <Content Include="ClientSide\tests\directives\twoSelectsIntoGridSpecs.js" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="ClientSide\dependencies\jasmine\MIT.LICENSE" />
     <None Include="ClientSide\run\test.bat" />
     <None Include="ClientSide\run\test.sh" />
@@ -114,6 +91,31 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="ClientSide\dependencies\angular\angular-mocks.js" />
+    <Content Include="ClientSide\dependencies\angular\angular-scenario.js" />
+    <Content Include="ClientSide\dependencies\angular\angular.js" />
+    <Content Include="ClientSide\dependencies\angular\version.txt" />
+    <Content Include="ClientSide\dependencies\jasmine\jasmine-html.js" />
+    <Content Include="ClientSide\dependencies\jasmine\jasmine.css" />
+    <Content Include="ClientSide\dependencies\jasmine\jasmine.js" />
+    <Content Include="ClientSide\karma.conf.js" />
+    <Content Include="ClientSide\run\web-server.js" />
+    <Content Include="ClientSide\tests\directives\comparingArrowSpecs.js" />
+    <Content Include="ClientSide\tests\directives\confirmPopupSpecs.js" />
+    <Content Include="ClientSide\tests\directives\datePickerSpecs.js" />
+    <Content Include="ClientSide\tests\directives\gridDmSpecs.js" />
+    <Content Include="ClientSide\tests\directives\loadingPopupSpecs.js" />
+    <Content Include="ClientSide\tests\directives\sectionTitleSpecs.js" />
+    <Content Include="ClientSide\tests\directives\selectValuesWithAliasesIntoGridSpecs.js" />
+    <Content Include="ClientSide\tests\directives\treeDmSpecs.js" />
+    <Content Include="ClientSide\tests\directives\twoSelectsIntoGridSpecs.js" />
+    <Content Include="ClientSide\tests\jlgCommonModules.js" />
+    <Content Include="ClientSide\tests\services\arrayHelperSrvSpec.js" />
+    <Content Include="ClientSide\tests\services\dateHelperSrvSpec.js" />
+    <Content Include="ClientSide\tests\services\stepsHelperSrvSpec.js" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

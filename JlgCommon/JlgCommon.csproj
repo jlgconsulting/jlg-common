@@ -84,6 +84,37 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClientSide\Directives\comparingArrow.html" />
+    <Content Include="ClientSide\Directives\comparingArrow.js" />
+    <Content Include="ClientSide\Directives\confirmPopup.html" />
+    <Content Include="ClientSide\Directives\confirmPopup.js" />
+    <Content Include="ClientSide\Directives\customPopover.js" />
+    <Content Include="ClientSide\Directives\datePicker.html" />
+    <Content Include="ClientSide\Directives\datePicker.js" />
+    <Content Include="ClientSide\Directives\filesUpload.html" />
+    <Content Include="ClientSide\Directives\filesUpload.js" />
+    <Content Include="ClientSide\Directives\gridDm.html" />
+    <Content Include="ClientSide\Directives\gridDm.js" />
+    <Content Include="ClientSide\Directives\itemsWithForwardBack.html" />
+    <Content Include="ClientSide\Directives\itemsWithForwardBack.js" />
+    <Content Include="ClientSide\Directives\loadingPopup.html" />
+    <Content Include="ClientSide\Directives\loadingPopup.js" />
+    <Content Include="ClientSide\Directives\sectionTitle.html" />
+    <Content Include="ClientSide\Directives\sectionTitle.js" />
+    <Content Include="ClientSide\Directives\selectValuesWithAliasesIntoGrid.html" />
+    <Content Include="ClientSide\Directives\selectValuesWithAliasesIntoGrid.js" />
+    <Content Include="ClientSide\Directives\shortcutsPopup.html" />
+    <Content Include="ClientSide\Directives\shortcutsPopup.js" />
+    <Content Include="ClientSide\Directives\treeDm.html" />
+    <Content Include="ClientSide\Directives\treeDm.js" />
+    <Content Include="ClientSide\Directives\twoSelectsIntoGrid.html" />
+    <Content Include="ClientSide\Directives\twoSelectsIntoGrid.js" />
+    <Content Include="ClientSide\Directives\_ngHtmlCompile.js" />
+    <Content Include="ClientSide\Services\arrayHelperSrv.js" />
+    <Content Include="ClientSide\Services\dateHelperSrv.js" />
+    <Content Include="ClientSide\Services\stepsHelperSrv.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

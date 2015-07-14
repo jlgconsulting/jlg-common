@@ -1,5 +1,5 @@
 ﻿'use strict';
-describe('directives/loadingPopup tests:', function () {
+describe('jlg.common.directives/loadingPopup tests:', function () {
     var scope,
     directiveElement,
     directiveIsolatedScope;
@@ -7,7 +7,7 @@ describe('directives/loadingPopup tests:', function () {
     beforeEach(function () {
 
         module("alltemplates");
-        module("directives");
+        module("jlg.common.directives");
 
         inject(["$rootScope", "$compile", function($rootScope, $compile) {
             scope = $rootScope.$new();
