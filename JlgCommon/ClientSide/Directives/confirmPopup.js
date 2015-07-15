@@ -2,7 +2,7 @@
 jlgCommonModule.directive("confirmPopup", function () {
     return {
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/Directives/confirmPopup.html"),
+        templateUrl: window.urlGetter("ClientSide/directives/confirmPopup.html"),
         scope: {
             customClass: "=",
             text: "="

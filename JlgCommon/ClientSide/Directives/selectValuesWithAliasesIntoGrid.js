@@ -2,7 +2,7 @@
 jlgCommonModule.directive("selectValuesWithAliasesIntoGrid", function ($filter) {
     return {        
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/Directives/selectValuesWithAliasesIntoGrid.html"),
+        templateUrl: window.urlGetter("ClientSide/directives/selectValuesWithAliasesIntoGrid.html"),
         scope: {
             selectDisplayPropertyName: "@",
             gridDisplayPropertyName: "@",

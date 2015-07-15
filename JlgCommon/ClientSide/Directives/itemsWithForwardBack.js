@@ -2,7 +2,7 @@
 jlgCommonModule.directive("itemsWithForwardBack", function () {
     return {
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/Directives/itemsWithForwardBack.html"),
+        templateUrl: window.urlGetter("ClientSide/directives/itemsWithForwardBack.html"),
         scope: {
             selectCurrentItem: "=",
             items: "="

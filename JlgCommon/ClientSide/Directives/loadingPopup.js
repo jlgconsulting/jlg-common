@@ -2,7 +2,7 @@
 jlgCommonModule.directive("loadingPopup", function () {
     return {        
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/Directives/loadingPopup.html"),
+        templateUrl: window.urlGetter("ClientSide/directives/loadingPopup.html"),
         scope: {
             customClass: "=",
             text: "="

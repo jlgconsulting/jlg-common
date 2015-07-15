@@ -2,7 +2,7 @@
 jlgCommonModule.directive("sectionTitle", function () {
     return {
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/Directives/sectionTitle.html"),
+        templateUrl: window.urlGetter("ClientSide/directives/sectionTitle.html"),
         scope: {
             title: "=",
             goBack: "="

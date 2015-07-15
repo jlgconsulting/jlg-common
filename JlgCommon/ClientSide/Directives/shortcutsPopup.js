@@ -2,7 +2,7 @@
 jlgCommonModule.directive("shortcutsPopup", function () {
     return {        
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/Directives/shortcutsPopup.html"),
+        templateUrl: window.urlGetter("ClientSide/directives/shortcutsPopup.html"),
         scope: {
             
         },

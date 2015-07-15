@@ -2,7 +2,7 @@
 jlgCommonModule.directive("twoSelectsIntoGrid", function () {
     return {
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/Directives/twoSelectsIntoGrid.html"),
+        templateUrl: window.urlGetter("ClientSide/directives/twoSelectsIntoGrid.html"),
         scope: {
             selectedCombinedValues: "=",
             selectOptions1: "=",

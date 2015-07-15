@@ -2,7 +2,7 @@
 jlgCommonModule.directive("filesUpload", function () {
     return {
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/Directives/filesUpload.html"),
+        templateUrl: window.urlGetter("ClientSide/directives/filesUpload.html"),
         scope: {            
             textDescription: "=",
             urlDestination: "=",
