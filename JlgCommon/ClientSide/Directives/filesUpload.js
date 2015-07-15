@@ -1,5 +1,5 @@
-﻿var directivesModule = angular.module("jlg.common.directives");
-directivesModule.directive("filesUpload", function () {
+﻿var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.directive("filesUpload", function () {
     return {
         restrict: "E",
         templateUrl: window.urlGetter("ClientSide/Directives/filesUpload.html"),

@@ -1,5 +1,5 @@
-﻿var directivesModule = angular.module("jlg.common.directives");
-directivesModule.directive("treeDm", function () {
+﻿var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.directive("treeDm", function () {
     return {
         restrict: "E",
         templateUrl: window.urlGetter("ClientSide/Directives/treeDm.html"),

@@ -1,10 +1,8 @@
 ﻿console.info('Starting tests for Jlg.Common ClientSide');
 
-angular.module("jlgCommon", ["jlg.common.services", "jlg.common.directives"]);
+angular.module("jlgCommon", ["jlg.common"]);
 
-    angular.module("jlg.common.services", []);
-    angular.module("jlg.common.directives", []);  
-    
+    angular.module("jlg.common", []);      
 
     'use strict';
     beforeEach(function () {

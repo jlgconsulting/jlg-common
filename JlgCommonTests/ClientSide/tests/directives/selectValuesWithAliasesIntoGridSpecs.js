@@ -1,5 +1,5 @@
 ﻿'use strict';
-describe('jlg.common.directives/selectValuesWithAliasesIntoGrid - simle without grid-display-property-name tests:', function () {
+describe('jlg.common/selectValuesWithAliasesIntoGrid - simle without grid-display-property-name tests:', function () {
     var scope,
     directiveElement,
     directiveIsolatedScope;
@@ -20,9 +20,9 @@ describe('jlg.common.directives/selectValuesWithAliasesIntoGrid - simle without 
     
     beforeEach(function () {
         
-        module("jlg.common.services");
+        module("jlg.common");
         module("alltemplates");
-        module("jlg.common.directives");
+        module("jlg.common");
 
         inject(["$rootScope", "$compile", "sharedDataAndPopupSrv", "arrayHelperSrv",
             function ($rootScope, $compile, sharedDataAndPopupSrv, arrayHelperSrv) {
@@ -163,9 +163,9 @@ describe('_directives/jlg.common/selectValuesWithAliasesIntoGrid with grid-displ
 
     beforeEach(function () {
        
-        module("jlg.common.services");
+        module("jlg.common");
         module("alltemplates");
-        module("jlg.common.directives");
+        module("jlg.common");
 
         inject(function ($rootScope, $compile, sharedDataAndPopupSrv) {
             scope = $rootScope.$new();

@@ -1,5 +1,5 @@
-var directivesModule = angular.module("jlg.common.directives");
-directivesModule.directive('ngHtmlCompile', ["$compile",
+var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.directive('ngHtmlCompile', ["$compile",
     function ($compile) {
     return {
         restrict: 'A',

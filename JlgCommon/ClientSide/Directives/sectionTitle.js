@@ -1,5 +1,5 @@
-﻿var directivesModule = angular.module("jlg.common.directives");
-directivesModule.directive("sectionTitle", function () {
+﻿var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.directive("sectionTitle", function () {
     return {
         restrict: "E",
         templateUrl: window.urlGetter("ClientSide/Directives/sectionTitle.html"),

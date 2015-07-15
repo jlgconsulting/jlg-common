@@ -1,5 +1,5 @@
-﻿var directivesModule = angular.module("jlg.common.directives");
-directivesModule.directive("confirmPopup", function () {
+﻿var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.directive("confirmPopup", function () {
     return {
         restrict: "E",
         templateUrl: window.urlGetter("ClientSide/Directives/confirmPopup.html"),

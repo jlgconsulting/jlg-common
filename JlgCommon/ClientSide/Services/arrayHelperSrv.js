@@ -1,4 +1,4 @@
-﻿var sharedModule = angular.module("jlg.common.services");
+﻿var sharedModule = angular.module("jlg.common");
 sharedModule.factory("arrayHelperSrv",
     ["$filter",
     function ($filter) {

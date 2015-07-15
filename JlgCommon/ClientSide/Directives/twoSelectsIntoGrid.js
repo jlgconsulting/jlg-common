@@ -1,5 +1,5 @@
-﻿var directivesModule = angular.module("jlg.common.directives");
-directivesModule.directive("twoSelectsIntoGrid", function () {
+﻿var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.directive("twoSelectsIntoGrid", function () {
     return {
         restrict: "E",
         templateUrl: window.urlGetter("ClientSide/Directives/twoSelectsIntoGrid.html"),

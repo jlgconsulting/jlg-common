@@ -1,5 +1,5 @@
-﻿var directivesModule = angular.module("jlg.common.directives");
-directivesModule.directive("selectValuesWithAliasesIntoGrid", function ($filter) {
+﻿var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.directive("selectValuesWithAliasesIntoGrid", function ($filter) {
     return {        
         restrict: "E",
         templateUrl: window.urlGetter("ClientSide/Directives/selectValuesWithAliasesIntoGrid.html"),

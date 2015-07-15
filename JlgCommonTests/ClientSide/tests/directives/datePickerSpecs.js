@@ -1,13 +1,13 @@
 ﻿'use strict';
-describe('jlg.common.directives/datePicker tests:', function () {
+describe('jlg.common/datePicker tests:', function () {
     var scope,
         directiveElement,
         directiveIsolatedScope;
     
     beforeEach(function () {       
-        module("jlg.common.services");
+        module("jlg.common");
         module("alltemplates");
-        module("jlg.common.directives");
+        module("jlg.common");
 
         inject(["$rootScope", "$compile", function ($rootScope, $compile) {
             scope = $rootScope.$new();

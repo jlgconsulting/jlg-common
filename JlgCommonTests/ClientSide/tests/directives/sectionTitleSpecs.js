@@ -1,13 +1,13 @@
 ﻿'use strict';
-describe('jlg.common.directives/sectionTitle tests:', function () {
+describe('jlg.common/sectionTitle tests:', function () {
     var scope,
     directiveElement,
     directiveIsolatedScope;
 
     beforeEach(function () {     
-        module("jlg.common.services");
+        module("jlg.common");
         module("alltemplates");
-        module("jlg.common.directives");
+        module("jlg.common");
 
         inject(["$rootScope", "$compile", "sharedDataAndPopupSrv", function ($rootScope, $compile, sharedDataAndPopupSrv) {
             scope = $rootScope.$new();

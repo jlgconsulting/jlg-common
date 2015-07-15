@@ -1,5 +1,5 @@
 ﻿'use strict';
-describe('jlg.common.directives/comparingArrow tests:', function () {
+describe('jlg.common/comparingArrow tests:', function () {
     var scope,
         directiveElement,
         directiveIsolatedScope;
@@ -7,7 +7,7 @@ describe('jlg.common.directives/comparingArrow tests:', function () {
     beforeEach(function () {
 
         module("alltemplates");
-        module("jlg.common.directives");
+        module("jlg.common");
 
         inject(["$rootScope", "$compile", function($rootScope, $compile) {
             scope = $rootScope.$new();

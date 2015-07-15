@@ -1,6 +1,6 @@
 ﻿'use strict';
 //It is shared throughout the entire application and currently used when deleting something
-describe('jlg.common.directives/confirmPopup tests:', function () {
+describe('jlg.common/confirmPopup tests:', function () {
     var scope,
         directiveElement,
         directiveIsolatedScope,
@@ -8,8 +8,8 @@ describe('jlg.common.directives/confirmPopup tests:', function () {
       
     beforeEach(function () {
         
-        module("jlg.common.services");        
-        module("jlg.common.directives");
+        module("jlg.common");        
+        module("jlg.common");
         module("alltemplates");
         
         inject(["$rootScope", "$compile", "sharedDataAndPopupSrv", function ($rootScope, $compile, sharedDataAndPopupSrv) {

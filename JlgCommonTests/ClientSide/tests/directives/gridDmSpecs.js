@@ -1,5 +1,5 @@
 ﻿'use strict';
-describe('jlg.common.directives/gridDm tests:', function () {
+describe('jlg.common/gridDm tests:', function () {
     var scope,
     directiveElement,
     directiveIsolatedScope;
@@ -28,9 +28,9 @@ describe('jlg.common.directives/gridDm tests:', function () {
     
     beforeEach(function () {
         
-        module("jlg.common.services");
+        module("jlg.common");
         module("alltemplates");
-        module("jlg.common.directives");
+        module("jlg.common");
 
         inject(["$rootScope", "$compile", "arrayHelperSrv", function ($rootScope, $compile, arrayHelperSrv) {
             scope = $rootScope.$new();

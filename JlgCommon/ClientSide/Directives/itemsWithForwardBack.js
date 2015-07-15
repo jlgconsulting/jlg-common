@@ -1,5 +1,5 @@
-﻿var directivesModule = angular.module("jlg.common.directives");
-directivesModule.directive("itemsWithForwardBack", function () {
+﻿var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.directive("itemsWithForwardBack", function () {
     return {
         restrict: "E",
         templateUrl: window.urlGetter("ClientSide/Directives/itemsWithForwardBack.html"),

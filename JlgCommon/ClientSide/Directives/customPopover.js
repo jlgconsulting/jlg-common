@@ -1,5 +1,5 @@
-var directivesModule = angular.module("jlg.common.directives");
-directivesModule.directive('customPopover', function () {
+var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.directive('customPopover', function () {
     return {
         restrict: 'A',
         link: function (scope, el, attrs) {

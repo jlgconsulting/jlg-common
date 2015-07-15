@@ -1,5 +1,5 @@
-﻿var directivesModule = angular.module("jlg.common.directives");
-directivesModule.directive("shortcutsPopup", function () {
+﻿var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.directive("shortcutsPopup", function () {
     return {        
         restrict: "E",
         templateUrl: window.urlGetter("ClientSide/Directives/shortcutsPopup.html"),
