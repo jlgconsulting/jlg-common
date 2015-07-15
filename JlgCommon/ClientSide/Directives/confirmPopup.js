@@ -8,7 +8,7 @@ jlgCommonModule.directive("confirmPopup", function () {
             classContent: "=",
             yesText: "=",
             noText: "=",
-            message: "="
+            messageText: "="
         },
         controller: ["$scope", "globalSharedService",
             function ($scope, globalSharedService) {
