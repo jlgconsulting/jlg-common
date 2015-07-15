@@ -112,7 +112,7 @@
     <Content Include="ClientSide\tests\directives\selectValuesWithAliasesIntoGridSpecs.js" />
     <Content Include="ClientSide\tests\directives\treeDmSpecs.js" />
     <Content Include="ClientSide\tests\directives\twoSelectsIntoGridSpecs.js" />
-    <Content Include="ClientSide\tests\jlgCommonModulesAndSetup.js" />
+    <Content Include="ClientSide\tests\jlgCommonGlobalSetup.js" />
     <Content Include="ClientSide\tests\services\arrayHelperSrvSpec.js" />
     <Content Include="ClientSide\tests\services\dateHelperSrvSpec.js" />
     <Content Include="ClientSide\tests\services\stepsHelperSrvSpec.js" />
