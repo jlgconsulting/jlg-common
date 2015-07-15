@@ -7,8 +7,7 @@ describe('jlg.common/datePicker tests:', function () {
     beforeEach(function () {       
         module("jlg.common");
         module("alltemplates");
-        module("jlg.common");
-
+       
         inject(["$rootScope", "$compile", function ($rootScope, $compile) {
             scope = $rootScope.$new();
             scope.selectedDate = null;

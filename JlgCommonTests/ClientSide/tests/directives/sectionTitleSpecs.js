@@ -7,8 +7,7 @@ describe('jlg.common/sectionTitle tests:', function () {
     beforeEach(function () {     
         module("jlg.common");
         module("alltemplates");
-        module("jlg.common");
-
+        
         inject(["$rootScope", "$compile", "sharedDataAndPopupSrv", function ($rootScope, $compile, sharedDataAndPopupSrv) {
             scope = $rootScope.$new();
             scope.apfSharedData = sharedDataAndPopupSrv.sharedData;

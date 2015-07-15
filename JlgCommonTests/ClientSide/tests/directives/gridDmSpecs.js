@@ -29,8 +29,7 @@ describe('jlg.common/gridDm tests:', function () {
     beforeEach(function () {
         
         module("jlg.common");
-        module("alltemplates");
-        module("jlg.common");
+        module("alltemplates");        
 
         inject(["$rootScope", "$compile", "arrayHelperSrv", function ($rootScope, $compile, arrayHelperSrv) {
             scope = $rootScope.$new();

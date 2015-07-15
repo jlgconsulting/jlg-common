@@ -7,8 +7,7 @@ describe('jlg.common/confirmPopup tests:', function () {
         sharedDataAndPopupSrv4Test;
       
     beforeEach(function () {
-        
-        module("jlg.common");        
+                       
         module("jlg.common");
         module("alltemplates");
         

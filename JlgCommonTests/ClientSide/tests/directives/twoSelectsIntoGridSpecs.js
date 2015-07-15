@@ -30,8 +30,7 @@ describe('jlg.common/twoSelectsIntoGrid tests:', function () {
        
         module("jlg.common");
         module("alltemplates");
-        module("jlg.common");
-
+       
         inject(["$rootScope", "$compile", "sharedDataAndPopupSrv", "arrayHelperSrv",
             function ($rootScope, $compile, sharedDataAndPopupSrv, arrayHelperSrv) {
             scope = $rootScope.$new();

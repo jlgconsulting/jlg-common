@@ -8,8 +8,7 @@ describe('jlg.common/treeDmSpecs tests:', function () {
         
         module("jlg.common");
         module("alltemplates");
-        module("jlg.common");
-
+        
         inject(["$rootScope", "$compile", function ($rootScope, $compile) {
             scope = $rootScope.$new();
             directiveElement = angular.element(

@@ -22,8 +22,7 @@ describe('jlg.common/selectValuesWithAliasesIntoGrid - simle without grid-displa
         
         module("jlg.common");
         module("alltemplates");
-        module("jlg.common");
-
+      
         inject(["$rootScope", "$compile", "sharedDataAndPopupSrv", "arrayHelperSrv",
             function ($rootScope, $compile, sharedDataAndPopupSrv, arrayHelperSrv) {
             scope = $rootScope.$new();
@@ -165,8 +164,7 @@ describe('_directives/jlg.common/selectValuesWithAliasesIntoGrid with grid-displ
        
         module("jlg.common");
         module("alltemplates");
-        module("jlg.common");
-
+     
         inject(function ($rootScope, $compile, sharedDataAndPopupSrv) {
             scope = $rootScope.$new();
             scope.apfSharedData = sharedDataAndPopupSrv.sharedData;
