@@ -2,32 +2,19 @@
 jlgCommonModule.directive("confirmPopup", function () {
     return {
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/directives/confirmPopup.html"),
+        templateUrl: TOKAI.appPath("Scripts/app/jlg.common/directives/confirmPopup.html"),
         scope: {
-            customClass: "=",
-            text: "="
+            classWrapper: "=",
+            classContent: "=",
+            yesText: "=",
+            noText: "=",
+            message: "="
         },
-        controller: ["$scope", "globalSharedSrv",
-            function ($scope, globalSharedSrv) {
+        controller: ["$scope", "globalSharedService",
+            function ($scope, globalSharedService) {
 
-            $scope.globalSharedData = globalSharedSrv.sharedData;
-            $scope.$watch("globalSharedData.loggedInContext", function (newValue) {
-                if (newValue) {
-                    $scope.translatedText = newValue.translatedText;
-                    if (!$scope.text) {
-                        $scope.text = $scope.translatedText.pleaseConfirm;
-                    }
-                }
-            });
-
-            $scope.$watch("text", function (newValue) {
-                if (!newValue 
-                    && $scope.translatedText) {
-                    
-                    $scope.text = $scope.translatedText.pleaseConfirm;
-                }
-            });
-
+            $scope.globalSharedData = globalSharedService.sharedData;
+                        
             $scope.confirm = function () {
                 
                 $scope.globalSharedData.confirmPopup.isConfirmed = true;
@@ -39,6 +26,18 @@ jlgCommonModule.directive("confirmPopup", function () {
                 $scope.globalSharedData.confirmPopup.isConfirmed = false;
                 $scope.globalSharedData.confirmPopup.isOpen = false;
             };
+
+            $scope.$watch("yesText", function (newValue, oldValue) {
+                if (!newValue) {
+                    $scope.yesText = "Yes";
+                }
+            })
+
+            $scope.$watch("noText", function (newValue, oldValue) {
+                if (!newValue) {
+                    $scope.yesText = "No";
+                }
+            })
 
         }]
     };
