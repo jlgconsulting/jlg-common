@@ -104,8 +104,6 @@
     <Content Include="ClientSide\directives\sectionTitle.js" />
     <Content Include="ClientSide\directives\selectValuesWithAliasesIntoGrid.html" />
     <Content Include="ClientSide\directives\selectValuesWithAliasesIntoGrid.js" />
-    <Content Include="ClientSide\directives\shortcutsPopup.html" />
-    <Content Include="ClientSide\directives\shortcutsPopup.js" />
     <Content Include="ClientSide\directives\treeDm.html" />
     <Content Include="ClientSide\directives\treeDm.js" />
     <Content Include="ClientSide\directives\twoSelectsIntoGrid.html" />
