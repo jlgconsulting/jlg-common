@@ -10,8 +10,8 @@ jlgCommonModule.directive("confirmPopup", function () {
         controller: ["$scope", "globalSharedSrv",
             function ($scope, globalSharedSrv) {
 
-            $scope.apfSharedData = globalSharedSrv.sharedData;
-            $scope.$watch("apfSharedData.loggedInContext", function (newValue) {
+            $scope.globalSharedData = globalSharedSrv.sharedData;
+            $scope.$watch("globalSharedData.loggedInContext", function (newValue) {
                 if (newValue) {
                     $scope.translatedText = newValue.translatedText;
                     if (!$scope.text) {
@@ -30,14 +30,14 @@ jlgCommonModule.directive("confirmPopup", function () {
 
             $scope.confirm = function () {
                 
-                $scope.apfSharedData.confirmPopup.isConfirmed = true;
-                $scope.apfSharedData.confirmPopup.isOpen = false;
+                $scope.globalSharedData.confirmPopup.isConfirmed = true;
+                $scope.globalSharedData.confirmPopup.isOpen = false;
             };
             
             $scope.notConfirm = function () {
                 
-                $scope.apfSharedData.confirmPopup.isConfirmed = false;
-                $scope.apfSharedData.confirmPopup.isOpen = false;
+                $scope.globalSharedData.confirmPopup.isConfirmed = false;
+                $scope.globalSharedData.confirmPopup.isOpen = false;
             };
 
         }]

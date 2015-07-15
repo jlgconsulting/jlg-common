@@ -34,9 +34,9 @@ describe('jlg.common/twoSelectsIntoGrid tests:', function () {
         inject(["$rootScope", "$compile", "globalSharedSrv", "arrayHelperSrv",
             function ($rootScope, $compile, globalSharedSrv, arrayHelperSrv) {
             scope = $rootScope.$new();
-            scope.apfSharedData = globalSharedSrv.sharedData;
-            scope.apfSharedData.loggedInContext = {};
-            scope.apfSharedData.loggedInContext.translatedText = {};
+            scope.globalSharedData = globalSharedSrv.sharedData;
+            scope.globalSharedData.loggedInContext = {};
+            scope.globalSharedData.loggedInContext.translatedText = {};
             scope.customTextColumnDisplayTitle1 = "<b>User</b>";
             scope.customTextColumnDisplayTitle2 = "Role";
             scope.textSelectName1 = "Users available:";

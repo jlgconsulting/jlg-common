@@ -26,9 +26,9 @@ describe('jlg.common/selectValuesWithAliasesIntoGrid - simle without grid-displa
         inject(["$rootScope", "$compile", "globalSharedSrv", "arrayHelperSrv",
             function ($rootScope, $compile, globalSharedSrv, arrayHelperSrv) {
             scope = $rootScope.$new();
-            scope.apfSharedData = globalSharedSrv.sharedData;
-            scope.apfSharedData.loggedInContext = {};
-            scope.apfSharedData.loggedInContext.translatedText = {};
+            scope.globalSharedData = globalSharedSrv.sharedData;
+            scope.globalSharedData.loggedInContext = {};
+            scope.globalSharedData.loggedInContext.translatedText = {};
 
             scope.students = students;
             scope.selectedStudentsInClass = [];
@@ -167,9 +167,9 @@ describe('_directives/jlg.common/selectValuesWithAliasesIntoGrid with grid-displ
      
         inject(function ($rootScope, $compile, globalSharedSrv) {
             scope = $rootScope.$new();
-            scope.apfSharedData = globalSharedSrv.sharedData;
-            scope.apfSharedData.loggedInContext = {};
-            scope.apfSharedData.loggedInContext.translatedText = {};
+            scope.globalSharedData = globalSharedSrv.sharedData;
+            scope.globalSharedData.loggedInContext = {};
+            scope.globalSharedData.loggedInContext.translatedText = {};
             
             scope.students = students;
             scope.selectedStudentsInClass = [];

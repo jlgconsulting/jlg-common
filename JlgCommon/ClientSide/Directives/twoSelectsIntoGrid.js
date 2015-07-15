@@ -20,8 +20,8 @@ jlgCommonModule.directive("twoSelectsIntoGrid", function () {
         controller: ["$scope", "globalSharedSrv",
             function ($scope, globalSharedSrv) {
 
-            $scope.apfSharedData = globalSharedSrv.sharedData;
-            $scope.$watch("apfSharedData.loggedInContext", function (newValue) {
+            $scope.globalSharedData = globalSharedSrv.sharedData;
+            $scope.$watch("globalSharedData.loggedInContext", function (newValue) {
                 if (newValue) {
                     $scope.translatedText = newValue.translatedText;
                     

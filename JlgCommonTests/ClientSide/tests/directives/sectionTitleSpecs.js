@@ -10,7 +10,7 @@ describe('jlg.common/sectionTitle tests:', function () {
         
         inject(["$rootScope", "$compile", "globalSharedSrv", function ($rootScope, $compile, globalSharedSrv) {
             scope = $rootScope.$new();
-            scope.apfSharedData = globalSharedSrv.sharedData;
+            scope.globalSharedData = globalSharedSrv.sharedData;
             directiveElement = angular.element(
                 "<section-title></section-title>");
             $compile(directiveElement)(scope);
@@ -25,14 +25,14 @@ describe('jlg.common/sectionTitle tests:', function () {
             wentBack = true;
         };
 
-        scope.apfSharedData.sectionTitle.show = true;
-        scope.apfSharedData.sectionTitle.title = "Custom title";
-        scope.apfSharedData.sectionTitle.goBackCallback = goBack;
+        scope.globalSharedData.sectionTitle.show = true;
+        scope.globalSharedData.sectionTitle.title = "Custom title";
+        scope.globalSharedData.sectionTitle.goBackCallback = goBack;
         scope.$digest();
-        expect(directiveIsolatedScope.apfSharedData.sectionTitle.show).toBe(true);
-        expect(directiveIsolatedScope.apfSharedData.sectionTitle.title).toBe("Custom title");
+        expect(directiveIsolatedScope.globalSharedData.sectionTitle.show).toBe(true);
+        expect(directiveIsolatedScope.globalSharedData.sectionTitle.title).toBe("Custom title");
         expect(wentBack).toBe(false);
-        directiveIsolatedScope.apfSharedData.sectionTitle.goBackCallback();
+        directiveIsolatedScope.globalSharedData.sectionTitle.goBackCallback();
         expect(wentBack).toBe(true);
     });
 });

@@ -13,14 +13,14 @@ describe('jlg.common/confirmPopup tests:', function () {
         
         inject(["$rootScope", "$compile", "globalSharedSrv", function ($rootScope, $compile, globalSharedSrv) {
             scope = $rootScope.$new();
-            scope.apfSharedData = globalSharedSrv.sharedData;
+            scope.globalSharedData = globalSharedSrv.sharedData;
             globalSharedSrv4Test = globalSharedSrv;            
-            scope.apfSharedData.confirmPopup.isOpen = true;
+            scope.globalSharedData.confirmPopup.isOpen = true;
             
             directiveElement = angular.element(
-                "<confirm-popup ng-show='apfSharedData.confirmPopup.isOpen'"+
-                       "custom-class='apfSharedData.confirmPopup.className'"+
-                       "text='apfSharedData.confirmPopup.text'></confirm-popup>");
+                "<confirm-popup ng-show='globalSharedData.confirmPopup.isOpen'"+
+                       "custom-class='globalSharedData.confirmPopup.className'"+
+                       "text='globalSharedData.confirmPopup.text'></confirm-popup>");
             $compile(directiveElement)(scope);
             scope.$digest();
             directiveIsolatedScope = directiveElement.isolateScope();
@@ -29,22 +29,22 @@ describe('jlg.common/confirmPopup tests:', function () {
     });
 
     it("use example", function () {
-        scope.apfSharedData.confirmPopup.originUniqueToken = "token3";
-        scope.apfSharedData.confirmPopup.objectForConfirmation = {
+        scope.globalSharedData.confirmPopup.originUniqueToken = "token3";
+        scope.globalSharedData.confirmPopup.objectForConfirmation = {
             id: 7
         };
-        scope.apfSharedData.confirmPopup.isOpen = true;
+        scope.globalSharedData.confirmPopup.isOpen = true;
         scope.$digest();
 
         directiveIsolatedScope.confirm();
-        expect(scope.apfSharedData.confirmPopup.isConfirmed).toBe(true);
-        expect(scope.apfSharedData.confirmPopup.isOpen).toBe(false);
+        expect(scope.globalSharedData.confirmPopup.isConfirmed).toBe(true);
+        expect(scope.globalSharedData.confirmPopup.isOpen).toBe(false);
         
-        //this should be placed inside a $scope.$watch("apfSharedData.confirmPopup.isConfirmed"
-        if (scope.apfSharedData.confirmPopup.isConfirmed
-            && scope.apfSharedData.confirmPopup.originUniqueToken == "token3") {
+        //this should be placed inside a $scope.$watch("globalSharedData.confirmPopup.isConfirmed"
+        if (scope.globalSharedData.confirmPopup.isConfirmed
+            && scope.globalSharedData.confirmPopup.originUniqueToken == "token3") {
 
-            expect(scope.apfSharedData.confirmPopup.objectForConfirmation).toEqual({
+            expect(scope.globalSharedData.confirmPopup.objectForConfirmation).toEqual({
                 id: 7
             });
 
@@ -52,35 +52,35 @@ describe('jlg.common/confirmPopup tests:', function () {
 
             globalSharedSrv4Test.resetConfirmPopup();
 
-            expect(scope.apfSharedData.confirmPopup.originUniqueToken).toBe(null);
-            expect(scope.apfSharedData.confirmPopup.objectForConfirmation).toBe(null);
+            expect(scope.globalSharedData.confirmPopup.originUniqueToken).toBe(null);
+            expect(scope.globalSharedData.confirmPopup.objectForConfirmation).toBe(null);
         }
 
     });
     
     it("text", function () {
-        scope.apfSharedData.confirmPopup.text = "some text";
+        scope.globalSharedData.confirmPopup.text = "some text";
         scope.$digest();
         expect(directiveIsolatedScope.text).toBe("some text");
     });
 
     it("customClass", function () {
-        scope.apfSharedData.confirmPopup.className = "clasa1";
+        scope.globalSharedData.confirmPopup.className = "clasa1";
         scope.$digest();
         expect(directiveIsolatedScope.customClass).toBe("clasa1");
     });
     
     it("confirm", function () {
-        expect(scope.apfSharedData.confirmPopup.isOpen).toBe(true);
+        expect(scope.globalSharedData.confirmPopup.isOpen).toBe(true);
         directiveIsolatedScope.confirm();
-        expect(scope.apfSharedData.confirmPopup.isConfirmed).toBe(true);
-        expect(scope.apfSharedData.confirmPopup.isOpen).toBe(false);
+        expect(scope.globalSharedData.confirmPopup.isConfirmed).toBe(true);
+        expect(scope.globalSharedData.confirmPopup.isOpen).toBe(false);
     });
     
     it("notConfirm", function () {
-        expect(scope.apfSharedData.confirmPopup.isOpen).toBe(true);
+        expect(scope.globalSharedData.confirmPopup.isOpen).toBe(true);
         directiveIsolatedScope.notConfirm();
-        expect(scope.apfSharedData.confirmPopup.isConfirmed).toBe(false);
-        expect(scope.apfSharedData.confirmPopup.isOpen).toBe(false);
+        expect(scope.globalSharedData.confirmPopup.isConfirmed).toBe(false);
+        expect(scope.globalSharedData.confirmPopup.isOpen).toBe(false);
     });
 });

@@ -13,8 +13,8 @@ jlgCommonModule.directive("filesUpload", function () {
         controller: ["$scope", "FileUploader", "globalSharedSrv",
             function ($scope, FileUploader, globalSharedSrv) {
 
-                $scope.apfSharedData = globalSharedSrv.sharedData;
-                $scope.$watch("apfSharedData.loggedInContext", function (newValue) {
+                $scope.globalSharedData = globalSharedSrv.sharedData;
+                $scope.$watch("globalSharedData.loggedInContext", function (newValue) {
                     if (newValue) {
                         $scope.translatedText = newValue.translatedText;
                     }
@@ -26,7 +26,7 @@ jlgCommonModule.directive("filesUpload", function () {
                 
                 // CALLBACKS
                 $scope.uploader.onAfterAddingAll = function (addedFileItems) {
-                    $scope.apfSharedData.waitPopup.isOpen = true;
+                    $scope.globalSharedData.waitPopup.isOpen = true;
                     for (var i = 0; i < addedFileItems.length; i++) {
                         addedFileItems[i].upload();
                     }                    
@@ -40,11 +40,11 @@ jlgCommonModule.directive("filesUpload", function () {
                 };
 
                 $scope.uploader.onCompleteAll = function () {
-                    $scope.apfSharedData.waitPopup.isOpen = false;
+                    $scope.globalSharedData.waitPopup.isOpen = false;
                 };
 
                 $scope.uploader.onErrorItem = function (fileItem, response, status, headers) {
-                    $scope.apfSharedData.waitPopup.isOpen = false;
+                    $scope.globalSharedData.waitPopup.isOpen = false;
                 };
 
                 //$scope.uploader.onWhenAddingFileFailed = function (item /*{File|FileLikeObject}*/, filter, options) {
