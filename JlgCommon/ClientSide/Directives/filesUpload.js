@@ -10,10 +10,10 @@ jlgCommonModule.directive("filesUpload", function () {
             uploadProgress: "=",
             uploadedFileName: "="
         },
-        controller: ["$scope", "FileUploader", "sharedDataAndPopupSrv",
-            function ($scope, FileUploader, sharedDataAndPopupSrv) {
+        controller: ["$scope", "FileUploader", "globalSharedSrv",
+            function ($scope, FileUploader, globalSharedSrv) {
 
-                $scope.apfSharedData = sharedDataAndPopupSrv.sharedData;
+                $scope.apfSharedData = globalSharedSrv.sharedData;
                 $scope.$watch("apfSharedData.loggedInContext", function (newValue) {
                     if (newValue) {
                         $scope.translatedText = newValue.translatedText;

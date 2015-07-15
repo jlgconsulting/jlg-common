@@ -12,10 +12,10 @@ jlgCommonModule.directive("selectValuesWithAliasesIntoGrid", function ($filter) 
             textColumnDisplayTitle: "=",
             hideAdd: "@"
         },
-        controller: ["$scope", "sharedDataAndPopupSrv",
-            function ($scope, sharedDataAndPopupSrv) {
+        controller: ["$scope", "globalSharedSrv",
+            function ($scope, globalSharedSrv) {
 
-            $scope.apfSharedData = sharedDataAndPopupSrv.sharedData;
+            $scope.apfSharedData = globalSharedSrv.sharedData;
             $scope.$watch("apfSharedData.loggedInContext", function (newValue) {
                 if (newValue) {
                     $scope.translatedText = newValue.translatedText;

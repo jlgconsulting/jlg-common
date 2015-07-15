@@ -31,10 +31,10 @@ describe('jlg.common/twoSelectsIntoGrid tests:', function () {
         module("jlg.common");
         module("alltemplates");
        
-        inject(["$rootScope", "$compile", "sharedDataAndPopupSrv", "arrayHelperSrv",
-            function ($rootScope, $compile, sharedDataAndPopupSrv, arrayHelperSrv) {
+        inject(["$rootScope", "$compile", "globalSharedSrv", "arrayHelperSrv",
+            function ($rootScope, $compile, globalSharedSrv, arrayHelperSrv) {
             scope = $rootScope.$new();
-            scope.apfSharedData = sharedDataAndPopupSrv.sharedData;
+            scope.apfSharedData = globalSharedSrv.sharedData;
             scope.apfSharedData.loggedInContext = {};
             scope.apfSharedData.loggedInContext.translatedText = {};
             scope.customTextColumnDisplayTitle1 = "<b>User</b>";

@@ -4,17 +4,17 @@ describe('jlg.common/confirmPopup tests:', function () {
     var scope,
         directiveElement,
         directiveIsolatedScope,
-        sharedDataAndPopupSrv4Test;
+        globalSharedSrv4Test;
       
     beforeEach(function () {
                        
         module("jlg.common");
         module("alltemplates");
         
-        inject(["$rootScope", "$compile", "sharedDataAndPopupSrv", function ($rootScope, $compile, sharedDataAndPopupSrv) {
+        inject(["$rootScope", "$compile", "globalSharedSrv", function ($rootScope, $compile, globalSharedSrv) {
             scope = $rootScope.$new();
-            scope.apfSharedData = sharedDataAndPopupSrv.sharedData;
-            sharedDataAndPopupSrv4Test = sharedDataAndPopupSrv;            
+            scope.apfSharedData = globalSharedSrv.sharedData;
+            globalSharedSrv4Test = globalSharedSrv;            
             scope.apfSharedData.confirmPopup.isOpen = true;
             
             directiveElement = angular.element(
@@ -50,7 +50,7 @@ describe('jlg.common/confirmPopup tests:', function () {
 
             //actions to do if confirmed...
 
-            sharedDataAndPopupSrv4Test.resetConfirmPopup();
+            globalSharedSrv4Test.resetConfirmPopup();
 
             expect(scope.apfSharedData.confirmPopup.originUniqueToken).toBe(null);
             expect(scope.apfSharedData.confirmPopup.objectForConfirmation).toBe(null);

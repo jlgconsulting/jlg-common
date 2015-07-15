@@ -40,7 +40,7 @@ angular.module("jlgCommon", ["jlg.common"]);
                 sharedData.confirmPopup = angular.copy(confirmPopupInitial);
             };
 
-            $provide.value('sharedDataAndPopupSrv', {
+            $provide.value('globalSharedSrv', {
                 sharedData: sharedData,
                 resetConfirmPopup: resetConfirmPopup
             });
