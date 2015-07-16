@@ -2,15 +2,15 @@
 jlgCommonModule.directive("sectionTitle", function () {
     return {
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/directives/sectionTitle.html"),
+        templateUrl: window.serverAppPath("ClientSide/directives/sectionTitle.html"),
         scope: {
             title: "=",
             goBack: "="
         },
-        controller: ["$scope", "globalSharedSrv",
-            function ($scope, globalSharedSrv) {
+        controller: ["$scope", "globalSharedService",
+            function ($scope, globalSharedService) {
 
-                $scope.globalSharedData = globalSharedSrv.sharedData;
+                $scope.globalSharedData = globalSharedService.sharedData;
                 $scope.$watch("globalSharedData.loggedInContext", function (newValue) {
                     if (newValue) {
                         $scope.translatedText = newValue.translatedText;

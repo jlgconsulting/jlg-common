@@ -2,7 +2,7 @@
 jlgCommonModule.directive("datePicker", function () {
     return {
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/directives/datePicker.html"),
+        templateUrl: window.serverAppPath("ClientSide/directives/datePicker.html"),
         scope: {
             name: "=",
             selected: "=",

@@ -7,7 +7,7 @@ angular.module("jlgCommon", ["jlg.common"]);
     'use strict';
     beforeEach(function () {
         //this will be executed globally!
-        window.urlGetter = function (url) {
+        window.serverAppPath = function (url) {
             return url;
         };
 
@@ -18,8 +18,9 @@ angular.module("jlgCommon", ["jlg.common"]);
                 isConfirmed: false,
                 originUniqueToken: null,
                 objectForConfirmation: null,
-                text: null,
-                className: "apf-popup-warning",
+                messageText: null,
+                classWrapper: "apf-popup-warning",
+                classContent: "apf-popup-warning",
                 tokens: {
                     deleteCategory: "deleteCategory",
                     deleteUser: "deleteUser"
@@ -40,7 +41,7 @@ angular.module("jlgCommon", ["jlg.common"]);
                 sharedData.confirmPopup = angular.copy(confirmPopupInitial);
             };
 
-            $provide.value('globalSharedSrv', {
+            $provide.value('globalSharedService', {
                 sharedData: sharedData,
                 resetConfirmPopup: resetConfirmPopup
             });

@@ -2,7 +2,7 @@
 jlgCommonModule.directive("filesUpload", function () {
     return {
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/directives/filesUpload.html"),
+        templateUrl: window.serverAppPath("ClientSide/directives/filesUpload.html"),
         scope: {            
             textDescription: "=",
             urlDestination: "=",
@@ -10,10 +10,10 @@ jlgCommonModule.directive("filesUpload", function () {
             uploadProgress: "=",
             uploadedFileName: "="
         },
-        controller: ["$scope", "FileUploader", "globalSharedSrv",
-            function ($scope, FileUploader, globalSharedSrv) {
+        controller: ["$scope", "FileUploader", "globalSharedService",
+            function ($scope, FileUploader, globalSharedService) {
 
-                $scope.globalSharedData = globalSharedSrv.sharedData;
+                $scope.globalSharedData = globalSharedService.sharedData;
                 $scope.$watch("globalSharedData.loggedInContext", function (newValue) {
                     if (newValue) {
                         $scope.translatedText = newValue.translatedText;

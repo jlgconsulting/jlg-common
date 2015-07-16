@@ -2,7 +2,7 @@
 jlgCommonModule.directive("comparingArrow", function () {
     return {        
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/directives/comparingArrow.html"),
+        templateUrl: window.serverAppPath("ClientSide/directives/comparingArrow.html"),
         scope: {
             nr1: "=",
             nr2: "="

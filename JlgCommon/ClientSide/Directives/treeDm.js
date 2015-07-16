@@ -2,7 +2,7 @@
 jlgCommonModule.directive("treeDm", function () {
     return {
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/directives/treeDm.html"),
+        templateUrl: window.serverAppPath("ClientSide/directives/treeDm.html"),
         scope: {
             nameProperty: "@",
             childrenProperty: "@",

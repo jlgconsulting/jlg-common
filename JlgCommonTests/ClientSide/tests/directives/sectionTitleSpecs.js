@@ -8,9 +8,9 @@ describe('jlg.common/sectionTitle tests:', function () {
         module("jlg.common");
         module("alltemplates");
         
-        inject(["$rootScope", "$compile", "globalSharedSrv", function ($rootScope, $compile, globalSharedSrv) {
+        inject(["$rootScope", "$compile", "globalSharedService", function ($rootScope, $compile, globalSharedService) {
             scope = $rootScope.$new();
-            scope.globalSharedData = globalSharedSrv.sharedData;
+            scope.globalSharedData = globalSharedService.sharedData;
             directiveElement = angular.element(
                 "<section-title></section-title>");
             $compile(directiveElement)(scope);

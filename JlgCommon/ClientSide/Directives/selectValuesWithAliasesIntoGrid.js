@@ -2,7 +2,7 @@
 jlgCommonModule.directive("selectValuesWithAliasesIntoGrid", function ($filter) {
     return {        
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/directives/selectValuesWithAliasesIntoGrid.html"),
+        templateUrl: window.serverAppPath("ClientSide/directives/selectValuesWithAliasesIntoGrid.html"),
         scope: {
             selectDisplayPropertyName: "@",
             gridDisplayPropertyName: "@",
@@ -12,10 +12,10 @@ jlgCommonModule.directive("selectValuesWithAliasesIntoGrid", function ($filter) 
             textColumnDisplayTitle: "=",
             hideAdd: "@"
         },
-        controller: ["$scope", "globalSharedSrv",
-            function ($scope, globalSharedSrv) {
+        controller: ["$scope", "globalSharedService",
+            function ($scope, globalSharedService) {
 
-            $scope.globalSharedData = globalSharedSrv.sharedData;
+            $scope.globalSharedData = globalSharedService.sharedData;
             $scope.$watch("globalSharedData.loggedInContext", function (newValue) {
                 if (newValue) {
                     $scope.translatedText = newValue.translatedText;

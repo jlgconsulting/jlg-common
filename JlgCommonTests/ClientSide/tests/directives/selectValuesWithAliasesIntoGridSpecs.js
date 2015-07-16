@@ -23,10 +23,10 @@ describe('jlg.common/selectValuesWithAliasesIntoGrid - simle without grid-displa
         module("jlg.common");
         module("alltemplates");
       
-        inject(["$rootScope", "$compile", "globalSharedSrv", "arrayHelperSrv",
-            function ($rootScope, $compile, globalSharedSrv, arrayHelperSrv) {
+        inject(["$rootScope", "$compile", "globalSharedService", "arrayHelperSrv",
+            function ($rootScope, $compile, globalSharedService, arrayHelperSrv) {
             scope = $rootScope.$new();
-            scope.globalSharedData = globalSharedSrv.sharedData;
+            scope.globalSharedData = globalSharedService.sharedData;
             scope.globalSharedData.loggedInContext = {};
             scope.globalSharedData.loggedInContext.translatedText = {};
 
@@ -165,9 +165,9 @@ describe('_directives/jlg.common/selectValuesWithAliasesIntoGrid with grid-displ
         module("jlg.common");
         module("alltemplates");
      
-        inject(function ($rootScope, $compile, globalSharedSrv) {
+        inject(function ($rootScope, $compile, globalSharedService) {
             scope = $rootScope.$new();
-            scope.globalSharedData = globalSharedSrv.sharedData;
+            scope.globalSharedData = globalSharedService.sharedData;
             scope.globalSharedData.loggedInContext = {};
             scope.globalSharedData.loggedInContext.translatedText = {};
             

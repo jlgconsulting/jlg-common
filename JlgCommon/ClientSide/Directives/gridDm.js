@@ -2,7 +2,7 @@
 jlgCommonModule.directive("gridDm", function () {
     return {
         restrict: "E",
-        templateUrl: window.urlGetter("ClientSide/directives/gridDm.html"),
+        templateUrl: window.serverAppPath("ClientSide/directives/gridDm.html"),
         scope: {
             rows: "=",
             options: "=",

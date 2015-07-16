@@ -6,7 +6,7 @@ module.exports = function(config) {
             
             "JlgCommonTests/ClientSide/dependencies/angular/angular.js",
             "JlgCommonTests/ClientSide/dependencies/angular/angular-mocks.js",
-            "JlgCommonTests/ClientSide/tests/jlgCommonModules.js",
+            "JlgCommonTests/ClientSide/tests/jlgCommonGlobalSetup.js",
             "JlgCommonTests/ClientSide/tests/**/*.js",
 
             "JlgCommon/ClientSide/**/*.js",            

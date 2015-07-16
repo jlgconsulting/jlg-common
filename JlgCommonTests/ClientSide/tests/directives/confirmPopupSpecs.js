@@ -4,23 +4,26 @@ describe('jlg.common/confirmPopup tests:', function () {
     var scope,
         directiveElement,
         directiveIsolatedScope,
-        globalSharedSrv4Test;
+        globalSharedService4Test;
       
     beforeEach(function () {
                        
         module("jlg.common");
         module("alltemplates");
         
-        inject(["$rootScope", "$compile", "globalSharedSrv", function ($rootScope, $compile, globalSharedSrv) {
+        inject(["$rootScope", "$compile", "globalSharedService", function ($rootScope, $compile, globalSharedService) {
             scope = $rootScope.$new();
-            scope.globalSharedData = globalSharedSrv.sharedData;
-            globalSharedSrv4Test = globalSharedSrv;            
+            scope.globalSharedData = globalSharedService.sharedData;
+            globalSharedService4Test = globalSharedService;            
             scope.globalSharedData.confirmPopup.isOpen = true;
             
             directiveElement = angular.element(
-                "<confirm-popup ng-show='globalSharedData.confirmPopup.isOpen'"+
-                       "custom-class='globalSharedData.confirmPopup.className'"+
-                       "text='globalSharedData.confirmPopup.text'></confirm-popup>");
+                "<confirm-popup"+
+                       " class-wrapper='globalSharedData.confirmPopup.classWrapper'" +
+                       " class-content='globalSharedData.confirmPopup.classContent'" +
+                       " yes-text='globalSharedData.confirmPopup.yesText'" +
+                       " no-text='globalSharedData.confirmPopup.noText'" +
+                       " message-text='globalSharedData.confirmPopup.messageText'></confirm-popup>");
             $compile(directiveElement)(scope);
             scope.$digest();
             directiveIsolatedScope = directiveElement.isolateScope();
@@ -50,7 +53,7 @@ describe('jlg.common/confirmPopup tests:', function () {
 
             //actions to do if confirmed...
 
-            globalSharedSrv4Test.resetConfirmPopup();
+            globalSharedService4Test.resetConfirmPopup();
 
             expect(scope.globalSharedData.confirmPopup.originUniqueToken).toBe(null);
             expect(scope.globalSharedData.confirmPopup.objectForConfirmation).toBe(null);
@@ -59,15 +62,21 @@ describe('jlg.common/confirmPopup tests:', function () {
     });
     
     it("text", function () {
-        scope.globalSharedData.confirmPopup.text = "some text";
+        scope.globalSharedData.confirmPopup.messageText = "some text";
         scope.$digest();
-        expect(directiveIsolatedScope.text).toBe("some text");
+        expect(directiveIsolatedScope.messageText).toBe("some text");
     });
 
-    it("customClass", function () {
-        scope.globalSharedData.confirmPopup.className = "clasa1";
+    it("classWrapper", function () {
+        scope.globalSharedData.confirmPopup.classWrapper = "class1";
         scope.$digest();
-        expect(directiveIsolatedScope.customClass).toBe("clasa1");
+        expect(directiveIsolatedScope.classWrapper).toBe("class1");
+    });
+
+    it("classContent", function () {
+        scope.globalSharedData.confirmPopup.classContent = "class2";
+        scope.$digest();
+        expect(directiveIsolatedScope.classContent).toBe("class2");
     });
     
     it("confirm", function () {

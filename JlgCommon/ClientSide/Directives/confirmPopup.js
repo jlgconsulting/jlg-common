@@ -2,7 +2,7 @@
 jlgCommonModule.directive("confirmPopup", function () {
     return {
         restrict: "E",
-        templateUrl: TOKAI.appPath("Scripts/app/jlg.common/directives/confirmPopup.html"),
+        templateUrl: window.serverAppPath("ClientSide/directives/confirmPopup.html"),
         scope: {
             classWrapper: "=",
             classContent: "=",
