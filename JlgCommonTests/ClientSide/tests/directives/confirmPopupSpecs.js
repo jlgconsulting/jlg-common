@@ -19,6 +19,7 @@ describe('jlg.common/confirmPopup tests:', function () {
             
             directiveElement = angular.element(
                 "<confirm-popup"+
+                       " ng-show='globalSharedData.confirmPopup.isOpen'" +
                        " class-wrapper='globalSharedData.confirmPopup.classWrapper'" +
                        " class-content='globalSharedData.confirmPopup.classContent'" +
                        " yes-text='globalSharedData.confirmPopup.yesText'" +

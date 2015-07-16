@@ -107,7 +107,7 @@
     <Content Include="ClientSide\tests\directives\confirmPopupSpecs.js" />
     <Content Include="ClientSide\tests\directives\datePickerSpecs.js" />
     <Content Include="ClientSide\tests\directives\gridDmSpecs.js" />
-    <Content Include="ClientSide\tests\directives\loadingPopupSpecs.js" />
+    <Content Include="ClientSide\tests\directives\waitPopupSpecs.js" />
     <Content Include="ClientSide\tests\directives\sectionTitleSpecs.js" />
     <Content Include="ClientSide\tests\directives\selectValuesWithAliasesIntoGridSpecs.js" />
     <Content Include="ClientSide\tests\directives\treeDmSpecs.js" />

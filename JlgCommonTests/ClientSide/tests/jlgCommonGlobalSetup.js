@@ -33,7 +33,13 @@ angular.module("jlgCommon", ["jlg.common"]);
                     show: false,
                     title: null,
                     goBackCallback: null
-                }
+                },
+                waitPopup: {
+                    isOpen: false,
+                    messageText: null,
+                    classContent: "apf-popup apf-popup-success",
+                    classWrapper: "apf-wrapper"
+                },
             }     
 
             var resetConfirmPopup = function () {

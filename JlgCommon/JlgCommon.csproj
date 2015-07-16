@@ -98,8 +98,8 @@
     <Content Include="ClientSide\directives\gridDm.js" />
     <Content Include="ClientSide\directives\itemsWithForwardBack.html" />
     <Content Include="ClientSide\directives\itemsWithForwardBack.js" />
-    <Content Include="ClientSide\directives\loadingPopup.html" />
-    <Content Include="ClientSide\directives\loadingPopup.js" />
+    <Content Include="ClientSide\directives\waitPopup.html" />
+    <Content Include="ClientSide\directives\waitPopup.js" />
     <Content Include="ClientSide\directives\sectionTitle.html" />
     <Content Include="ClientSide\directives\sectionTitle.js" />
     <Content Include="ClientSide\directives\selectValuesWithAliasesIntoGrid.html" />
