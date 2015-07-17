@@ -1,5 +1,5 @@
-﻿var sharedModule = angular.module("jlg.common");
-sharedModule.factory('stepsHelperSrv',
+﻿var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.factory('stepsHelperSrv',
     [
     function () {
 

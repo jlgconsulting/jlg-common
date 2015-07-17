@@ -1,5 +1,5 @@
-﻿var sharedModule = angular.module("jlg.common");
-sharedModule.factory('dateHelperSrv',
+﻿var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.factory('dateHelperSrv',
     [
     function () {
         

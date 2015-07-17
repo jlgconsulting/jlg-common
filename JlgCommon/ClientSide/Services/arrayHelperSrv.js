@@ -1,5 +1,5 @@
-﻿var sharedModule = angular.module("jlg.common");
-sharedModule.factory("arrayHelperSrv",
+﻿var jlgCommonModule = angular.module("jlg.common");
+jlgCommonModule.factory("arrayHelperSrv",
     ["$filter",
     function ($filter) {
 
