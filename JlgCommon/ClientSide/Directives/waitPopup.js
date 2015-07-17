@@ -4,9 +4,9 @@ jlgCommonModule.directive("waitPopup", function () {
         restrict: "E",
         templateUrl: window.serverAppPath("ClientSide/directives/waitPopup.html"),
         scope: {
-            classWrapper: "=",
-            classContent: "=",
-            messageText: "="
+            classWrapper: "@",
+            classContent: "@",
+            messageText: "@"
         }
     };
 });
