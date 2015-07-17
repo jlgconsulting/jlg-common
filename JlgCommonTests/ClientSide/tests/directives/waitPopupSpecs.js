@@ -13,9 +13,9 @@ describe('jlg.common/waitPopup tests:', function () {
             scope = $rootScope.$new();
 
             directiveElement = angular.element(
-                 "<wait-popup class-wrapper='classWrapper'" +
-                               " class-content='classContent'" +
-                               " message-text='messageText'></wait-popup>");
+                 "<wait-popup class-wrapper='{{classWrapper}}'" +
+                               " class-content='{{classContent}}'" +
+                               " message-text='{{messageText}}'></wait-popup>");
             
             $compile(directiveElement)(scope);
             scope.$digest();            
