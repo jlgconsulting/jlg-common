@@ -8,8 +8,8 @@ jlgCommonModule.directive("gridDm", function () {
             options: "=",
             tableClass: "@"
         },
-        controller: ["$scope", "$filter", "$sce", "$compile",
-            function ($scope, $filter, $sce, $compile) {
+        controller: ["$scope", "$filter", "$sce", "$compile", "arrayHelperSrv",
+            function ($scope, $filter, $sce, $compile, arrayHelperSrv) {
 
             $scope.$watch("rows", function (newValue, oldValue) {
                 if (newValue) {
