@@ -44,7 +44,7 @@ namespace JlgCommonTests.Extensions
         public void ToMonthNameDayYear()
         {
             var date = new DateTime(2014, 3, 12);
-            Assert.AreEqual("Mar 12 2014", date.ToMonthNameDayYear(), false);
+            Assert.AreEqual("Mar 12 2014", date.ToMonthNameDayYearString(), false);
         }
 
         [TestMethod]

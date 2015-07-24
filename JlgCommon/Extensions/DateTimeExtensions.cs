@@ -15,7 +15,7 @@ namespace JlgCommon.Extensions
             return String.Format("{0} {1}", dateFormatInfo.GetAbbreviatedMonthName(dateTime.Month), dateTime.Year);
         }
 
-        public static string ToMonthNameDayYear(this DateTime dateTime)
+        public static string ToMonthNameDayYearString(this DateTime dateTime)
         {
             var dateFormatInfo = new DateTimeFormatInfo();
             return String.Format("{0} {1} {2}", dateFormatInfo.GetAbbreviatedMonthName(dateTime.Month), dateTime.Day, dateTime.Year);
