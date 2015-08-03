@@ -17,7 +17,7 @@ namespace JlgCommon.Extensions
                 str = str.Replace("  ", " ");
             }
             
-            var modifiedStr = Regex.Replace(str.Trim(), "[^a-zA-Z0-9_.-]+", "_", RegexOptions.Compiled);
+            var modifiedStr = Regex.Replace(str.Trim(), "[^a-zA-Z0-9_.]+", "_", RegexOptions.Compiled);
             if (modifiedStr.Length > 110)
             {
                 modifiedStr = modifiedStr.Substring(0, 110);
