@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\DownloadFileContentType.cs" />
     <Compile Include="Domain\NameValuePair.cs" />
     <Compile Include="ExcelManager\Domain\LineChartForExcel.cs" />
     <Compile Include="ExcelManager\Domain\HorizontalAlignmentType.cs" />
