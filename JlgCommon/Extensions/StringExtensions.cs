@@ -22,7 +22,7 @@ namespace JlgCommon.Extensions
             {
                 modifiedStr = modifiedStr.Substring(0, 110);
             }
-            return modifiedStr;
+            return modifiedStr.ToLower();
         }
 
         public static bool IsEmail(this string value)

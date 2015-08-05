@@ -41,10 +41,10 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void ToValidSqlTableOrColumnName()
         {
-            Assert.AreEqual("Dan_Misailescu",
+            Assert.AreEqual("dan_misailescu",
                             "Dan Misailescu".ToSqlValidTableOrColumnName(), false);
 
-            Assert.AreEqual("name_-_And_1_surename",
+            Assert.AreEqual("name_and_1_surename",
                             " name - And   1 $& surename ".ToSqlValidTableOrColumnName(), false);            
         }   
 
