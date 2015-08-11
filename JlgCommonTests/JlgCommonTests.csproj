@@ -84,6 +84,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="ClientSide\dependencies\jasmine\MIT.LICENSE" />
     <None Include="ClientSide\run\test.bat" />
     <None Include="ClientSide\run\test.sh" />
