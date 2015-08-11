@@ -1,13 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Spreadsheet;
 using JlgCommon.ExcelManager;
 using JlgCommon.ExcelManager.Domain;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpreadsheetLight;
+using Color = System.Drawing.Color;
 
 namespace JlgCommonTests.Extensions
 {
@@ -314,11 +312,11 @@ namespace JlgCommonTests.Extensions
 
             SLStyle upperStyle = excelManager.Reader.GetCellStyle(2, 1);
             Assert.AreEqual(upperStyle.Border.TopBorder.BorderStyle, BorderStyleValues.Thin);
-            Assert.AreEqual(upperStyle.Border.TopBorder.Color.ToArgb(), System.Drawing.Color.Black.ToArgb());
+            Assert.AreEqual(upperStyle.Border.TopBorder.Color.ToArgb(), Color.Black.ToArgb());
 
             SLStyle lowerStyle = excelManager.Reader.GetCellStyle(7, 1);
             Assert.AreEqual(lowerStyle.Border.BottomBorder.BorderStyle, BorderStyleValues.Thin);
-            Assert.AreEqual(lowerStyle.Border.BottomBorder.Color.ToArgb(), System.Drawing.Color.Black.ToArgb());
+            Assert.AreEqual(lowerStyle.Border.BottomBorder.Color.ToArgb(), Color.Black.ToArgb());
         }
     }
 }

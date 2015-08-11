@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Linq;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml.Spreadsheet;
+using JlgCommon.ExcelManager.Domain;
 using SpreadsheetLight;
 using SpreadsheetLight.Charts;
-using DocumentFormat.OpenXml.Drawing.Charts;
 using Color = System.Drawing.Color;
-using JlgCommon.ExcelManager;
-using JlgCommon.ExcelManager.Domain;
-using System.Collections.Generic;
 
 namespace JlgCommon.ExcelManager
 {

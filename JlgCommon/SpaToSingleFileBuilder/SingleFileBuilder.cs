@@ -1,7 +1,7 @@
-﻿using JlgCommon.Logic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using JlgCommon.Logic;
 
 namespace SpaToSingleFileBuilder
 {

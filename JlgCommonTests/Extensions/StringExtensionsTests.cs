@@ -1,10 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using JlgCommon.Extensions;
+﻿using JlgCommon.Extensions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace JlgCommonTests.Extensions
 {

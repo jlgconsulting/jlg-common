@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using SpreadsheetLight;
-using JlgCommon.Extensions;
 using System.IO;
-using DocumentFormat.OpenXml.Bibliography;
-using DocumentFormat.OpenXml.Spreadsheet;
+using System.Linq;
+using JlgCommon.Extensions;
+using SpreadsheetLight;
 
 namespace JlgCommon.ExcelManager
 {   

@@ -1,12 +1,7 @@
-﻿using DocumentFormat.OpenXml.Drawing.Charts;
+﻿using System.Drawing;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using JlgCommon.ExcelManager.Domain;
 using SpreadsheetLight.Charts;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JlgCommon.ExcelManager
 {
