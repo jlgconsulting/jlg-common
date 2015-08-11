@@ -321,9 +321,19 @@ namespace JlgCommon.ExcelManager
             _excelDocument.SetCellStyle(rowIndex, columnIndex, style);
         }
 
+        public void SetCellBackGroundColor(int rowIndex, int columnIndex, Color color)
+        {
+            _excelDocument.SetCellBackgroundColor(rowIndex, columnIndex, color);
+        }
+
         public void SetCellWidth(int columnIndex, double width)
         {
             _excelDocument.SetColumnWidth(columnIndex, width);
+        }
+
+        public void SetRowHeight(int rowIndex, double width)
+        {
+            _excelDocument.SetRowHeight(rowIndex, width);
         }
 
         public void AutoFitColumn(int columnIndex)
@@ -336,25 +346,50 @@ namespace JlgCommon.ExcelManager
             _excelDocument.AutoFitRow(rowIndex);
         }
 
-        public void SurroundRowsWithBorder(int firstRowIndex, int firstColumnIndex, int lastRowIndex, int lastColumnIndex)
+        public void AddUpperBorder(int rowIndex, int columnIndex)
         {
             SLStyle upperStyle = new SLStyle();
             upperStyle.Border.TopBorder.BorderStyle = BorderStyleValues.Thin;
             upperStyle.Border.TopBorder.Color = Color.Black;
+            
+            _excelDocument.SetCellStyle(rowIndex, columnIndex, upperStyle);
+        }
 
-            for (int columnIndex = 1; columnIndex <= lastColumnIndex; columnIndex++)
-            {
-                _excelDocument.SetCellStyle(firstRowIndex, columnIndex, upperStyle);
-            }
-
+        public void AddLowerBorder(int rowIndex, int columnIndex)
+        {
             SLStyle lowerStyle = new SLStyle();
             lowerStyle.Border.BottomBorder.BorderStyle = BorderStyleValues.Thin;
             lowerStyle.Border.BottomBorder.Color = Color.Black;
+            
+            _excelDocument.SetCellStyle(rowIndex, columnIndex, lowerStyle);
+        }
 
-            for (int columnIndex = 1; columnIndex <= lastColumnIndex; columnIndex++)
+        public void AddLeftBorder(int rowIndex, int columnIndex)
+        {
+            SLStyle leftStyle = new SLStyle();
+            leftStyle.Border.LeftBorder.BorderStyle = BorderStyleValues.Thin;
+            leftStyle.Border.LeftBorder.Color = Color.Black;
+
+            _excelDocument.SetCellStyle(rowIndex, columnIndex, leftStyle);
+        }
+
+        public void AddRightBorder(int rowIndex, int columnIndex)
+        {
+            SLStyle leftStyle = new SLStyle();
+            leftStyle.Border.RightBorder.BorderStyle = BorderStyleValues.Thin;
+            leftStyle.Border.RightBorder.Color = Color.Black;
+
+            _excelDocument.SetCellStyle(rowIndex, columnIndex, leftStyle);
+        }
+        
+        public void SurroundRowsWithBorderUpperLower(int firstRowIndex, int firstColumnIndex, int lastRowIndex, int lastColumnIndex)
+        {
+            for (int columnIndex = firstColumnIndex; columnIndex <= lastColumnIndex; columnIndex++)
             {
-                _excelDocument.SetCellStyle(lastRowIndex, columnIndex, lowerStyle);
+                AddUpperBorder(firstRowIndex, columnIndex);
+                AddLowerBorder(lastRowIndex, columnIndex); 
             }
+            
         }
         
     }

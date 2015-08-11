@@ -309,7 +309,8 @@ namespace JlgCommonTests.Extensions
             var excelManager = new ExcelManager();
             excelManager.Writer.SelectWorksheet("Page2");
             
-            excelManager.Writer.SurroundRowsWithBorder(2, 1, 7, 1);
+            excelManager.Writer.AddUpperBorder(2, 1);
+            excelManager.Writer.AddLowerBorder(7, 1);
 
             SLStyle upperStyle = excelManager.Reader.GetCellStyle(2, 1);
             Assert.AreEqual(upperStyle.Border.TopBorder.BorderStyle, BorderStyleValues.Thin);

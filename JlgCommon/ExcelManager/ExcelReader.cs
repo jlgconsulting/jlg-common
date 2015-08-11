@@ -73,7 +73,7 @@ namespace JlgCommon.ExcelManager
             return columnIndexes;
         }
 
-        public int GetFirstRowContainingValuesIndex()
+        public int GetFirstNotEmptyRowIndex()
         {
             int rowIndex = 1;
             List<string> rowValues = GetRowNotEmptyValues(rowIndex);
@@ -92,6 +92,33 @@ namespace JlgCommon.ExcelManager
                                     .Distinct()
                                     .Count();
             return nrRows;
+        }
+
+        public KeyValuePair<int, int> GetFirstRowIndexAndColumnContainingSpecificValue(string value)
+        {
+            for (int rowIndex = GetFirstNotEmptyRowIndex(); rowIndex<GetLastRowIndex(); rowIndex++)
+            {
+                var distinctValues = GetRowNotEmptyValuesWithColumnIndexes(rowIndex);
+                foreach (var distinctValue in distinctValues)
+                {
+                    if (distinctValue.Value.Trim().ToLower().Equals(value.ToLower()))
+                    {
+                        return new KeyValuePair<int, int>(rowIndex, distinctValue.Key);
+                    }
+                }
+
+            }
+            return new KeyValuePair<int, int>(0,0);
+        }
+
+        public int GetLastRowIndex()
+        {
+            var lastRowIndex = _excelDocument.GetCells()
+                .Where(coll => !coll.Value.IsEmpty && 
+                    !_excelDocument.GetCellValueAsString(coll.Key.RowIndex, coll.Key.ColumnIndex).Equals(string.Empty))
+                .Max(coll => coll.Key.RowIndex);
+
+            return lastRowIndex;
         }
 
         public List<string> GetRowNotEmptyValues(int rowIndex)
@@ -323,7 +350,7 @@ namespace JlgCommon.ExcelManager
             {
                 var firstValue = _excelDocument.GetCellValueAsString(firstRowIndex, columnIndex);
                 var secondValue = _excelDocument.GetCellValueAsString(secondRowIndex, columnIndex);
-                if (firstValue != "")
+                if (!string.IsNullOrEmpty(firstValue))
                 {
                     dictionary.Add(firstValue, secondValue);
                 }
