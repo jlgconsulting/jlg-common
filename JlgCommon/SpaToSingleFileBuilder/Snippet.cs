@@ -1,7 +1,7 @@
 ﻿using JlgCommon.Logic;
 using Microsoft.Ajax.Utilities;
 
-namespace SpaToSingleFileBuilder
+namespace JlgCommon.SpaToSingleFileBuilder
 {
     public abstract class Snippet
     {

@@ -1,8 +1,6 @@
 ﻿using System.Text;
-using System.Text.RegularExpressions;
 
-
-namespace SpaToSingleFileBuilder
+namespace JlgCommon.SpaToSingleFileBuilder
 {
     public class SnippetScript : Snippet
     {

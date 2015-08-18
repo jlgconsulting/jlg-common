@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace SpaToSingleFileBuilder
+namespace JlgCommon.SpaToSingleFileBuilder
 {
     public class SnippetStyle : Snippet
     {

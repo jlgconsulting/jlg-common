@@ -1,12 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using JlgCommon.ExcelManager;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace JlgCommonTests.Extensions
+namespace JlgCommonTests.ExcelManager
 {
     [TestClass]
     public class ExcelManagerTests
@@ -18,7 +13,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void ExcelFilePathsAreSyncronizedBetweenReaderAndWriter()
         {
-            var excelManager = new ExcelManager(ExcelReaderTestsFilePath);
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager(ExcelReaderTestsFilePath);
             Assert.AreEqual(ExcelReaderTestsFilePath, excelManager.Reader.ExcelFilePath, false);
             Assert.AreEqual(ExcelReaderTestsFilePath, excelManager.Writer.ExcelFilePath, false);
 

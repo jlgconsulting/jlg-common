@@ -1,15 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Spreadsheet;
-using JlgCommon.ExcelManager;
 using JlgCommon.ExcelManager.Domain;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpreadsheetLight;
 
-namespace JlgCommonTests.Extensions
+namespace JlgCommonTests.ExcelManager
 {
     [TestClass]
     public class ExcelWriterTests
@@ -19,7 +15,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void SetCellValue()
         {
-            var excelManager = new ExcelManager();
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager();
             excelManager.Writer.SetCellValue(1, 1, _author);
             Assert.AreEqual(_author, excelManager.Reader.GetCellValueAsString(1, 1));
 
@@ -39,7 +35,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void AddLineOrColumnChart()
         {
-            var excelManager = new ExcelManager();
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager();
 
             var chartName = "Custom line chart";
             var lineChart = new LineOrColumnChartForExcel();
@@ -106,7 +102,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void AddPieChart()
         {
-            var excelManager = new ExcelManager();
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager();
 
             var chartName = "Costs share per department";
             var pieChart = new PieChartForExcel();
@@ -136,7 +132,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void AddTree()
         {
-            var excelManager = new ExcelManager();
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager();
 
             var rootNode = new TreeNodeForExcel()
             {
@@ -181,12 +177,12 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void SaveToDisk()
         {
-            var excelManager1 = new ExcelManager();
+            var excelManager1 = new JlgCommon.ExcelManager.ExcelManager();
             excelManager1.ExcelFilePath = ExcelManagerTests.ExcelManagerTestsFolder + Guid.NewGuid().ToString("N") + ".xlsx";
             excelManager1.Writer.SaveToDisk();
             var byteArray1 = excelManager1.Reader.ReadExcelFileAsByteArray(true);
 
-            var excelManager2 = new ExcelManager();
+            var excelManager2 = new JlgCommon.ExcelManager.ExcelManager();
             excelManager2.ExcelFilePath = ExcelManagerTests.ExcelManagerTestsFolder + Guid.NewGuid().ToString("N") + ".xlsx";
             excelManager2.Writer.SetCellValue(1, 1, _author);
             excelManager2.Writer.SaveToDisk();
@@ -200,7 +196,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void RenameWorksheet()
         {
-            var excelManager = new ExcelManager();
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager();
             Assert.AreEqual(1, excelManager.Reader.GetWorksheetNames().Count);
             var oldWorksheetName = excelManager.Reader.GetWorksheetNames()[0];
             excelManager.Writer.RenameWorksheet(oldWorksheetName, _newWorksheetName1);
@@ -212,7 +208,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void AddWorksheet()
         {
-            var excelManager = new ExcelManager();
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager();
 
             Assert.AreEqual(1, excelManager.Reader.GetWorksheetNames().Count);
 
@@ -225,7 +221,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void DeleteWorksheet()
         {
-            var excelManager = new ExcelManager();
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager();
 
             Assert.AreEqual(1, excelManager.Reader.GetWorksheetNames().Count);
 
@@ -243,7 +239,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void SetCellStyle()
         {
-            var excelManager = new ExcelManager();
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager();
             var style = new SLStyle();
             style.Alignment.Horizontal = HorizontalAlignmentValues.Center;
             style.Alignment.Vertical = VerticalAlignmentValues.Bottom;
@@ -261,7 +257,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void SetCellWidth()
         {
-            var excelManager = new ExcelManager();
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager();
             excelManager.Writer.SetCellWidth(1,10.0);
             Assert.AreEqual(excelManager.Reader.GetCellWidth(1), 10.0);
         }
@@ -269,7 +265,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void AutoFitColumn()
         {
-            var excelManager = new ExcelManager();
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager();
             const string text = "test for autofit method";
             excelManager.Writer.SetCellValue(1,1, text);
             excelManager.Writer.AutoFitColumn(1);
@@ -284,7 +280,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void MergeCells()
         {
-            var excelManager = new ExcelManager();
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager();
 
             excelManager.Writer.MergeCells(2, 2, 3, 5);
             var mergedCellsList = excelManager.Reader.GetMergedCells();
@@ -306,7 +302,7 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void SurroundRowsWithBorder()
         {
-            var excelManager = new ExcelManager();
+            var excelManager = new JlgCommon.ExcelManager.ExcelManager();
             excelManager.Writer.SelectWorksheet("Page2");
             
             excelManager.Writer.SurroundRowsWithBorder(2, 1, 7, 1);

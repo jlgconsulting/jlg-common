@@ -35,8 +35,10 @@
     <Reference Include="AjaxMin">
       <HintPath>..\packages\AjaxMin.5.14.5506.26202\lib\net40\AjaxMin.dll</HintPath>
     </Reference>
-    <Reference Include="DocumentFormat.OpenXml">
-      <HintPath>..\packages\DocumentFormat.OpenXml.1.0\lib\DocumentFormat.OpenXml.dll</HintPath>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\TOKAI\Dependencies\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="SpreadsheetLight">
       <HintPath>..\packages\SpreadsheetLight.3.4.4\lib\SpreadsheetLight.dll</HintPath>
@@ -69,6 +71,7 @@
     <Compile Include="ExcelManager\SLChartExtensions.cs" />
     <Compile Include="ExcelManager\SLDocumentExtensions.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="Logic\ByteArrayConverter.cs" />
     <Compile Include="Logic\FileManager.cs" />
     <Compile Include="Logic\HtmlToImagePrinter.cs" />
@@ -83,6 +86,7 @@
     <Compile Include="SpaToSingleFileBuilder\SnippetStyle.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

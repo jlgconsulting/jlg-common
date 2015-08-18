@@ -1,19 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using JlgCommon.ExcelManager;
-using SpreadsheetLight;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace JlgCommonTests.Extensions
+namespace JlgCommonTests.ExcelManager
 {
     [TestClass]
     public class ExcelReaderTests
     {
-        private ExcelManager _excelManager = new ExcelManager(ExcelManagerTests.ExcelReaderTestsFilePath);
+        private JlgCommon.ExcelManager.ExcelManager _excelManager = new JlgCommon.ExcelManager.ExcelManager(ExcelManagerTests.ExcelReaderTestsFilePath);
 
         [TestMethod]
         public void GetCellValue()
