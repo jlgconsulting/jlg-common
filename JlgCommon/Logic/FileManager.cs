@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace JlgCommon.Logic
 {
@@ -43,7 +40,7 @@ namespace JlgCommon.Logic
 
         public void DeleteAllFilesFromDirectory(string directoryName, List<string> extensions = null, bool includeAllChildDirectories = false)
         {
-            var directoryRes = new System.IO.DirectoryInfo(directoryName);
+            var directoryRes = new DirectoryInfo(directoryName);
             FileInfo[] files;
             if (includeAllChildDirectories)
             {
@@ -87,7 +84,7 @@ namespace JlgCommon.Logic
         public List<FileInfo> GetAllFilesFromDirectory(string directoryName, List<string> extensions = null, bool includeAllChildDirectories=false)
         {
             var filePaths = new List<FileInfo>();
-            var directoryRes = new System.IO.DirectoryInfo(directoryName);
+            var directoryRes = new DirectoryInfo(directoryName);
             FileInfo[] files;
             if (includeAllChildDirectories)
             {

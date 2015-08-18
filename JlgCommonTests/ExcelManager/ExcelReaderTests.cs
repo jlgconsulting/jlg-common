@@ -121,7 +121,7 @@ namespace JlgCommonTests.ExcelManager
         public void GetFirstRowContainingValuesIndex()
         {
             _excelManager.Reader.SelectWorksheet("Page2");
-            Assert.AreEqual(2, _excelManager.Reader.GetFirstRowContainingValuesIndex());
+            Assert.AreEqual(2, _excelManager.Reader.GetFirstNotEmptyRowIndex());
         }
 
         //[TestMethod]

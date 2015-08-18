@@ -1,10 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using JlgCommon.Extensions;
+﻿using JlgCommon.Extensions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace JlgCommonTests.Extensions
 {
@@ -41,10 +36,10 @@ namespace JlgCommonTests.Extensions
         [TestMethod]
         public void ToValidSqlTableOrColumnName()
         {
-            Assert.AreEqual("Dan_Misailescu",
+            Assert.AreEqual("dan_misailescu",
                             "Dan Misailescu".ToSqlValidTableOrColumnName(), false);
 
-            Assert.AreEqual("name_-_And_1_surename",
+            Assert.AreEqual("name_and_1_surename",
                             " name - And   1 $& surename ".ToSqlValidTableOrColumnName(), false);            
         }   
 

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace JlgCommon.ExcelManager.Domain
+﻿namespace JlgCommon.ExcelManager.Domain
 {
     public class StringDoublePair
     {

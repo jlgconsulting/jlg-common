@@ -4,6 +4,7 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using JlgCommon.ExcelManager.Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpreadsheetLight;
+using Color = System.Drawing.Color;
 
 namespace JlgCommonTests.ExcelManager
 {
@@ -305,15 +306,16 @@ namespace JlgCommonTests.ExcelManager
             var excelManager = new JlgCommon.ExcelManager.ExcelManager();
             excelManager.Writer.SelectWorksheet("Page2");
             
-            excelManager.Writer.SurroundRowsWithBorder(2, 1, 7, 1);
+            excelManager.Writer.AddUpperBorder(2, 1);
+            excelManager.Writer.AddLowerBorder(7, 1);
 
             SLStyle upperStyle = excelManager.Reader.GetCellStyle(2, 1);
             Assert.AreEqual(upperStyle.Border.TopBorder.BorderStyle, BorderStyleValues.Thin);
-            Assert.AreEqual(upperStyle.Border.TopBorder.Color.ToArgb(), System.Drawing.Color.Black.ToArgb());
+            Assert.AreEqual(upperStyle.Border.TopBorder.Color.ToArgb(), Color.Black.ToArgb());
 
             SLStyle lowerStyle = excelManager.Reader.GetCellStyle(7, 1);
             Assert.AreEqual(lowerStyle.Border.BottomBorder.BorderStyle, BorderStyleValues.Thin);
-            Assert.AreEqual(lowerStyle.Border.BottomBorder.Color.ToArgb(), System.Drawing.Color.Black.ToArgb());
+            Assert.AreEqual(lowerStyle.Border.BottomBorder.Color.ToArgb(), Color.Black.ToArgb());
         }
     }
 }

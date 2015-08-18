@@ -7,7 +7,7 @@ namespace JlgCommonTests.ExcelManager
     public class ExcelManagerTests
     {
         public static string ExcelManagerTestsFolder = AppDomain.CurrentDomain.BaseDirectory + @"\ExcelManager\";
-        public static string ExcelReaderTestsFilePath = ExcelManagerTests.ExcelManagerTestsFolder + "ExcelReaderTestsFile.xlsx";
+        public static string ExcelReaderTestsFilePath = ExcelManagerTestsFolder + "ExcelReaderTestsFile.xlsx";
 
 
         [TestMethod]

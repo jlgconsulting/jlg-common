@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -137,8 +135,7 @@ namespace JlgCommon.Logic
                             webBrowser
                                 .DrawToBitmap(
                                 bitmap,
-                                new System.Drawing
-                                    .Rectangle(0, 0, bitmap.Width, bitmap.Height));
+                                new Rectangle(0, 0, bitmap.Width, bitmap.Height));
 
                             bitmap.Save(printedImageMemoryStream, ImageFormat.Jpeg);
                             GetImageFromBrowserFinished = true;

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace JlgCommon.Extensions
 {
@@ -22,7 +20,7 @@ namespace JlgCommon.Extensions
             {
                 modifiedStr = modifiedStr.Substring(0, 110);
             }
-            return modifiedStr;
+            return modifiedStr.ToLower();
         }
 
         public static bool IsEmail(this string value)
