@@ -211,6 +211,22 @@ namespace JlgCommonTests.ExcelManager
             Assert.IsTrue(_excelManager.Reader.CellIsValidDateAfter1900(4, 5));
         }
 
+        [TestMethod]
+        public void GetColumnDistinctStringValuesWithRowIndexes()
+        {
+            _excelManager.Reader.SelectWorksheet("Page2");
+            var values = new Dictionary<string, int>
+            {
+                {"Values", 2} ,
+                {"3", 3},
+                {"14", 4},
+                {"8", 5},
+                {"10", 6},
+                {"7", 7}
+            };
+           CollectionAssert.AreEqual(_excelManager.Reader.GetColumnDistinctStringValuesWithRowIndexes(1, 2), values);
+        }
+
 
     }
 }

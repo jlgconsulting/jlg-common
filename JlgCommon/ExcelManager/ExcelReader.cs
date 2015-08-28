@@ -187,6 +187,29 @@ namespace JlgCommon.ExcelManager
             return columnUniqueValues.Keys.ToList();
         }
 
+        public Dictionary<string, int> GetColumnDistinctStringValuesWithRowIndexes(int columnIndex, int startRowIndex)
+        {
+            var values = new Dictionary<string , int>();
+
+            var numberOfRowsInSheet = GetNumberOfRows();
+            //the first row is the column title
+            for (int i = startRowIndex; i <= numberOfRowsInSheet; i++)
+            {
+                var cellValue = _excelDocument.GetCellValueAsString(i, columnIndex);
+                if (string.IsNullOrEmpty(cellValue))
+                {
+                    continue;
+                }
+
+                if (!values.ContainsKey(cellValue))
+                {
+                    values.Add(cellValue, i);
+                }
+            }
+
+            return values;
+        }
+
         public List<DateTime> GetColumnDistinctDates(int dateColumnIndex, int startRowIndex)
         {
             var columnUniqueValues = new Dictionary<DateTime, bool>();
