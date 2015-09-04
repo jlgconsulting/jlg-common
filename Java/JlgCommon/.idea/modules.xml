@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JlgCommon/JlgCommon.iml" filepath="$PROJECT_DIR$/JlgCommon/JlgCommon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JlgCommon.iml" filepath="$PROJECT_DIR$/JlgCommon.iml" />
     </modules>
   </component>
 </project>
