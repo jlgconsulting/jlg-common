@@ -12,7 +12,7 @@ Because Nuget packages restore doesn't work anymore, in both projects JlgCommon 
 <i>Install-Package AjaxMin</i>
 <br/>
 <br/>
-<b>4)</b> Inside Visual Studio, right click on Solution -> Add -> Existing Project -> choose "Solution Files (*.sln)" -> \Jlg.Common\JlgCommon.sln
+Inside Visual Studio, right click on Solution -> Add -> Existing Project -> choose "Solution Files (*.sln)" -> \Jlg.Common\JlgCommon.sln
 <br/>
 <br/>
 This will include both JlgCommon and JlgCommonTests projects into your solution.
