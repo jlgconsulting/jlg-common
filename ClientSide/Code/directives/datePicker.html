@@ -1,0 +1,22 @@
+﻿<div class="{{customClass}} D-inline-block v-alignTop">
+    <div class="input-group">
+         <!--format-month="MMM"
+               format-year="yyyy"-->
+        <span ng-if="name" class="input-group-addon">{{name}}</span>
+        <input ng-disabled="true"
+               ng-model="selectedLocal"
+               min-date="min"
+               max-date="max"
+               datepicker-popup="{{datePickerPopupFormat}}"
+               datepicker-options="dateOptions"
+               datepicker-mode="datePickerMode"
+               show-button-bar="false"
+               show-weeks="false"
+               is-open="opened"
+               class="form-control" />
+                
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="openCalendar($event)" ng-disabled="disabled"><i class='fa fa-calendar'></i></button>
+        </span>
+    </div>
+</div>

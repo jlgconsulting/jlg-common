@@ -1,0 +1,24 @@
+﻿<h4>{{textDescription}}</h4>
+<div class="five row mrg-down4">
+    <div class="five col-md-6">
+        <span ng-show="textSelectName1" class="D-block">{{textSelectName1}} ({{selectOptions1.length}})</span>
+        <select ng-model="selectedValue1" ng-disabled="selectOptions1.length==0 || selectOptions2.length==0" ng-options="o as o[selectDisplayPropertyName1] for o in selectOptions1 | orderBy: '{{selectDisplayPropertyName1}}'" class="form-control">
+            <option value="">-- {{translatedText.select}} --</option>
+        </select>
+    </div>
+    <div class="five col-md-6">
+        <span ng-show="textSelectName2" class="D-block">{{textSelectName2}} ({{selectOptions2.length}})</span>
+        <select ng-model="selectedValue2" ng-disabled="selectOptions2.length==0 || selectOptions1.length==0" ng-options="o as o[selectDisplayPropertyName2] for o in selectOptions2 | orderBy: '{{selectDisplayPropertyName2}}'" class="form-control">
+            <option value="">-- {{translatedText.select}} --</option>
+        </select>
+    </div>
+</div>
+<div ng-show="selectedCombinedValues.length == 0">
+    <i class="fa fa-ellipsis-h"></i>
+</div>
+<div ng-show="selectedCombinedValues.length > 0">
+    <grid-dm rows="selectedCombinedValues"
+             options="gridDmOptions"
+             table-class="table table-hover table-striped v-align-middle">
+    </grid-dm>
+</div>
