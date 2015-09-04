@@ -68,6 +68,7 @@
     <Compile Include="..\JlgCommon\ExcelManager\ExcelReader.cs">
       <Link>ExcelReader.cs</Link>
     </Compile>
+    <Compile Include="Domain\NameValuePairTests.cs" />
     <Compile Include="ExcelManager\ExcelWriterTests.cs" />
     <Compile Include="ExcelManager\ExcelManagerTests.cs" />
     <Compile Include="ExcelManager\ExcelReaderTests.cs" />
@@ -84,10 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="ClientSide\dependencies\jasmine\MIT.LICENSE" />
-    <None Include="ClientSide\run\test.bat" />
-    <None Include="ClientSide\run\test.sh" />
-    <None Include="ClientSide\run\watchr.rb" />
     <None Include="ExcelManager\ExcelReaderTestsFile.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -98,30 +95,6 @@
       <Project>{6d7eeb0c-3668-414c-b9a1-69ca6432c182}</Project>
       <Name>JlgCommon</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ClientSide\dependencies\angular\angular-mocks.js" />
-    <Content Include="ClientSide\dependencies\angular\angular-scenario.js" />
-    <Content Include="ClientSide\dependencies\angular\angular.js" />
-    <Content Include="ClientSide\dependencies\angular\version.txt" />
-    <Content Include="ClientSide\dependencies\jasmine\jasmine-html.js" />
-    <Content Include="ClientSide\dependencies\jasmine\jasmine.css" />
-    <Content Include="ClientSide\dependencies\jasmine\jasmine.js" />
-    <Content Include="ClientSide\karma.conf.js" />
-    <Content Include="ClientSide\run\web-server.js" />
-    <Content Include="ClientSide\tests\directives\comparingArrowSpecs.js" />
-    <Content Include="ClientSide\tests\directives\confirmPopupSpecs.js" />
-    <Content Include="ClientSide\tests\directives\datePickerSpecs.js" />
-    <Content Include="ClientSide\tests\directives\gridDmSpecs.js" />
-    <Content Include="ClientSide\tests\directives\waitPopupSpecs.js" />
-    <Content Include="ClientSide\tests\directives\sectionTitleSpecs.js" />
-    <Content Include="ClientSide\tests\directives\selectValuesWithAliasesIntoGridSpecs.js" />
-    <Content Include="ClientSide\tests\directives\treeDmSpecs.js" />
-    <Content Include="ClientSide\tests\directives\twoSelectsIntoGridSpecs.js" />
-    <Content Include="ClientSide\tests\jlgCommonGlobalSetup.js" />
-    <Content Include="ClientSide\tests\services\arrayHelperSrvSpec.js" />
-    <Content Include="ClientSide\tests\services\dateHelperSrvSpec.js" />
-    <Content Include="ClientSide\tests\services\stepsHelperSrvSpec.js" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
