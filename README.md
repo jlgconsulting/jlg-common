@@ -1,6 +1,6 @@
 # Jlg.Common
 
-In order to use these common libraries: 
+<b>For C#:</b> In order to use these common libraries: 
 <br/>
 <b>1)</b> Clone this repository inside your project directory (This will create the folder "Jlg.Common")
 <br/>
