@@ -41,7 +41,14 @@ namespace JlgCommonTests.Extensions
 
             Assert.AreEqual("name_and_1_surename",
                             " name - And   1 $& surename ".ToSqlValidTableOrColumnName(), false);            
-        }   
+        }
+
+        [TestMethod]
+        public void IsEmail()
+        {
+            Assert.IsTrue("some.mail@provider.ro".IsEmail());
+            Assert.IsFalse("some.mail@.com".IsEmail());
+        }
 
     }
 }

@@ -22,7 +22,30 @@
     <favorites_list name="JlgCommon" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="StringExtensions.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/extensions/StringExtensions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.60998154">
+              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+              <folding>
+                <element signature="method#toSqlValidTableOrColumnName#0;class#StringExtensions#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StringExtensionsTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tests/extensions/StringExtensionsTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -44,6 +67,8 @@
         <option value="$PROJECT_DIR$/src/extensions/DateExtensions.java" />
         <option value="$PROJECT_DIR$/src/extensions/DoubleExtensions.java" />
         <option value="$PROJECT_DIR$/src/tests/extensions/DoubleExtensionsTest.java" />
+        <option value="$PROJECT_DIR$/src/tests/extensions/StringExtensionsTest.java" />
+        <option value="$PROJECT_DIR$/src/extensions/StringExtensions.java" />
       </list>
     </option>
   </component>
@@ -83,6 +108,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -198,7 +224,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -210,35 +235,23 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="FullScreen" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
       <recent name="junit.framework.TestCase" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\_Proiecte\jlg-common\Java\JlgCommon\src\tests\extensions" />
+      <recent name="C:\_Proiecte\jlg-common\Java\JlgCommon\src\extensions" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="extensions" />
       <recent name="tests.extensions" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DoubleExtensionsTest">
-    <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="JlgCommon" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.StringExtensionsTest">
     <configuration default="false" name="NameValuePairTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JlgCommon" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -319,6 +332,26 @@
       <patterns />
       <method />
     </configuration>
+    <configuration default="false" name="StringExtensionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JlgCommon" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="tests.extensions" />
+      <option name="MAIN_CLASS_NAME" value="tests.extensions.StringExtensionsTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -371,25 +404,26 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.NameValuePairTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.DateExtensionsTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.tests in JlgCommon" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.DoubleExtensionsTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.NameValuePairTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.DateExtensionsTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.tests in JlgCommon" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.DoubleExtensionsTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.StringExtensionsTest" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.DoubleExtensionsTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.DateExtensionsTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.tests in JlgCommon" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.NameValuePairTest" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.StringExtensionsTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.DoubleExtensionsTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.DateExtensionsTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.tests in JlgCommon" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.NameValuePairTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -407,7 +441,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39915523" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39915523" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -439,10 +473,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="e#64#65#0" expanded="true" />
-            <element signature="e#114#115#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -450,9 +480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -460,7 +487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -468,7 +494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="5" selection-start-line="12" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -476,10 +501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#differenceInMonths#0;class#DateExtensions#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -487,23 +508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-          <folding>
-            <element signature="method#testCreateDate#0;class#DateExtensionsTest#0" expanded="false" />
-            <element signature="e#5542#5543#0" expanded="true" />
-            <element signature="e#5610#5611#0" expanded="true" />
-            <element signature="e#5654#5655#0" expanded="true" />
-            <element signature="e#5740#5741#0" expanded="true" />
-            <element signature="e#5783#5784#0" expanded="true" />
-            <element signature="e#5855#5856#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5984#5985#0" expanded="true" />
-            <element signature="e#6029#6030#0" expanded="true" />
-            <element signature="e#6117#6118#0" expanded="true" />
-            <element signature="e#6162#6163#0" expanded="true" />
-            <element signature="e#6250#6251#0" expanded="true" />
-            <element signature="e#6300#6301#0" expanded="true" />
-            <element signature="e#6394#6395#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -511,7 +515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -519,10 +522,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="e#64#65#0" expanded="true" />
-            <element signature="e#114#115#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -530,9 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -540,7 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -548,7 +543,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="5" selection-start-line="12" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -556,10 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#differenceInMonths#0;class#DateExtensions#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -567,23 +557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-          <folding>
-            <element signature="method#testCreateDate#0;class#DateExtensionsTest#0" expanded="false" />
-            <element signature="e#5542#5543#0" expanded="true" />
-            <element signature="e#5610#5611#0" expanded="true" />
-            <element signature="e#5654#5655#0" expanded="true" />
-            <element signature="e#5740#5741#0" expanded="true" />
-            <element signature="e#5783#5784#0" expanded="true" />
-            <element signature="e#5855#5856#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5984#5985#0" expanded="true" />
-            <element signature="e#6029#6030#0" expanded="true" />
-            <element signature="e#6117#6118#0" expanded="true" />
-            <element signature="e#6162#6163#0" expanded="true" />
-            <element signature="e#6250#6251#0" expanded="true" />
-            <element signature="e#6300#6301#0" expanded="true" />
-            <element signature="e#6394#6395#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -591,7 +564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -599,10 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="e#64#65#0" expanded="true" />
-            <element signature="e#114#115#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -610,7 +578,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -618,7 +585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="5" selection-start-line="12" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -633,9 +599,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -650,7 +613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -658,23 +620,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
-          <folding>
-            <element signature="method#testCreateDate#0;class#DateExtensionsTest#0" expanded="false" />
-            <element signature="e#5542#5543#0" expanded="true" />
-            <element signature="e#5610#5611#0" expanded="true" />
-            <element signature="e#5654#5655#0" expanded="true" />
-            <element signature="e#5740#5741#0" expanded="true" />
-            <element signature="e#5783#5784#0" expanded="true" />
-            <element signature="e#5855#5856#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5984#5985#0" expanded="true" />
-            <element signature="e#6029#6030#0" expanded="true" />
-            <element signature="e#6117#6118#0" expanded="true" />
-            <element signature="e#6162#6163#0" expanded="true" />
-            <element signature="e#6250#6251#0" expanded="true" />
-            <element signature="e#6300#6301#0" expanded="true" />
-            <element signature="e#6394#6395#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -690,10 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="256" column="5" selection-start-line="254" selection-start-column="4" selection-end-line="256" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#differenceInMonths#0;class#DateExtensions#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -709,10 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="42" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="42" />
-          <folding>
-            <element signature="e#1071#1072#0" expanded="true" />
-            <element signature="e#1124#1125#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -720,8 +657,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.8909428">
           <caret line="73" column="64" selection-start-line="73" selection-start-column="64" selection-end-line="73" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/extensions/StringExtensionsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/extensions/StringExtensions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60998154">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#toSqlValidTableOrColumnName#0;class#StringExtensions#0" expanded="false" />
           </folding>
         </state>
       </provider>
