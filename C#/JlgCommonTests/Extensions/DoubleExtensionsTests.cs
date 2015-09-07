@@ -42,6 +42,8 @@ namespace JlgCommonTests.Extensions
         {
             double nr1 = 10;
             Assert.AreEqual(5, nr1.PercentValue(50));
+            double nr2 = 100;
+            Assert.AreEqual(10, nr2.PercentValue(10));
             double nr3 = 50;
             Assert.AreEqual(5, nr3.PercentValue(10));
             double nr4 = 70;
@@ -59,6 +61,8 @@ namespace JlgCommonTests.Extensions
         {
             double nr1 = 10;
             Assert.AreEqual(15, nr1.IncreaseByPercent(50));
+            double nr2 = 100;
+            Assert.AreEqual(102, nr2.IncreaseByPercent(2));
             double nr3 = 50;
             Assert.AreEqual(55, nr3.IncreaseByPercent(10));
             double nr4 = 70;

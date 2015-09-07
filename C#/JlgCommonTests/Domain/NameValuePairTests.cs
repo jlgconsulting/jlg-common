@@ -30,9 +30,9 @@ namespace JlgCommonTests.Domain
 
             var nvp3 = new NameValuePair<string, string>();
             Assert.IsTrue(nvp3.Id != Guid.Empty);
-            Assert.IsTrue(nvp3.Name == string.Empty);
-            Assert.IsTrue(nvp3.Value == string.Empty);
-            Assert.IsTrue(nvp3.OwnerId == Guid.Empty);
+            Assert.IsTrue(nvp3.Name == null);
+            Assert.IsTrue(nvp3.Value == null);
+            Assert.IsTrue(nvp3.OwnerId == null);
         }
     }
 }

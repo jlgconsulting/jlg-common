@@ -89,12 +89,7 @@ namespace JlgCommon.Extensions
             }
 
             return capitalized;
-        }
-
-        public static string MinifyJson(string json)
-        {
-            return Regex.Replace(json, "(\"(?:[^\"\\\\]|\\\\.)*\")|\\s+", "$1");
-        }
+        }             
 
         private static Dictionary<Type, TypeConverter> _typeConverters = new Dictionary<Type, TypeConverter>();
 
@@ -114,8 +109,7 @@ namespace JlgCommon.Extensions
 
             return (T)conv.ConvertFromString(entry);
         }
-
-
+        
         public static string Stringify<T>(List<T> list)
         {
             var sb = new StringBuilder();

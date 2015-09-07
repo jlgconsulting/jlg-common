@@ -33,16 +33,16 @@ namespace JlgCommon.Extensions
             }
         }
 
-        public static double IncreaseByPercent(this double nr, double percent)
-        {           
-            return nr + nr.PercentValue(percent);
-        }
-
         public static double PercentValue(this double nr, double percent)
         {
             var percentValueFromNr = (percent / 100) * nr;
             return percentValueFromNr;
-        }      
+        }
+
+        public static double IncreaseByPercent(this double nr, double percent)
+        {           
+            return nr + nr.PercentValue(percent);
+        }       
 
     }
 }
