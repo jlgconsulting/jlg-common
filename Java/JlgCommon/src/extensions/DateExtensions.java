@@ -216,38 +216,32 @@ public final class DateExtensions {
         otherDate = toMonthYear(otherDate);
 
         boolean otherIsGreater = false;
-        if (currentDate.before(otherDate))
-        {
+        if (currentDate.before(otherDate)) {
             otherIsGreater = true;
         }
 
         Date start;
         Date end;
 
-        if (otherIsGreater)
-        {
+        if (otherIsGreater) {
             start = currentDate;
             end = otherDate;
         }
-        else
-        {
+        else {
             start = otherDate;
             end = currentDate;
         }
 
         int difference = 0;
-        while (start.before(end))
-        {
+        while (start.before(end)) {
             start = addMonths(start, 1);
             difference++;
         }
 
-        if (otherIsGreater)
-        {
+        if (otherIsGreater) {
             return -difference;
         }
-        else
-        {
+        else {
             return difference;
         }
     }

@@ -9,10 +9,9 @@ public final class DoubleExtensions {
 
         StringBuilder decimalFormatSb = new StringBuilder();
         decimalFormatSb.append("0.");
-        for (int i=0; i<decimals; i++){
+        for (int i=0; i<decimals; i++) {
             decimalFormatSb.append("0");
         }
-
         DecimalFormat df = new DecimalFormat(decimalFormatSb.toString());
         String formatedDouble = df.format(nr);
         return Double.valueOf(formatedDouble);
@@ -20,12 +19,10 @@ public final class DoubleExtensions {
 
     public static double differenceInPercents(double nr1, double nr2)
     {
-        if (Math.abs(nr2) > 0)
-        {
+        if (Math.abs(nr2) > 0) {
             return roundToDecimals(nr1 * 100 / nr2 - 100, 2);
         }
-        else
-        {
+        else {
             return Double.NaN;
         }
     }

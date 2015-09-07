@@ -25,6 +25,15 @@ namespace JlgCommonTests.Extensions
                             " a/bA   ap\\ca  a.ddd a;e     a,f  ".Capitalize(), false);
         }
 
+        
+        [TestMethod]
+        public void ReplaceMultipleSpacesWithSingleSpace()
+        {
+            Assert.AreEqual(" Dan Misailescu ",
+                            "      Dan     Misailescu    ".ReplaceMultipleSpacesWithSingleSpace(), false);
+        }
+
+
         [TestMethod]
         public void LowerCaseAndIgnoreSpaces()
         {

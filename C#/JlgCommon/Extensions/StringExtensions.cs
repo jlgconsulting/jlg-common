@@ -40,6 +40,16 @@ namespace JlgCommon.Extensions
             return comparableString.ToLower();
         }
 
+        public static string ReplaceMultipleSpacesWithSingleSpace(this string value)
+        {
+            while (value.Contains("  "))
+            {
+                value = value.Replace("  ", " ");
+            }
+
+            return value;
+        }
+
         public static string Capitalize(this string str)
         {
             if (string.IsNullOrEmpty(str)
@@ -73,20 +83,14 @@ namespace JlgCommon.Extensions
                 capitalezedPhrase.Append(wordForEdit);
                 capitalezedPhrase.Append(" ");
             }
-
             capitalezedPhrase.Remove(capitalezedPhrase.Length - 1, 1);
 
             var capitalized = capitalezedPhrase.ToString();
-
             foreach (var specialCharacter in specialCharacters)
             {
                 capitalized = capitalized.Replace(string.Format("{0} ", specialCharacter), specialCharacter);
             }
-
-            while (capitalized.Contains("  "))
-            {
-                capitalized = capitalized.Replace("  ", " ");
-            }
+            capitalized = capitalized.ReplaceMultipleSpacesWithSingleSpace();
 
             return capitalized;
         }             
