@@ -8,13 +8,25 @@ import java.util.Locale;
 /**
  * Created by Dan on 04/09/2015.
  */
-public final class DateTimeExtensions {
+public final class DateExtensions {
 
     public static Date createDate(int year, int month, int day){
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR,year);
         cal.set(Calendar.MONTH, month);
         cal.set(Calendar.DAY_OF_MONTH,day);
+        return cal.getTime();
+    }
+
+    public static Date createDate(int year, int month, int day, int hour, int minute, int second, int millisecond){
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR,year);
+        cal.set(Calendar.MONTH, month);
+        cal.set(Calendar.DAY_OF_MONTH,day);
+        cal.set(Calendar.HOUR_OF_DAY, hour);
+        cal.set(Calendar.MINUTE, minute);
+        cal.set(Calendar.SECOND, second);
+        cal.set(Calendar.MILLISECOND, millisecond);
         return cal.getTime();
     }
 
@@ -39,6 +51,34 @@ public final class DateTimeExtensions {
         return cal.getTime();
     }
 
+    public static Date addHours(Date date, int hours){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.HOUR_OF_DAY, hours);
+        return cal.getTime();
+    }
+
+    public static Date addMinutes(Date date, int minutes){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MINUTE, minutes);
+        return cal.getTime();
+    }
+
+    public static Date addSeconds(Date date, int seconds){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.SECOND, seconds);
+        return cal.getTime();
+    }
+
+    public static Date addMilliseconds(Date date, int milliseconds){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MILLISECOND, milliseconds);
+        return cal.getTime();
+    }
+
     public static Date setDay(Date date, int day){
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
@@ -57,6 +97,33 @@ public final class DateTimeExtensions {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.set(Calendar.YEAR, year);
+        return cal.getTime();
+    }
+    public static Date setHour(Date date, int hour){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.HOUR_OF_DAY, hour);
+        return cal.getTime();
+    }
+
+    public static Date setMinute(Date date, int minute){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.MINUTE, minute);
+        return cal.getTime();
+    }
+
+    public static Date setSecond(Date date, int second){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.SECOND, second);
+        return cal.getTime();
+    }
+
+    public static Date setMillisecond(Date date, int millisecond){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.MILLISECOND, millisecond);
         return cal.getTime();
     }
 
@@ -81,6 +148,34 @@ public final class DateTimeExtensions {
         return year;
     }
 
+    public static int getHour(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        return hour;
+    }
+
+    public static int getMinute(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int minute = cal.get(Calendar.MINUTE);
+        return minute;
+    }
+
+    public static int getSecond(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int second = cal.get(Calendar.SECOND);
+        return second;
+    }
+
+    public static int getMillisecond(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int millisecond = cal.get(Calendar.MILLISECOND);
+        return millisecond;
+    }
+
     public static String toMonthYearString(Date date)
     {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM yyyy", Locale.US);
@@ -98,7 +193,6 @@ public final class DateTimeExtensions {
         Calendar calendar= Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.HOUR, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
@@ -158,7 +252,7 @@ public final class DateTimeExtensions {
         }
     }
 
-    private DateTimeExtensions(){
+    private DateExtensions(){
 
     }
 }
