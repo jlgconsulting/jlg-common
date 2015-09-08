@@ -5,9 +5,6 @@ import domain.Constants;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Dan on 07/09/2015.
- */
 public final class StringExtensions {
 
     public static String toSqlValidTableOrColumnName(String str)

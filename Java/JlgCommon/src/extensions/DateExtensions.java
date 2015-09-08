@@ -5,9 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * Created by Dan on 04/09/2015.
- */
 public final class DateExtensions {
 
     public static Date createDate(int year, int month, int day){

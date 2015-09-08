@@ -14,30 +14,30 @@ namespace JlgCommon.Logic
             return _rnd.Next(lowestInclusive, largestExclusive);
         }
 
-        public string GetRandomString(int length)
+        public string GetRandomString(int size)
         {
             var randomString = new StringBuilder(10);
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < size; i++)
             {
                 randomString.Append((char)GetRandomIntBetween(97, 123));
             }
             return randomString.ToString();
         }
 
-        public List<int> GetRandomIntList(int length, int minInclusive = 0, int maxExclusive = 100)
+        public List<int> GetRandomIntList(int size, int minInclusive = 0, int maxExclusive = 100)
         {
             var randList = new List<int>();
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < size; i++)
             {
                 randList.Add(GetRandomIntBetween(minInclusive, maxExclusive));
             }
             return randList;
         }
 
-        public List<int?> GetRandomNullableIntList(int length, int minInclusive = 0, int maxExclusive = 100)
+        public List<int?> GetRandomNullableIntList(int size, int minInclusive = 0, int maxExclusive = 100)
         {
             var randList = new List<int?>();
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < size; i++)
             {
                 var randomNr=GetRandomIntBetween(1, 70);
                 if (randomNr % 3 == 0)
@@ -53,11 +53,11 @@ namespace JlgCommon.Logic
             return randList;
         }
 
-        public List<double> GetRandomDoubleList(int length, int minInclusive = 0, int maxExclusive = 100)
+        public List<double> GetRandomDoubleList(int size, int minInclusive = 0, int maxExclusive = 100)
         {
             var randList = new List<double>();
             double one = 1;
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < size; i++)
             {
                 double randomDouble = GetRandomIntBetween(minInclusive, maxExclusive) + (one / GetRandomIntBetween(2, 50));
                 randList.Add(randomDouble);
@@ -65,11 +65,11 @@ namespace JlgCommon.Logic
             return randList;
         }
 
-        public List<double?> GetRandomNullableDoubleList(int length, int minInclusive = 0, int maxExclusive = 100)
+        public List<double?> GetRandomNullableDoubleList(int size, int minInclusive = 0, int maxExclusive = 100)
         {
             var randList = new List<double?>();
             double one = 1;
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < size; i++)
             {                
                 var randomNr=GetRandomIntBetween(1, 70);
                 if (randomNr % 3 == 0)
@@ -86,10 +86,10 @@ namespace JlgCommon.Logic
             return randList;
         }
         
-        public List<Guid> GetRandomGuidList(int length)
+        public List<Guid> GetRandomGuidList(int size)
         {
             var randList = new List<Guid>();
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < size; i++)
             {
                 randList.Add(Guid.NewGuid());
             }
@@ -101,9 +101,25 @@ namespace JlgCommon.Logic
             var year = GetRandomIntBetween(startYearInclusive, endYearExclusive);
             var month = GetRandomIntBetween(1, 13);
             var day = GetRandomIntBetween(1, 29);
-            return new DateTime(year, month, day);
+            var hour = GetRandomIntBetween(0, 25);
+            var minute = GetRandomIntBetween(0, 60);
+            var second = GetRandomIntBetween(0, 60);
+            var millisecond = GetRandomIntBetween(0, 1000);
+
+            return new DateTime(year, month, day, hour, minute, second, millisecond);
         }
-                
+
+        public List<DateTime> GetRandomDateTimeList(int size, int startYearInclusive, int endYearExclusive)
+        {
+            var randList = new List<DateTime>();
+            for (int i = 0; i < size; i++)
+            {
+                var randDateTime = GetRandomDateTime(startYearInclusive, endYearExclusive);
+                randList.Add(randDateTime);
+            }
+            return randList;
+        }
+
         public TimeSpan GetRandomTimeSpan()
         {
 

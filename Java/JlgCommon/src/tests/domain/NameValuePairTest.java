@@ -7,9 +7,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Dan on 04/09/2015.
- */
 public class NameValuePairTest {
 
     @Test

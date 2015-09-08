@@ -67,9 +67,9 @@ namespace JlgCommonTests.Logic
             {
                 var randDoubleList = _randomGenerator.GetRandomDoubleList(17, -3, 9);
                 Assert.IsTrue(randDoubleList.Count == 17);
-                foreach (var randInt in randDoubleList)
+                foreach (var randDouble in randDoubleList)
                 {
-                    Assert.IsTrue(randInt >= -3 && randInt < 9);
+                    Assert.IsTrue(randDouble >= -3 && randDouble < 9);
                 }
             }
         }
@@ -104,15 +104,31 @@ namespace JlgCommonTests.Logic
         [TestMethod]
         public void GetRandomDateTime()
         {
-            var first1800 = new DateTime(1800, 1, 1);
-            var first2250 = new DateTime(2250, 1, 1);
+            var first2002 = new DateTime(2002, 1, 1);
+            var first2015 = new DateTime(2015, 1, 1);
             for (int i = 0; i < 100; i++)
             {
-                var randDate = _randomGenerator.GetRandomDateTime(1800, 2250);
-                Assert.IsTrue(randDate >= first1800 && randDate < first2250);
+                var randDateTime = _randomGenerator.GetRandomDateTime(2002, 2015);
+                Assert.IsTrue(randDateTime >= first2002 && randDateTime < first2015);
             }
         }
 
+        [TestMethod]
+        public void GetRandomDateTimeList()
+        {
+            var first1900 = new DateTime(1900, 1, 1);
+            var first2250 = new DateTime(2250, 1, 1);
+            for (int i = 0; i < 50; i++)
+            {
+                var randDateTimeList = _randomGenerator.GetRandomDateTimeList(30, 1900, 2250);
+                Assert.IsTrue(randDateTimeList.Count == 30);
+                foreach (var randDateTime in randDateTimeList)
+                {
+                    Assert.IsTrue(randDateTime >= first1900 && randDateTime < first2250);
+                }                
+            }
+        }     
+        
         [TestMethod]
         public void GetRandomTimeSpan()
         {

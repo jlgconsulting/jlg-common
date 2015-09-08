@@ -1,8 +1,6 @@
 package extensions;
 import java.text.DecimalFormat;
-/**
- * Created by Dan on 07/09/2015.
- */
+
 public final class DoubleExtensions {
 
     public static double roundToDecimals(double nr, int decimals){

@@ -2,9 +2,7 @@ package domain;
 
 import java.lang.String;
 import java.util.UUID;
-/**
- * Created by Dan on 04/09/2015.
- */
+
 public class NameValuePair<TName, TValue> {
 
     public String Id;

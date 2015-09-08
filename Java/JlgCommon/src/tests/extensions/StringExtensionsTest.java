@@ -4,9 +4,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Dan on 07/09/2015.
- */
 public class StringExtensionsTest {
 
     @Test
