@@ -50,7 +50,7 @@ public class RandomGenerator {
         int year = getRandomIntBetween(startYearInclusive, endYearExclusive);
         int month = getRandomIntBetween(1, 13);
         int day = getRandomIntBetween(1, 29);
-        int hour = getRandomIntBetween(0, 25);
+        int hour = getRandomIntBetween(0, 24);
         int minute = getRandomIntBetween(0, 60);
         int second = getRandomIntBetween(0, 60);
         int millisecond = getRandomIntBetween(0, 1000);
@@ -66,6 +66,4 @@ public class RandomGenerator {
         }
         return randList;
     }
-
-
 }

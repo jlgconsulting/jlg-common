@@ -15,10 +15,10 @@ namespace JlgCommonTests.Logic
         [TestMethod]
         public void Write_Read_Delete()
         {
-            _fileManager.Write(authorFileName, "Dan Misailescu");
+            _fileManager.Write(authorFileName, "Dan Misailescu + unicode text: românește");
 
             var authorFileContent = _fileManager.Read(authorFileName);
-            Assert.AreEqual(authorFileContent, "Dan Misailescu");
+            Assert.AreEqual(authorFileContent, "Dan Misailescu + unicode text: românește");
 
             _fileManager.Delete(authorFileName);
             Assert.IsFalse(File.Exists(authorFileName));

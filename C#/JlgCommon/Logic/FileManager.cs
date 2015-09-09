@@ -5,42 +5,42 @@ using System.Text;
 namespace JlgCommon.Logic
 {
     public class FileManager
-    {
-        public string Read(string fileName)
+    {       
+        public string Read(string filePath)
         {
-            using (var sr = new StreamReader(fileName))
+            using (var sr = new StreamReader(filePath))
             {
                 return sr.ReadToEnd();
             }
         }
 
-        public void Write(string fileName, string content)
+        public void Write(string filePath, string content)
         {
-            using (var sw = new StreamWriter(fileName, false, Encoding.UTF8))
+            using (var sw = new StreamWriter(filePath, false, Encoding.UTF8))
             {
                 sw.Write(content);
             }
         }
 
-        public void Delete(string fileName)
+        public void Delete(string filePath)
         {
-            if (File.Exists(fileName))
+            if (File.Exists(filePath))
             {
-                File.Delete(fileName);
+                File.Delete(filePath);
             }
         }
         
-        public void CreateDirectory(string path)
+        public void CreateDirectory(string directoryPath)
         {
-            if (!Directory.Exists(path))
+            if (!Directory.Exists(directoryPath))
             {
-                Directory.CreateDirectory(path);
+                Directory.CreateDirectory(directoryPath);
             }
         }
 
-        public void DeleteAllFilesFromDirectory(string directoryName, List<string> extensions = null, bool includeAllChildDirectories = false)
+        public void DeleteAllFilesFromDirectory(string directoryPath, List<string> extensions = null, bool includeAllChildDirectories = false)
         {
-            var directoryRes = new DirectoryInfo(directoryName);
+            var directoryRes = new DirectoryInfo(directoryPath);
             FileInfo[] files;
             if (includeAllChildDirectories)
             {
@@ -81,10 +81,10 @@ namespace JlgCommon.Logic
 
         }
 
-        public List<FileInfo> GetAllFilesFromDirectory(string directoryName, List<string> extensions = null, bool includeAllChildDirectories=false)
+        public List<FileInfo> GetAllFilesFromDirectory(string directoryPath, List<string> extensions = null, bool includeAllChildDirectories=false)
         {
             var filePaths = new List<FileInfo>();
-            var directoryRes = new DirectoryInfo(directoryName);
+            var directoryRes = new DirectoryInfo(directoryPath);
             FileInfo[] files;
             if (includeAllChildDirectories)
             {
@@ -106,8 +106,7 @@ namespace JlgCommon.Logic
                             filePaths.Add(file);
                             break;
                         }
-	                }
-                    
+	                }                    
                 }
                 else
                 {
@@ -118,20 +117,20 @@ namespace JlgCommon.Logic
             return filePaths;
         }
 
-        public void CopyDirectory(string sourceDirName, string destDirName, bool copySubDirs = true)
+        public void CopyDirectory(string sourceDirectoryPath, string directoryPath, bool copySubDirs = true)
         {            
-            var dir = new DirectoryInfo(sourceDirName);
+            var dir = new DirectoryInfo(sourceDirectoryPath);
             var dirs = dir.GetDirectories();
                        
-            if (!Directory.Exists(destDirName))
+            if (!Directory.Exists(directoryPath))
             {
-                Directory.CreateDirectory(destDirName);
+                Directory.CreateDirectory(directoryPath);
             }
             
             FileInfo[] files = dir.GetFiles();
             foreach (FileInfo file in files)
             {
-                string temppath = Path.Combine(destDirName, file.Name);
+                string temppath = Path.Combine(directoryPath, file.Name);
                 file.CopyTo(temppath, false);
             }
            
@@ -139,7 +138,7 @@ namespace JlgCommon.Logic
             {
                 foreach (DirectoryInfo subdir in dirs)
                 {
-                    string temppath = Path.Combine(destDirName, subdir.Name);
+                    string temppath = Path.Combine(directoryPath, subdir.Name);
                     CopyDirectory(subdir.FullName, temppath, copySubDirs);
                 }
             }

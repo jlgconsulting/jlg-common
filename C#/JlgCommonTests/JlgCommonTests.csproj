@@ -65,9 +65,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="..\JlgCommon\ExcelManager\ExcelReader.cs">
-      <Link>ExcelReader.cs</Link>
-    </Compile>
     <Compile Include="Domain\NameValuePairTests.cs" />
     <Compile Include="ExcelManager\ExcelWriterTests.cs" />
     <Compile Include="ExcelManager\ExcelManagerTests.cs" />

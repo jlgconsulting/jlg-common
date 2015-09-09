@@ -101,7 +101,7 @@ namespace JlgCommon.Logic
             var year = GetRandomIntBetween(startYearInclusive, endYearExclusive);
             var month = GetRandomIntBetween(1, 13);
             var day = GetRandomIntBetween(1, 29);
-            var hour = GetRandomIntBetween(0, 25);
+            var hour = GetRandomIntBetween(0, 24);
             var minute = GetRandomIntBetween(0, 60);
             var second = GetRandomIntBetween(0, 60);
             var millisecond = GetRandomIntBetween(0, 1000);
