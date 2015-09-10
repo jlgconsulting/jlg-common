@@ -42,7 +42,7 @@ public class StringExtensionsTest {
                 .capitalize(" thIs    is a   vERy  LONG texT  "));
         assertEquals("Dan.Misailescu", StringExtensions
                 .capitalize("   dan.misailescu "));
-        assertEquals("A/Ba Ap\\Ca A.Ddd A;E A,F", StringExtensions
-                .capitalize(" a/bA   ap\\ca  a.ddd a;e     a,f  "));
+        assertEquals("A/Ba Ap\\Ca A.Ddd A;E Ahi,Fgj", StringExtensions
+                .capitalize(" a/bA   ap\\ca  a.dDd a;e     ahi,fgj   "));
     }
 }
