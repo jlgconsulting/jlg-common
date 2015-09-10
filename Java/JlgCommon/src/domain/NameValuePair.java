@@ -5,30 +5,24 @@ import java.util.UUID;
 
 public class NameValuePair<TName, TValue> {
 
-    public String Id;
-    public TName Name;
-    public TValue Value;
-    public String OwnerId;
+    public String id;
+    public TName name;
+    public TValue value;
+    public String ownerId;
 
     public NameValuePair() {
         UUID uuid = UUID.randomUUID();
-        Id = uuid.toString();
+        id = uuid.toString();
     }
 
     public NameValuePair(TName name, TValue value) {
-        UUID uuid = UUID.randomUUID();
-        Id = uuid.toString();
-
-        Name = name;
-        Value = value;
+        this();
+        this.name = name;
+        this.value = value;
     }
 
     public NameValuePair(TName name, TValue value, String ownerId) {
-        UUID uuid = UUID.randomUUID();
-        Id = uuid.toString();
-
-        Name = name;
-        Value = value;
-        OwnerId = ownerId;
+        this(name,value);
+        this.ownerId = ownerId;
     }
 }

@@ -1,8 +1,6 @@
 package tests.domain;
 
-import domain.Constants;
 import domain.NameValuePair;
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,22 +11,22 @@ public class NameValuePairTest {
     public void ConstructorsInitializePropertiesCorrectly(){
 
         String ownerId = "Dan Misailescu";
-        NameValuePair<Integer, String> nvp1 = new NameValuePair<Integer, String>(4, "value3", ownerId);
-        assertNotEquals(nvp1.Id, null);
-        assertEquals(nvp1.Name, (Integer)4);
-        assertEquals(nvp1.Value, "value3");
-        assertEquals(nvp1.OwnerId, ownerId);
+        NameValuePair<Integer, String> nvp1 = new NameValuePair<>(4, "value3", ownerId);
+        assertNotEquals(nvp1.id, null);
+        assertEquals(nvp1.name, (Integer)4);
+        assertEquals(nvp1.value, "value3");
+        assertEquals(nvp1.ownerId, ownerId);
 
-        NameValuePair<String, Integer> nvp2 = new NameValuePair<String, Integer>("name2", 5);
-        assertNotEquals(nvp2.Id, null);
-        assertEquals(nvp2.Name, "name2");
-        assertEquals(nvp2.Value, (Integer)5);
-        assertEquals(nvp2.OwnerId, null);
+        NameValuePair<String, Integer> nvp2 = new NameValuePair<>("name2", 5);
+        assertNotEquals(nvp2.id, null);
+        assertEquals(nvp2.name, "name2");
+        assertEquals(nvp2.value, (Integer)5);
+        assertEquals(nvp2.ownerId, null);
 
-        NameValuePair<String, String> nvp3 = new NameValuePair<String, String>();
-        assertNotEquals(nvp3.Id, null);
-        assertEquals(nvp3.Name, null);
-        assertEquals(nvp3.Value, null);
-        assertEquals(nvp3.OwnerId, null);
+        NameValuePair<String, String> nvp3 = new NameValuePair<>();
+        assertNotEquals(nvp3.id, null);
+        assertEquals(nvp3.name, null);
+        assertEquals(nvp3.value, null);
+        assertEquals(nvp3.ownerId, null);
     }
 }
