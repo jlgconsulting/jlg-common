@@ -1,6 +1,5 @@
 package tests.extensions;
 
-import extensions.DateExtensions;
 import extensions.DoubleExtensions;
 import org.junit.Test;
 

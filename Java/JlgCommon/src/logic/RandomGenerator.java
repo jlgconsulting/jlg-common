@@ -1,6 +1,6 @@
 package logic;
 
-import extensions.DateExtensions;
+import extensions.DateLegacyExtensions;
 
 import java.util.*;
 
@@ -55,7 +55,7 @@ public class RandomGenerator {
         int second = getRandomIntBetween(0, 60);
         int millisecond = getRandomIntBetween(0, 1000);
 
-        return DateExtensions.createDate(year, month, day, hour, minute, second, millisecond);
+        return DateLegacyExtensions.createDate(year, month, day, hour, minute, second, millisecond);
     }
 
     public List<Date> getRandomDateList(int size, int startYearInclusive, int endYearExclusive){

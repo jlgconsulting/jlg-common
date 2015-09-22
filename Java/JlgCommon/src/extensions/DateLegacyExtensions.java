@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public final class DateExtensions {
+public final class DateLegacyExtensions {
 
     public static Date createDate(int year, int month, int day){
         Calendar cal = Calendar.getInstance();
@@ -243,7 +243,7 @@ public final class DateExtensions {
         }
     }
 
-    private DateExtensions(){
+    private DateLegacyExtensions(){
 
     }
 }

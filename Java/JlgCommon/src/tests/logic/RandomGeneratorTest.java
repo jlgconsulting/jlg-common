@@ -1,6 +1,6 @@
 package tests.logic;
 
-import extensions.DateExtensions;
+import extensions.DateLegacyExtensions;
 import logic.RandomGenerator;
 import org.junit.Before;
 import org.junit.Test;
@@ -68,8 +68,8 @@ public class RandomGeneratorTest {
 
     @Test
     public void testGetRandomDate() {
-        Date first2002 = DateExtensions.createDate(2002, 1, 1);
-        Date first2015 = DateExtensions.createDate(2015, 1, 1);
+        Date first2002 = DateLegacyExtensions.createDate(2002, 1, 1);
+        Date first2015 = DateLegacyExtensions.createDate(2015, 1, 1);
         for (int i = 0; i < 100; i++) {
             Date randDate = randomGenerator.getRandomDate(2002, 2015);
             assertTrue(randDate.after(first2002) && randDate.before(first2015));
@@ -78,8 +78,8 @@ public class RandomGeneratorTest {
 
     @Test
     public void testRandomDateList() {
-        Date first1900 = DateExtensions.createDate(1900, 1, 1);
-        Date first2250 = DateExtensions.createDate(2250, 1, 1);
+        Date first1900 = DateLegacyExtensions.createDate(1900, 1, 1);
+        Date first2250 = DateLegacyExtensions.createDate(2250, 1, 1);
         for (int i = 0; i < 50; i++) {
             List<Date> randDateList = randomGenerator.getRandomDateList(30, 1900, 2250);
             assertTrue(randDateList.size() == 30);
