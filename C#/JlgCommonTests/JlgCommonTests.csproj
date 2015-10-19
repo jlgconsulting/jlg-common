@@ -87,12 +87,6 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\JlgCommon\JlgCommon.csproj">
-      <Project>{6d7eeb0c-3668-414c-b9a1-69ca6432c182}</Project>
-      <Name>JlgCommon</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
