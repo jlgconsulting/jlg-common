@@ -4,41 +4,27 @@ jlgCommonModule.directive("confirmPopup", function () {
         restrict: "E",
         templateUrl: window.serverAppPath("ClientSide/Code/directives/confirmPopup.html"),
         scope: {
-            classWrapper: "=",
-            classContent: "=",
-            yesText: "=",
-            noText: "=",
-            messageText: "="
+            options: "="
         },
-        controller: ["$scope", "globalSharedService",
-            function ($scope, globalSharedService) {
-
-            $scope.globalSharedData = globalSharedService.sharedData;
+        controller: ["$scope",
+            function ($scope) {
                         
             $scope.confirm = function () {
-                
-                $scope.globalSharedData.confirmPopup.isConfirmed = true;
-                $scope.globalSharedData.confirmPopup.isOpen = false;
+                $scope.options.isConfirmed = true;
+                $scope.options.isOpen = false;
+                if($scope.options.confirmCallBack){
+                    $scope.options.confirmCallBack();
+                }
             };
-            
+
             $scope.notConfirm = function () {
-                
-                $scope.globalSharedData.confirmPopup.isConfirmed = false;
-                $scope.globalSharedData.confirmPopup.isOpen = false;
+                $scope.options.isConfirmed = false;
+                $scope.options.isOpen = false;
+
+                if($scope.options.notConfirmCallBack){
+                    $scope.options.notConfirmCallBack();
+                }
             };
-
-            $scope.$watch("yesText", function (newValue, oldValue) {
-                if (!newValue) {
-                    $scope.yesText = "Yes";
-                }
-            })
-
-            $scope.$watch("noText", function (newValue, oldValue) {
-                if (!newValue) {
-                    $scope.yesText = "No";
-                }
-            })
-
         }]
     };
 });
