@@ -2,16 +2,21 @@
 jlgCommonModule.directive("itemsWithForwardBack", function () {
     return {
         restrict: "E",
-        templateUrl: window.serverAppPath("ClientSide/Code/directives/itemsWithForwardBack.html"),
+        templateUrl: asdk.getAppPath("app/jlg.common/directives/itemsWithForwardBack.html"),
         scope: {
             selectCurrentItem: "=",
-            items: "="
+            items: "=",
+            displayProperty: "@"
         },
         controller: ["$scope",
         function ($scope) {
             $scope.MAX_HISTORY_STEP_DISPLAY_LENGTH = 40;
 
             $scope.currentStartIndex = 0;
+
+            if(!$scope.displayProperty){
+                $scope.displayProperty="name";
+            }
 
             $scope.showPrevious = function () {
                 $scope.currentStartIndex--;
