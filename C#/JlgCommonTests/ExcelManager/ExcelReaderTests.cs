@@ -184,14 +184,11 @@ namespace JlgCommonTests.ExcelManager
         [TestMethod]
         public void GetValuesForWorksheet()
         {
-            List<List<string>> values = _excelManager.Reader.GetValuesForWorksheet("Page3");
-            
-            CollectionAssert.AreEquivalent(values.ElementAt(0),
-                new List<string> { "Merged cells", "", "", "" });
-            CollectionAssert.AreEquivalent(values.ElementAt(1),
-                new List<string>{"","","",""});
-            CollectionAssert.AreEquivalent(values.ElementAt(2),
-                new List<string> { "", "searchedString", "", "searchedString" });
+            var valuesDictionary = _excelManager.Reader.GetValuesForWorksheet("Page3");
+
+            Assert.AreEqual(valuesDictionary[1][1], "Merged cells");
+            Assert.AreEqual(valuesDictionary[3][2], "searchedString");
+            Assert.AreEqual(valuesDictionary[3][6], "searchedString");            
         }
 
         [TestMethod]

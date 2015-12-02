@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using JlgCommon.Extensions;
 using SpreadsheetLight;
+using DocumentFormat.OpenXml.Spreadsheet;
+using OfficeOpenXml;
 
 namespace JlgCommon.ExcelManager
 {   
@@ -12,15 +14,18 @@ namespace JlgCommon.ExcelManager
         public const int INVALID_COLUMN_INDEX = -1;
         public string ExcelFilePath { get; set; }
         private SLDocument _excelDocument;
-        
+        //for using EPPlus library
+        private ExcelPackage _excelPackage;
+
         internal ExcelReader()
         {
-            _excelDocument = new SLDocument();
+            _excelDocument = new SLDocument();       
         }
 
-        internal ExcelReader(SLDocument excelDocument)
+        internal ExcelReader(SLDocument excelDocument, ExcelPackage excelPackage)
         {
-            _excelDocument = excelDocument;            
+            _excelDocument = excelDocument;
+            _excelPackage = excelPackage;
         }
 
         public byte[] ReadExcelFileAsByteArray(bool deleteExcelFileAfterReading = false)
@@ -84,11 +89,11 @@ namespace JlgCommon.ExcelManager
         }
 
         public int GetNumberOfRows()
-        {
+        {         
             var nrRows = _excelDocument.GetCells()
-                                    .Select(coll => coll.Key.RowIndex)
-                                    .Distinct()
-                                    .Count();
+                              .Select(coll => coll.Key.RowIndex)
+                              .Distinct()
+                              .Count();
             return nrRows;
         }
 
@@ -153,6 +158,7 @@ namespace JlgCommon.ExcelManager
             return rowValues;
         }
 
+  
         public List<string> GetRowValues(int rowIndex)
         {
             var rowValues = new List<string>();
@@ -162,6 +168,24 @@ namespace JlgCommon.ExcelManager
                 rowValues.Add(cellValue);
             }
             return rowValues;
+        }
+
+        public Dictionary<int, Dictionary<int, string>> GetValuesForWorksheet(string worksheetName)
+        {
+           
+            var worksheet = _excelPackage.Workbook.Worksheets[worksheetName];            
+            var cells = worksheet.Cells.ToList();        
+
+            var rowValuesDictionary = new Dictionary<int, Dictionary<int, string>>();
+            foreach (var cell in cells)
+            {
+                if (!rowValuesDictionary.ContainsKey(cell.Start.Row))
+                {
+                    rowValuesDictionary.Add(cell.Start.Row, new Dictionary<int, string>());
+                }
+                rowValuesDictionary[cell.Start.Row].Add(cell.Start.Column,cell.Text);
+            }              
+            return rowValuesDictionary;
         }
 
         public List<string> GetColumnDistinctStringValues(int columnIndex, int startRowIndex)
@@ -316,24 +340,7 @@ namespace JlgCommon.ExcelManager
             }
             return columnIndexes;
         }
-
-        public List<List<string>> GetValuesForWorksheet(string worksheetName)
-        {
-            var values = new List<List<string>>();
-
-            var worksheetFound = _excelDocument.SelectWorksheet(worksheetName);
-            if (!worksheetFound)
-                throw new Exception("Could not find worksheet" + worksheetName);
-            int rowCount = GetNumberOfRows();
-
-            for (int i = 0; i < rowCount; i++)
-            {
-                var rowValues = GetRowValues(i + 1);
-                values.Add(rowValues);
-            }
-
-            return values;
-        }
+              
 
         public Tuple<int, int> GetRowAndColumnForSpecificStringValue(string field)
         {

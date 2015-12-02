@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using SpreadsheetLight;
+using OfficeOpenXml;
 
 namespace JlgCommon.ExcelManager
 {
@@ -30,31 +31,32 @@ namespace JlgCommon.ExcelManager
             }
         }
         private SLDocument _excelDocument;
-
+        private ExcelPackage _excelPackage;
 
         public ExcelManager()
         {
             _excelDocument = new SLDocument();
-            Reader = new ExcelReader(_excelDocument);
+            Reader = new ExcelReader(_excelDocument, null);
             Writer = new ExcelWriter(_excelDocument);
         }
 
         public ExcelManager(string excelFilePath)
-        {
+        {          
 
             if (File.Exists(excelFilePath))
             {
                 _excelDocument = new SLDocument(excelFilePath);
-                Reader = new ExcelReader(_excelDocument);
+                FileInfo newFile = new FileInfo(excelFilePath);
+                _excelPackage = new ExcelPackage(newFile);
+                Reader = new ExcelReader(_excelDocument, _excelPackage);
                 Writer = new ExcelWriter(_excelDocument);
             }
             else
             {
                 _excelDocument = new SLDocument();
-                Reader = new ExcelReader(_excelDocument);
+                Reader = new ExcelReader(_excelDocument, null);
                 Writer = new ExcelWriter(_excelDocument);
             }
-            
 
             ExcelFilePath = excelFilePath;
         }
