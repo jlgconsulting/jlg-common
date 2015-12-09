@@ -124,6 +124,14 @@ namespace JlgCommon.ExcelManager
             return lastRowIndex;
         }
 
+        public int GetLastNonEmptyRowIndex(string worksheetName)
+        {
+            var worksheet = _excelPackage.Workbook.Worksheets[worksheetName];
+            var cells = worksheet.Cells.Where(cell=>!string.IsNullOrEmpty(cell.Text)).ToList();
+
+            return cells.Max(cell => cell.Start.Row);
+        }
+
         public List<string> GetRowNotEmptyValues(int rowIndex)
         {
             var rowValues = new List<string>();
@@ -185,6 +193,24 @@ namespace JlgCommon.ExcelManager
                 }
                 rowValuesDictionary[cell.Start.Row].Add(cell.Start.Column,cell.Text);
             }              
+            return rowValuesDictionary;
+        }
+
+        public Dictionary<int, Dictionary<int, string>> GetNonEmptyRowsForWorksheet(string worksheetName)
+        {
+
+            var worksheet = _excelPackage.Workbook.Worksheets[worksheetName];
+            var cells = worksheet.Cells.Where(cell=>!string.IsNullOrEmpty(cell.Text)).ToList();
+
+            var rowValuesDictionary = new Dictionary<int, Dictionary<int, string>>();
+            foreach (var cell in cells)
+            {
+                if (!rowValuesDictionary.ContainsKey(cell.Start.Row))
+                {
+                    rowValuesDictionary.Add(cell.Start.Row, new Dictionary<int, string>());
+                }
+                rowValuesDictionary[cell.Start.Row].Add(cell.Start.Column, cell.Text);
+            }
             return rowValuesDictionary;
         }
 

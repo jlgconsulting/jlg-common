@@ -192,6 +192,23 @@ namespace JlgCommonTests.ExcelManager
         }
 
         [TestMethod]
+        public void GetLastNonEmptyRowIndex()
+        {
+            var lastIndex = _excelManager.Reader.GetLastNonEmptyRowIndex("Page2");
+            Assert.AreEqual(lastIndex, 7);
+        }
+
+        [TestMethod]
+        public void GetNonEmptyRowsForWorksheet()
+        {
+            var valuesDictionary = _excelManager.Reader.GetValuesForWorksheet("Page3");
+
+            Assert.AreEqual(valuesDictionary[1][1], "Merged cells");
+            Assert.AreEqual(valuesDictionary[3][2], "searchedString");
+            Assert.AreEqual(valuesDictionary[3][6], "searchedString");
+        }
+
+        [TestMethod]
         public void GetRowAndColumnForSpecificStringValue()
         {
             _excelManager.Reader.SelectWorksheet("Page3");
