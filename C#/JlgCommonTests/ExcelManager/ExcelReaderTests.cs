@@ -241,6 +241,35 @@ namespace JlgCommonTests.ExcelManager
            CollectionAssert.AreEqual(_excelManager.Reader.GetColumnDistinctStringValuesWithRowIndexes(1, 2), values);
         }
 
+        [TestMethod]
+        public void GetColumnIndexesForStringList()
+        {
+            _excelManager.Reader.SelectWorksheet("Page2");
+            var inputDictionary = new Dictionary<string, int>
+            {
+                {"Values", 2} ,
+                {"3", 3},
+                {"14", 4},
+                {"8", 5},
+                {"10", 6},
+                {"7", 7},
+                {"66", 8}
+            };
+
+            var outputDictionary = new Dictionary<string, int>
+            {
+                {"Values", 1} ,
+                {"3", 1},
+                {"14", 1},
+                {"8", 1},
+                {"10", 1},
+                {"7", 1}
+            };
+
+            var returnedDictionary = _excelManager.Reader.GetColumnIndexesForStringList(inputDictionary);
+            CollectionAssert.AreEqual(outputDictionary, returnedDictionary);
+        }
+
 
     }
 }

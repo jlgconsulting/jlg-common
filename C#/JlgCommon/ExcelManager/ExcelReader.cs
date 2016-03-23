@@ -425,7 +425,31 @@ namespace JlgCommon.ExcelManager
             {
                 var value = tuple.Item1;
                 var rowIndex = tuple.Item2;
-                columnIndexes.Add(GetColumnIndexesForSpecificStringValue(rowIndex, value).First());
+                var columnIndexesForValue = GetColumnIndexesForSpecificStringValue(rowIndex, value);
+                if(!columnIndexesForValue.Any())
+                    throw new Exception($"Value not found: {value}, row index: {rowIndex}");
+
+                columnIndexes.Add(columnIndexesForValue.First());
+            }
+            return columnIndexes;
+        }
+
+        /*
+         * receives a dictionary of the values to search for and the rowIndex where to search that values
+         * returns a dictionary of the values and the columnIndex where the values were found
+         */
+        public Dictionary<string, int> GetColumnIndexesForStringList(Dictionary<string, int> dictionary)
+        {
+            var columnIndexes = new Dictionary<string, int>();
+            foreach (var item in dictionary)
+            {
+                var value = item.Key;
+                var rowIndex = item.Value;
+                var columnIndexesForValue = GetColumnIndexesForSpecificStringValue(rowIndex, value);
+                if (!columnIndexesForValue.Any())
+                    continue;
+
+                columnIndexes.Add(value, columnIndexesForValue.First());
             }
             return columnIndexes;
         }
