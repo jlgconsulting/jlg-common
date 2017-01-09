@@ -328,14 +328,30 @@ namespace JlgCommon.ExcelManager
             return _excelDocument.GetWorksheetMergeCells();
         }
 
+        /// <summary>
+        /// Gets the first row index of a merged cells structure
+        /// </summary>
+        /// <returns>the first row index or -1 if no cells have been merged</returns>
         public int GetMergedCellsStartingRow()
         {
-            return _excelDocument.GetWorksheetMergeCells().Min(t => t.StartRowIndex);
+            var mergedCells = _excelDocument.GetWorksheetMergeCells();
+            if (mergedCells.Any())
+                return mergedCells.Min(t => t.StartRowIndex);
+
+            return -1;
         }
 
+        /// <summary>
+        /// Gets the last row index of a merged cells structure
+        /// </summary>
+        /// <returns>the last row index or -1 if no cells have been merged</returns>
         public int GetMergedCellsEndingRow()
         {
-            return _excelDocument.GetWorksheetMergeCells().Max(t => t.EndRowIndex);
+            var mergedCells = _excelDocument.GetWorksheetMergeCells();
+            if (mergedCells.Any())
+                return mergedCells.Max(t => t.EndRowIndex);
+
+            return -1;
         }
 
         public SLStyle GetCellStyle(int rowIndex, int columnIndex)
