@@ -195,7 +195,7 @@ namespace JlgCommonTests.ExcelManager
         public void GetLastNonEmptyRowIndex()
         {
             var lastIndex = _excelManager.Reader.GetLastNonEmptyRowIndex("Page2");
-            Assert.AreEqual(lastIndex, 7);
+            Assert.AreEqual(lastIndex, 20);
         }
 
         [TestMethod]
@@ -268,6 +268,47 @@ namespace JlgCommonTests.ExcelManager
 
             var returnedDictionary = _excelManager.Reader.GetColumnIndexesForStringList(inputDictionary);
             CollectionAssert.AreEqual(outputDictionary, returnedDictionary);
+        }
+
+        [TestMethod]
+        public void GetRowAndColumnContainingStringValue()
+        {
+            _excelManager.Reader.SelectWorksheet("Page2");
+            var fieldNamesList = new List<string>();
+
+            fieldNamesList.Add("State");
+            fieldNamesList.Add("Reporting Year");
+            fieldNamesList.Add("Date of completion");
+            fieldNamesList.Add("Contact Person");
+            fieldNamesList.Add("Position/Title");
+            fieldNamesList.Add("Organisation");
+            fieldNamesList.Add("Address");
+            fieldNamesList.Add("Tel");
+            fieldNamesList.Add("Fax");
+            fieldNamesList.Add("E-mail");
+
+            var outputList = new List<Tuple<int, int>>();
+            outputList.Add(new Tuple<int, int>(2, 3));
+            outputList.Add(new Tuple<int, int>(4, 3));
+            outputList.Add(new Tuple<int, int>(6, 3));
+            outputList.Add(new Tuple<int, int>(8, 3));
+            outputList.Add(new Tuple<int, int>(10, 3));
+            outputList.Add(new Tuple<int, int>(12, 3));
+            outputList.Add(new Tuple<int, int>(14, 3));
+            outputList.Add(new Tuple<int, int>(16, 3));
+            outputList.Add(new Tuple<int, int>(18, 3));
+            outputList.Add(new Tuple<int, int>(20, 3));
+
+            var outputTuples = new List<Tuple<int, int>>();
+            for (int i = 0; i< fieldNamesList.Count; i++)
+            {
+                var value = fieldNamesList[i];
+                var outputTuple = _excelManager.Reader.GetRowAndColumnContainingStringValue(value);
+
+                outputTuples.Add(outputTuple);
+            }
+
+            CollectionAssert.AreEqual(outputList, outputTuples);
         }
 
 

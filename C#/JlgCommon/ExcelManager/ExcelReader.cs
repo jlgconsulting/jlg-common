@@ -369,6 +369,20 @@ namespace JlgCommon.ExcelManager
             return _excelDocument.GetColumnWidth(columnIndex);
         }
 
+        public List<int> GetColumnIndexesContainingStringValue(int rowIndex, string value)
+        {
+            var columnIndexes = new List<int>();
+            foreach (var columnIndex in GetColumnOrderedIndexes())
+            {
+                var cellValue = _excelDocument.GetCellValueAsString(rowIndex, columnIndex);
+                if (cellValue.Contains(value))
+                {
+                    columnIndexes.Add(columnIndex);
+                }
+            }
+            return columnIndexes;
+        }
+
         public List<int> GetColumnIndexesForSpecificStringValue(int rowIndex, string value)
         {
             var columnIndexes = new List<int>();
@@ -382,7 +396,36 @@ namespace JlgCommon.ExcelManager
             }
             return columnIndexes;
         }
-              
+
+        public List<ExcelRangeBase> GetWorksheetContent(string worksheetName)
+        {
+            var worksheet = _excelPackage.Workbook.Worksheets[worksheetName];
+            return worksheet.Cells.Where(t=>!string.IsNullOrEmpty(t.Value.ToString())).ToList();
+        }
+
+        public Tuple<int, int> GetRowAndColumnContainingStringValue(string value)
+        {
+            int firstRow = 1;
+            int nRows = GetNumberOfRows();
+
+            for (int i = firstRow; i <= nRows; ++i)
+            {
+                var columnIndexList = GetColumnIndexesContainingStringValue(i, value);
+                if (!columnIndexList.Any())
+                {
+                    continue;
+                }
+
+                int j = columnIndexList.First();
+                string cellValue = GetCellValueAsString(i, j);
+
+                if (cellValue.Contains(value))
+                {
+                    return new Tuple<int, int>(i, j);
+                }
+            }
+            return null;
+        }      
 
         public Tuple<int, int> GetRowAndColumnForSpecificStringValue(string field)
         {

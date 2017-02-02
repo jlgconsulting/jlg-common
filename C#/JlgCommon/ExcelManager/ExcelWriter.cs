@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DocumentFormat.OpenXml.Drawing.Charts;
 using DocumentFormat.OpenXml.Spreadsheet;
 using JlgCommon.ExcelManager.Domain;
+using OfficeOpenXml;
 using SpreadsheetLight;
 using SpreadsheetLight.Charts;
 using Color = System.Drawing.Color;
@@ -264,6 +266,18 @@ namespace JlgCommon.ExcelManager
             
         }
 
+        public void AddCells(string worksheetName, List<ExcelRangeBase> cells)
+        {
+            foreach (var cell in cells)
+            {
+                int rowIndex = cell.Start.Row;
+                int columnIndex = cell.Start.Column;
+                var value = cell.Value.ToString();
+                var style = cell.Style;
+
+                _excelDocument.SetCellValue(rowIndex, columnIndex, value);
+            }
+        }
         public void MergeCells(int startingRow, int startingColumn, int endingRow, int endingColumn)
         {
             _excelDocument.MergeWorksheetCells(startingRow, startingColumn, endingRow, endingColumn);
