@@ -5,6 +5,7 @@ using System.Linq;
 using JlgCommon.Extensions;
 using SpreadsheetLight;
 using DocumentFormat.OpenXml.Spreadsheet;
+using JlgCommon.Common;
 using OfficeOpenXml;
 
 namespace JlgCommon.ExcelManager
@@ -65,15 +66,25 @@ namespace JlgCommon.ExcelManager
 
         public List<int> GetColumnOrderedIndexes()
         {
-            var columnIndexes = _excelDocument.GetCells()
-                                    .OrderBy(coll => coll.Key.ColumnIndex)
-                                    .Select(coll => coll.Key.ColumnIndex)
-                                    .Distinct()
-                                    .ToList();
+            var columnIndexes = new SortedSet<int>();
+            var cells = _excelDocument.GetCells();
+            foreach (var row in cells)
+            {
+                foreach (var columnIndex in row.Value.Keys)
+                {
+                    if (!columnIndexes.Contains(columnIndex))
+                    {
+                        columnIndexes.Add(columnIndex);
+                    }
+                }
+            }
 
-            columnIndexes.Sort();
+//            var columnIndexes = _excelDocument.GetCells()
+//                                    .Select(coll => coll.Value.Keys)
+//                                    .Distinct()
+//                                    .ToList();
 
-            return columnIndexes;
+            return columnIndexes.ToList();
         }
 
         public int GetFirstNotEmptyRowIndex()
@@ -89,11 +100,8 @@ namespace JlgCommon.ExcelManager
         }
 
         public int GetNumberOfRows()
-        {         
-            var nrRows = _excelDocument.GetCells()
-                              .Select(coll => coll.Key.RowIndex)
-                              .Distinct()
-                              .Count();
+        {
+            var nrRows = _excelDocument.GetCells().Select(t => t.Key).Distinct().Count();
             return nrRows;
         }
 
@@ -116,10 +124,15 @@ namespace JlgCommon.ExcelManager
 
         public int GetLastRowIndex()
         {
-            var lastRowIndex = _excelDocument.GetCells()
-                .Where(coll => !coll.Value.IsEmpty && 
-                    !_excelDocument.GetCellValueAsString(coll.Key.RowIndex, coll.Key.ColumnIndex).Equals(string.Empty))
-                .Max(coll => coll.Key.RowIndex);
+            var lastRowIndex =
+                _excelDocument.GetCells()
+                    .Where(row => row.Value.Values.All(cell => !string.IsNullOrEmpty(cell.CellText)))
+                    .Max(t => t.Key);
+
+//            var lastRowIndex = _excelDocument.GetCells()
+//                .Where(coll => !coll.Value.Va.IsEmpty && 
+//                    !_excelDocument.GetCellValueAsString(coll.Key.RowIndex, coll.Key.ColumnIndex).Equals(string.Empty))
+//                .Max(coll => coll.Key.RowIndex);
 
             return lastRowIndex;
         }
@@ -178,23 +191,65 @@ namespace JlgCommon.ExcelManager
             return rowValues;
         }
 
-        public Dictionary<int, Dictionary<int, string>> GetValuesForWorksheet(string worksheetName)
+        private SortedDictionary<int, SortedDictionary<int, string>> GetSortedDictionary(List<ExcelRangeBase> cells)
         {
-           
-            var worksheet = _excelPackage.Workbook.Worksheets[worksheetName];            
-            var cells = worksheet.Cells.ToList();        
-
-            var rowValuesDictionary = new Dictionary<int, Dictionary<int, string>>();
+            var rowValuesDictionary = new SortedDictionary<int, SortedDictionary<int, string>>();
             foreach (var cell in cells)
             {
                 if (!rowValuesDictionary.ContainsKey(cell.Start.Row))
                 {
-                    rowValuesDictionary.Add(cell.Start.Row, new Dictionary<int, string>());
+                    rowValuesDictionary.Add(cell.Start.Row, new SortedDictionary<int, string>());
                 }
-                rowValuesDictionary[cell.Start.Row].Add(cell.Start.Column,cell.Text);
-            }              
+                rowValuesDictionary[cell.Start.Row].Add(cell.Start.Column, cell.Text.Trim());
+            }
             return rowValuesDictionary;
         }
+
+        /// <summary>
+        /// Gets all values from worksheet at once
+        /// Returns dictionary:
+        /// Key: Row Index
+        /// Value: dictionary: 
+        ///     Key = Column Index
+        ///     Value = value of cell as a string
+        /// </summary>
+        /// <param name="worksheetName">the name of the worksheet where to read from</param>
+        /// <returns>Sorted dictionary of values</returns>
+        public SortedDictionary<int, SortedDictionary<int, string>> GetValuesForWorksheet(string worksheetName)
+        {
+            var cells = GetWorksheetContent(worksheetName);
+
+            var valuesDictionary = GetSortedDictionary(cells);
+            
+            //remove empty rows (rows that contain only empty values)
+            var emptyRowKeys =
+                valuesDictionary.Where(row => row.Value.Values.All(string.IsNullOrEmpty))
+                    .Select(t => t.Key)
+                    .ToList();
+            foreach (var rowKey in emptyRowKeys)
+            {
+                valuesDictionary.Remove(rowKey);
+            }
+
+            return valuesDictionary;
+        }
+
+        /// <summary>
+        /// Gets all not empty values from worksheet at once
+        /// Returns dictionary:
+        /// Key: Row Index
+        /// Value: dictionary: 
+        ///     Key = Column Index
+        ///     Value = value of cell as a string
+        /// </summary>
+        /// <param name="worksheetName">the name of the worksheet where to read from</param>
+        /// <returns>Sorted dictionary of values</returns>
+        public SortedDictionary<int, SortedDictionary<int, string>> GetNotEmptyValuesForWorksheet(string worksheetName)
+        {
+            var cells = GetWorksheetNotEmptyContent(worksheetName);
+
+            return GetSortedDictionary(cells);
+        }   
 
         public Dictionary<int, Dictionary<int, string>> GetNonEmptyRowsForWorksheet(string worksheetName)
         {
@@ -315,13 +370,13 @@ namespace JlgCommon.ExcelManager
             return _excelDocument.GetWorksheetNames();
         }
 
-        public List<KeyValuePair<SLCellPoint, SLCell>> GetRowCells(int rowIndex)
-        {
-            var cells = _excelDocument.GetCells()
-                                    .Where(coll => coll.Key.RowIndex == rowIndex)
-                                    .ToList();
-            return cells;
-        }
+//        public List<KeyValuePair<SLCellPoint, SLCell>> GetRowCells(int rowIndex)
+//        {
+//            var cells = _excelDocument.GetCells()
+//                                    .Where(coll => coll.Key.RowIndex == rowIndex)
+//                                    .ToList();
+//            return cells;
+//        }
 
         public List<SLMergeCell> GetMergedCells()
         {
@@ -397,11 +452,64 @@ namespace JlgCommon.ExcelManager
             return columnIndexes;
         }
 
+//        /// <summary>
+//        /// Get data from worksheet as list of rows, each row being a list of string
+//        /// </summary>
+//        /// <param name="worksheetName">the name of the worksheet</param>
+//        /// <returns></returns>
+//        public Dictionary<int, Dictionary<int, string>> GetWorksheetDataAsStringList(string worksheetName)
+//        {
+//            var worksheetContent = GetWorksheetContent(worksheetName);
+//            var nonEmptyContent = worksheetContent.Where(t => !string.IsNullOrEmpty(t.Value.ToString())).ToList();
+//            if (!nonEmptyContent.Any())
+//                return null;
+//
+//            var emptyStart = nonEmptyContent.Where(t => t.Start == null).ToList();
+//            if (emptyStart.Any())
+//                throw new Exception(nonEmptyContent.Select(t=>t.FullAddress).ToList().ToString());
+//
+//            int minRowIndex = nonEmptyContent.Min(t => t.Start.Row);
+//            int minColumnIndex = nonEmptyContent.Min(t => t.Start.Column);
+//            int maxRowIndex = nonEmptyContent.Max(t => t.End.Row);
+//            int maxColumnIndex = nonEmptyContent.Max(t => t.End.Column);
+//
+//            var worksheetData = new Dictionary<int, Dictionary<int, string>>();
+//            for (int rowIndex = minRowIndex; rowIndex <= maxRowIndex; rowIndex++)
+//            {
+//                var rowContent = worksheetContent.Where(t => t.Start.Row == rowIndex).ToList();
+//
+//                var rowData =
+//                    rowContent.Where(t => t.Start.Column >= minColumnIndex && t.End.Column <= maxColumnIndex)
+//                        .OrderBy(t => t.Start.Column)
+//                        .ToDictionary(t => t.Start.Column, t => t.Value.ToString().Trim());
+//
+//                worksheetData.Add(rowIndex, rowData);
+//            }
+//
+//            return worksheetData;
+//        } 
+
+        private ExcelRangeBase GetWorksheetCells(string worksheetName)
+        {
+            var worksheetNames = _excelPackage.Workbook.Worksheets.Select(t => t.Name).ToList();
+            if (!worksheetNames.Contains(worksheetName))
+            {
+                throw new Exception(string.Format(Constants.WorksheetNotFound, worksheetName));
+            }
+
+            var worksheet = _excelPackage.Workbook.Worksheets[worksheetName];
+            return worksheet.Cells;
+        }
+
         public List<ExcelRangeBase> GetWorksheetContent(string worksheetName)
         {
-            var worksheet = _excelPackage.Workbook.Worksheets[worksheetName];
-            return worksheet.Cells.Where(t=>!string.IsNullOrEmpty(t.Value.ToString())).ToList();
+            return GetWorksheetCells(worksheetName).Where(cell => cell.Text != null).ToList();
         }
+
+        public List<ExcelRangeBase> GetWorksheetNotEmptyContent(string worksheetName)
+        {
+           return GetWorksheetCells(worksheetName).Where(cell => !string.IsNullOrEmpty(cell.Text.Trim())).ToList();
+        } 
 
         public Tuple<int, int> GetRowAndColumnContainingStringValue(string value)
         {
@@ -486,7 +594,7 @@ namespace JlgCommon.ExcelManager
                 var rowIndex = tuple.Item2;
                 var columnIndexesForValue = GetColumnIndexesForSpecificStringValue(rowIndex, value);
                 if(!columnIndexesForValue.Any())
-                    throw new Exception($"Value not found: {value}, row index: {rowIndex}");
+                    throw new Exception(string.Format("Value not found: {0}, row index: {1}", value, rowIndex));
 
                 columnIndexes.Add(columnIndexesForValue.First());
             }

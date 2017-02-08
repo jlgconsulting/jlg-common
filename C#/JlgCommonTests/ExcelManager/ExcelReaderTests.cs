@@ -103,7 +103,7 @@ namespace JlgCommonTests.ExcelManager
         [TestMethod]
         public void GetWorksheetNames()
         {
-            CollectionAssert.AreEquivalent(new List<string>() { "Page1", "Page2", "Page3" },
+            CollectionAssert.AreEquivalent(new List<string>() { "Page1", "Page2", "Page3", "Page4" },
                   _excelManager.Reader.GetWorksheetNames());
         }
 
@@ -178,7 +178,7 @@ namespace JlgCommonTests.ExcelManager
         {
             _excelManager.Reader.SelectWorksheet("Page3");
             var columnIndexes = _excelManager.Reader.GetColumnIndexesForSpecificStringValue(3, "searchedString");
-            CollectionAssert.AreEquivalent(columnIndexes, new List<int>() {2, 6});
+            CollectionAssert.AreEquivalent(columnIndexes, new List<int>() { 2, 6 });
         }
 
         [TestMethod]
@@ -188,7 +188,7 @@ namespace JlgCommonTests.ExcelManager
 
             Assert.AreEqual(valuesDictionary[1][1], "Merged cells");
             Assert.AreEqual(valuesDictionary[3][2], "searchedString");
-            Assert.AreEqual(valuesDictionary[3][6], "searchedString");            
+            Assert.AreEqual(valuesDictionary[3][6], "searchedString");
         }
 
         [TestMethod]
@@ -238,7 +238,7 @@ namespace JlgCommonTests.ExcelManager
                 {"10", 6},
                 {"7", 7}
             };
-           CollectionAssert.AreEqual(_excelManager.Reader.GetColumnDistinctStringValuesWithRowIndexes(1, 2), values);
+            CollectionAssert.AreEqual(_excelManager.Reader.GetColumnDistinctStringValuesWithRowIndexes(1, 2), values);
         }
 
         [TestMethod]
@@ -300,7 +300,7 @@ namespace JlgCommonTests.ExcelManager
             outputList.Add(new Tuple<int, int>(20, 3));
 
             var outputTuples = new List<Tuple<int, int>>();
-            for (int i = 0; i< fieldNamesList.Count; i++)
+            for (int i = 0; i < fieldNamesList.Count; i++)
             {
                 var value = fieldNamesList[i];
                 var outputTuple = _excelManager.Reader.GetRowAndColumnContainingStringValue(value);
@@ -311,6 +311,32 @@ namespace JlgCommonTests.ExcelManager
             CollectionAssert.AreEqual(outputList, outputTuples);
         }
 
+//        [TestMethod]
+//        public void GetWorksheetDataAsStringList()
+//        {
+//            var worksheetData = _excelManager.Reader.GetWorksheetDataAsStringList("Page4");
+//
+//            var row1 = new Dictionary<int, string> { {2, "this"}, {3, "is"}, {4, "a"}, {5, "test"}};
+//            var row2 = new Dictionary<int, string> { {2, "for"}, {3, "getting"}, {4, "worksheet"}, {5, "data"}};
+//            var row3 = new Dictionary<int, string> { {3, "as"}, {4, "list"}};
+//            var row4 = new Dictionary<int, string> { {3, "of"}};
+//            var row5 = new Dictionary<int, string> { {2, "lists" }, {3, "of"}, {5, "string"}};
+//            Dictionary<int, string> outputRow1;
+//            worksheetData.TryGetValue(2, out outputRow1);
+//            Dictionary<int, string> outputRow2;
+//            worksheetData.TryGetValue(3, out outputRow2);
+//            Dictionary<int, string> outputRow3;
+//            worksheetData.TryGetValue(4, out outputRow3);
+//            Dictionary<int, string> outputRow4;
+//            worksheetData.TryGetValue(5, out outputRow4);
+//            Dictionary<int, string> outputRow5;
+//            worksheetData.TryGetValue(6, out outputRow5);
+//            CollectionAssert.AreEqual(outputRow1, row1);
+//            CollectionAssert.AreEqual(outputRow2, row2);
+//            CollectionAssert.AreEqual(outputRow3, row3);
+//            CollectionAssert.AreEqual(outputRow4, row4);
+//            CollectionAssert.AreEqual(outputRow5, row5);
+//        }
 
     }
 }
